@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/home",
+    "/contact",
+    "/buyer",
+    "/life",
+    "/life-ops",
+    "/neighbor",
+    "/score",
+    "/auto-bundle",
+    "/healthcare",
+    "/teachers",
+    "/tech",
+    "/engineers",
+    "/local",
+    "/home/Wowindex.html",
+    "/home/qr/*",
+    "/home/campaign/*",
+    "/neighbor/r/*",
+    "/local/*"
+  ],
+  "exclude": []
+}

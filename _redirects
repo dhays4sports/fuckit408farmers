@@ -1,0 +1,4 @@
+# 408FARMERS uses Cloudflare Pages Advanced Mode (_worker.js).
+# Application routing is intentionally owned by _worker.js.
+# Do not add directory -> index.html rewrites here: env.ASSETS.fetch()
+# applies _redirects rules, and such rewrites can create pretty-path loops.

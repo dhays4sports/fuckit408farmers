@@ -1,0 +1,29 @@
+{
+  "release": "408-AUTHORITY-1.0",
+  "date": "2026-09-01",
+  "baseline": {
+    "archive": "408FARMERS_TECH-PUESTO-LAUNCH-1.0_PROGRESSIVE_CAPTURE_CALLBACK_CHOICES_ROOT_DEPLOYABLE(1).zip",
+    "sha256": "cf2abf181a001a0e4622e368eb1bd24c93f9e2e395402065a88153f19d66e411"
+  },
+  "authority_hierarchy": [
+    "Farmers Insurance official logo",
+    "Virginia Tam Insurance Agency, Inc.",
+    "Dylan Haysbert · CA License #4528400",
+    "408FARMERS mnemonic/contact continuity"
+  ],
+  "official_farmers_asset": {
+    "path": "shared/assets/farmers-insurance-official.svg",
+    "source": "https://www.farmers.com/content/_farmers/web-assets/images/logos/farmers-logo-desktop.svg",
+    "graphic_modified": false,
+    "sha256": "294052e65909f187943b4cd4834a5d60d6abea0e8cb5c5c597c3e64810a1779c"
+  },
+  "runtime_pages_audited": 28,
+  "functional_files_changed": 35,
+  "automated_tests": {
+    "command": "node --test tests/*.test.cjs",
+    "passed": 20,
+    "failed": 0
+  },
+  "release_blockers": [],
+  "certified": true
+}

@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Privacy | 408-FARMERS</title><link rel="stylesheet" href="shared/styles.css">  <link rel="stylesheet" href="shared/accessibility.css"/>
+  <script src="shared/accessibility.js" defer></script>
+  <meta name="408farmers-ui-foundation" content="408-UI-3.1"/>
+  <link rel="stylesheet" href="/shared/ui-3-foundation.css?v=408-UI-3.1"/>
+  <meta name="408farmers-ui-mobile" content="408-UI-3.10"/>
+  <link rel="stylesheet" href="/shared/mobile-interaction.css?v=408-UI-3.10"/>
+    <meta name="408farmers-human-trust-foundation" content="408-UI-3.13.1A"/>
+  <link rel="stylesheet" href="/shared/human-trust.css?v=408-UI-3.13.1A"/>
+<link rel="stylesheet" href="/shared/accessibility-certification.css?v=408-UI-3.11"/>
+  <meta name="408farmers-accessibility-build" content="408-UI-3.11"/>
+
+  <meta name="description" content="Read the 408FARMERS privacy notice, including how insurance-request and secure Life application-start information is handled."/>
+  <link rel="canonical" href="https://408farmers.com/privacy.html"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="theme-color" content="#061f48"/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+
+  <meta name="408farmers-editorial-platform" content="408-UI-4.1"/>
+  <link rel="stylesheet" href="/shared/editorial-platform.css?v=408-UI-4.1"/>
+<script defer src="/shared/editorial-platform.js?v=408-UI-4.1"></script>
+<link rel="stylesheet" href="/shared/editorial-completion.css?v=408-UI-4.7">
+  <meta name="408farmers-ui-responsive" content="408-UI-4.8"/>
+  <link rel="stylesheet" href="/shared/editorial-responsive.css?v=408-UI-4.8"/>
+<link rel="stylesheet" href="/shared/accessibility-performance.css?v=408-UI-4.9"/>
+<meta name="408farmers-ui-accessibility-performance" content="408-UI-4.9"/>
+</head><body class="ui47-legal-editorial ui48-responsive ui49-accessibility-performance" data-ui4-relationship-completion="408-UI-4.7" data-ui4-responsive="408-UI-4.8" data-ui4-accessibility-performance="408-UI-4.9">
+<header class="agency-authority-header" data-authority-build="408-AUTHORITY-1.0" aria-label="Farmers agency and producer identity">
+  <a class="agency-authority-header__farmers" href="/" aria-label="Farmers Insurance home"><img src="/shared/assets/farmers-insurance-official.svg" width="380" height="203" alt="Farmers Insurance"/></a>
+  <div class="agency-authority-header__identity"><strong>Virginia Tam Insurance Agency, Inc.</strong><span>Dylan Haysbert · CA License #4528400</span></div>
+</header>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header"><a class="brand" href="/home"><img src="shared/assets/408-farmers-logo.png" alt="408FARMERS Insurance Text Line" width="1014" height="215" srcset="shared/assets/408-farmers-logo-506.webp 506w, shared/assets/408-farmers-logo.png 1014w" sizes="(max-width: 700px) 168px, 220px"></a></header>
+  <main id="main-content" tabindex="-1" class="thanks"><article class="thanks-card" style="text-align:left">
+    <div class="section-kicker">Privacy</div>
+    <h1>Privacy Notice</h1>
+    <p>Information submitted through this website is used to respond to your insurance request, prepare quotes, and communicate about insurance products or services. Information may be shared with Virginia Tam Insurance Agency, Inc., Farmers-affiliated companies, and service providers as needed to process your request.</p>
+    <p>Submitting a form does not bind coverage. Except for the dedicated life application-start flow described below, do not submit highly sensitive information such as Social Security numbers or payment-card details through this website.</p>
+    <section id="life-application-start" aria-labelledby="life-privacy-heading">
+      <h2 id="life-privacy-heading" style="color:#08285a;margin-top:28px">Life application-start information</h2>
+      <p>The dedicated <code>/life/</code> flow may collect legal identity and contact information, date of birth, residential address, and only the last four digits of a Social Security number so Dylan can initiate a life insurance application. That flow uses a separate same-origin server endpoint rather than the site’s ordinary lead-form service. The LIFE page is designed not to place those application details in URLs, advertising analytics, localStorage, sessionStorage, IndexedDB, or cookies.</p>
+      <p>The server validates and minimizes the submitted fields. Core applicant and contact information is encrypted in the protected producer queue. Carrier-required date of birth and last-four values are encrypted separately in a short-lived vault. Those two values are available to authorized agency staff for one protected reveal only, are automatically destroyed when the application is marked initiated, emailed, completed, or archived, and otherwise expire no later than 72 hours after submission. A follow-up-only choice sends no date of birth or Social Security digits.</p>
+      <p>The dedicated life endpoint may send a minimized follow-up projection to approved lead systems, but date of birth and Social Security digits are never included in AgencyZoom, CoverageFit, Formspree, advertising analytics, Slack, ordinary email, SMS, visible URLs, or browser storage. Queue access is restricted through Cloudflare Access and an agency producer allowlist. Hosting providers may process encrypted application-start data as necessary to operate the service, subject to their applicable agreements and controls.</p>
+      <p>Do not enter a full Social Security number, payment-card number, medical history, prescriptions, or other information not specifically requested by the dedicated life flow.</p>
+    </section>
+    <p>Questions: <a href="mailto:dylan.vtam@farmersagency.com">dylan.vtam@farmersagency.com</a> or <a href="tel:+14083276377">(408) 327-6377</a>.</p>
+  </article></main>
+  <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.addEventListener('pageshow',function(){window.scrollTo(0,0);});</script>
+  <script defer src="/shared/ui-3-foundation.js?v=408-UI-3.1"></script>
+  <script defer src="/shared/accessibility-certification.js?v=408-UI-3.11"></script>
+</body></html>
