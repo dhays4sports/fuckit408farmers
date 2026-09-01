@@ -1,0 +1,40 @@
+{
+  "sprint": "408-LOCAL-1.9",
+  "program": "408FARMERS Local",
+  "target_merchants": 3,
+  "public_merchants_active": 1,
+  "launch_status": "operational_pilot_open_pending_two_merchants",
+  "frozen_boundary": "No insurance purchase or quote required.",
+  "slots": [
+    {
+      "slot": "eat-drink",
+      "merchant_id": "stevies-bar-grill-sj",
+      "merchant_name": "Stevie's Bar & Grill",
+      "status": "active",
+      "identity_validation": "validated_public_identity",
+      "offer": "20% off food and non-alcoholic drinks",
+      "perk_id": "stevies-food-na-20",
+      "redemption_method": "show_screen"
+    },
+    {
+      "slot": "auto",
+      "merchant_id": null,
+      "merchant_name": null,
+      "status": "pending_recruitment",
+      "identity_validation": "not_available",
+      "approved_offer_framework": "10% off services",
+      "public_activation_allowed": false
+    },
+    {
+      "slot": "home",
+      "merchant_id": null,
+      "merchant_name": null,
+      "status": "pending_recruitment",
+      "identity_validation": "not_available",
+      "approved_offer_framework": "15% off services",
+      "public_activation_allowed": false
+    }
+  ],
+  "activation_rule": "Never publish an unnamed merchant or an unapproved merchant-owned offer.",
+  "next_gate": "Recruit and validate the Auto and Home merchants, then add their exact terms and merchant-specific QR campaigns before 1.9 can be operationally closed."
+}

@@ -1,0 +1,49 @@
+{
+  "release": "TECH-PUESTO-LAUNCH-1.0",
+  "repository": "408farmers.com",
+  "status": "production_candidate",
+  "entry_route": "/tech/",
+  "puesto": {
+    "campaign_id": "occupation_tech_meta_v1",
+    "variants": ["puesto_a", "puesto_b", "puesto_c"],
+    "utm_source": "puesto",
+    "utm_medium": "windshield_card",
+    "utm_campaign": "santa_clara_tech",
+    "utm_content_matches_variant": true
+  },
+  "sequence": [
+    "role_selected",
+    "housing_selected",
+    "early_capture_presented",
+    "started_lead_confirmed_or_explicit_skip",
+    "secure_coveragefit_bootstrap"
+  ],
+  "roles": [
+    "software_engineering",
+    "it_cybersecurity",
+    "data_analytics",
+    "product_program",
+    "design_ux",
+    "tech_operations_support",
+    "other_tech"
+  ],
+  "early_capture_fields": ["first_name", "phone", "agency_contact_consent"],
+  "anonymous_skip": true,
+  "lead_transport": {
+    "preferred": "/api/lead",
+    "fallback": "https://formspree.io/f/mojgnegn",
+    "failure_behavior": ["truthful_not_saved_state", "retry", "continue_without_saving"]
+  },
+  "handoff": {
+    "method": "POST",
+    "endpoint": "https://coveragefit.com/api/pvx/web-bootstrap",
+    "visible_url_pii": false,
+    "professional_program": "technology"
+  },
+  "callback_choices": ["exact_time", "when_available", "no_contact_now"],
+  "boundaries": {
+    "professional_role_implies_eligibility": false,
+    "phone_implies_automated_marketing_sms": false,
+    "bind_authority": false
+  }
+}

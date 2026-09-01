@@ -1,0 +1,22 @@
+{
+  "release": "TECH-PUESTO-LAUNCH-1.0",
+  "repository": "408farmers.com",
+  "certified_at": "2026-08-31T00:00:00.000Z",
+  "automated_results": {
+    "release_tests": { "passed": 17, "failed": 0 },
+    "link_checks": { "passed": 864, "failed": 0 },
+    "cloudflare_route_checks": { "passed": 22, "failed": 0 }
+  },
+  "certified": [
+    "tap_first_role_and_housing",
+    "minimum_early_identity",
+    "anonymous_skip",
+    "lead_transport_truthfulness",
+    "secure_post_handoff",
+    "professional_non_eligibility_boundary",
+    "separate_automated_marketing_sms_consent",
+    "exact_time_and_anytime_callback_choices",
+    "no_contact_path"
+  ],
+  "production_canary_required": true
+}

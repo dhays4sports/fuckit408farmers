@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "408-life-sensitive-purge",
+  "main": "life-sensitive-purge-worker.mjs",
+  "compatibility_date": "2026-08-29",
+  "triggers": {
+    "crons": ["*/15 * * * *"]
+  },
+  "d1_databases": [
+    {
+      "binding": "LIFE_QUEUE_DB",
+      "database_name": "REPLACE_WITH_EXISTING_LIFE_QUEUE_DATABASE_NAME",
+      "database_id": "REPLACE_WITH_EXISTING_LIFE_QUEUE_DATABASE_ID"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="2100" viewBox="0 0 1500 2100" role="img" aria-labelledby="t d">
+<title id="t">408FARMERS Local perk at Stevie's Bar &amp; Grill</title><desc id="d">Print-ready pilot placard with a QR code for a Stevie's Local perk.</desc>
+<rect width="1500" height="2100" fill="#071a33" rx="70"/>
+<text x="110" y="180" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="74" font-weight="700">408FARMERS LOCAL</text>
+<rect x="110" y="235" width="180" height="12" fill="#d62828"/>
+<text x="110" y="420" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="108" font-weight="800">A LOCAL PERK</text>
+<text x="110" y="545" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="108" font-weight="800">AT STEVIE'S</text>
+<text x="110" y="710" fill="#d9e5f5" font-family="Arial,Helvetica,sans-serif" font-size="54">20% off food + non-alcoholic drinks</text>
+<rect x="110" y="815" width="700" height="700" fill="#ffffff" rx="28"/>
+<image href="qr-placard.svg" x="145" y="850" width="630" height="630"/>
+<text x="875" y="980" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="700">SCAN TO OPEN</text>
+<text x="875" y="1060" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="700">THE PERK</text>
+<text x="875" y="1185" fill="#d9e5f5" font-family="Arial,Helvetica,sans-serif" font-size="42">Show the active screen</text>
+<text x="875" y="1245" fill="#d9e5f5" font-family="Arial,Helvetica,sans-serif" font-size="42">to Stevie's staff.</text>
+<line x1="110" y1="1625" x2="1390" y2="1625" stroke="#31506e" stroke-width="3"/>
+<text x="110" y="1740" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-size="46" font-weight="700">No insurance purchase or quote required.</text>
+<text x="110" y="1825" fill="#b8c9da" font-family="Arial,Helvetica,sans-serif" font-size="34">Offer provided by Stevie's Bar &amp; Grill and subject to merchant terms</text>
+<text x="110" y="1875" fill="#b8c9da" font-family="Arial,Helvetica,sans-serif" font-size="34">and availability. 408FARMERS Local is not an insurance discount program.</text>
+<text x="110" y="1965" fill="#8fa6bd" font-family="Arial,Helvetica,sans-serif" font-size="54">Virginia Tam Insurance Agency, Inc.</text>
+<text x="110" y="2030" fill="#8fa6bd" font-family="Arial,Helvetica,sans-serif" font-size="54">CA License #4528400</text>
+</svg>
