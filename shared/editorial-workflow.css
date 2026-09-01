@@ -1,0 +1,85 @@
+/* 408-UI-4.7 — Dynamic Relationship Workflow Editorial Layer */
+:root{
+  --ui47-gold:var(--ui4-gold-600,#a86f00);
+  --ui47-gold-dark:var(--ui4-gold-700,#8e5f00);
+  --ui47-navy:var(--ui3-navy-950,#031a3d);
+  --ui47-muted:var(--ui4-muted,#566a84);
+  --ui47-line:var(--ui4-line,#dce3eb);
+  --ui47-red:var(--ui3-red,#d71920);
+}
+body.ui47-relationship-editorial :is(.post-lead-engagement,.coveragefit-invitation){
+  width:min(760px,100%);padding:clamp(22px,3vw,34px) 0;
+  border-top:1px solid var(--ui47-line);border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-relationship-editorial :is(.post-lead-kicker,.coveragefit-invitation-kicker){
+  color:var(--ui47-gold-dark)!important;letter-spacing:.12em;
+}
+body.ui47-relationship-editorial .post-lead-progress-track{height:5px;background:#e8edf3}
+body.ui47-relationship-editorial .post-lead-progress-track>span{background:var(--ui47-gold)!important}
+body.ui47-relationship-editorial :is(.post-lead-receipt,.coveragefit-invitation-status){
+  display:flex;align-items:center;gap:14px;padding:0 0 20px;margin:0 0 24px;
+  border:0;border-bottom:1px solid var(--ui47-line);border-radius:0;background:transparent;box-shadow:none;
+}
+body.ui47-relationship-editorial :is(.post-lead-human-portrait,.coveragefit-human-portrait){
+  width:56px;height:56px;flex:0 0 56px;border-radius:50%;object-fit:cover;object-position:center;
+  border:1px solid rgba(3,26,61,.14);background:#edf3f8;
+}
+body.ui47-relationship-editorial :is(.post-lead-receipt p,.coveragefit-invitation-status p){color:var(--ui47-muted)!important}
+body.ui47-relationship-editorial .post-lead-fieldset legend{
+  color:var(--ui47-navy);font-size:clamp(1.18rem,2vw,1.42rem);letter-spacing:-.015em;
+}
+body.ui47-relationship-editorial .post-lead-options{gap:9px}
+body.ui47-relationship-editorial .post-lead-option{
+  padding:14px 15px;border-color:#d6dee8;border-radius:12px;background:#fff;box-shadow:none;
+}
+body.ui47-relationship-editorial .post-lead-option:has(input:checked){
+  border-color:#7189a6;background:#fff;box-shadow:inset 4px 0 0 var(--ui47-red);
+}
+body.ui47-relationship-editorial .post-lead-option input{accent-color:var(--ui47-red)}
+body.ui47-relationship-editorial .post-lead-summary{
+  gap:0;margin:20px 0;border-top:1px solid var(--ui47-line);border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-relationship-editorial .post-lead-summary>div{
+  padding:15px 0;border:0;border-radius:0;background:transparent;
+}
+body.ui47-relationship-editorial .post-lead-summary>div+div{border-left:1px solid var(--ui47-line);padding-left:18px}
+body.ui47-relationship-editorial .post-lead-next-step{
+  margin-top:18px;padding:14px 0 14px 18px;border:0;border-left:3px solid var(--ui47-gold);
+  border-radius:0;background:transparent;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-options{
+  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:22px;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-options .coveragefit-invitation-option{
+  padding:18px 0;border:0;border-top:1px solid var(--ui47-line);border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-tag{
+  padding:0!important;background:transparent!important;color:var(--ui47-gold-dark)!important;
+}
+body.ui47-relationship-editorial :is(.coveragefit-invitation-disclosure,.post-lead-disclosure){
+  text-align:left;max-width:70ch;
+}
+body.ui47-relationship-editorial :is(.home-lead-step,.buyer-step){box-shadow:none!important}
+body.ui47-relationship-editorial .form-status{
+  border:0!important;border-left:3px solid var(--ui47-gold)!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;padding-left:14px!important;
+}
+@media(max-width:860px){
+  body.ui47-relationship-editorial .coveragefit-invitation-options{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  body.ui47-relationship-editorial .post-lead-summary>div+div{
+    border-left:0;border-top:1px solid var(--ui47-line);padding-left:0;
+  }
+  body.ui47-relationship-editorial :is(.post-lead-human-portrait,.coveragefit-human-portrait){
+    width:48px;height:48px;flex-basis:48px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.ui47-relationship-editorial *{scroll-behavior:auto!important}
+}
+@media(forced-colors:active){
+  body.ui47-relationship-editorial .post-lead-progress-track>span{background:Highlight!important}
+  body.ui47-relationship-editorial :is(.post-lead-receipt,.coveragefit-invitation-status){border-color:CanvasText}
+}

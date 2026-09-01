@@ -1,0 +1,637 @@
+/* 408-UI-3.3 — Home Conversion Experience
+   Visual-only convergence for /home/ and all Worker-served /home/* deep entries.
+   Protected form names, validation, submission, campaign routing, post-lead flow,
+   renter branch, and CoverageFit handoff remain owned by the existing runtime. */
+
+.home-page{
+  background:var(--ui3-white);
+  color:var(--ui3-ink);
+}
+
+/* Correct visual active state for /home/ while the root homepage remains Home in UI-3.1. */
+.home-page .ui3-primary-nav a[href="/"]{color:#fff;}
+.home-page .ui3-primary-nav a[href="/"]::after{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:0;
+  height:3px;
+  border-radius:3px 3px 0 0;
+  background:var(--ui3-red);
+}
+
+/* --- Conversion hero ----------------------------------------------------- */
+.home-page .home-flyer-hero{
+  width:min(var(--ui3-container),calc(100% - 40px));
+  margin:0 auto;
+  padding:clamp(42px,6vw,76px) 0 clamp(50px,7vw,82px);
+  display:grid;
+  grid-template-columns:minmax(0,1.04fr) minmax(360px,.96fr);
+  grid-template-areas:"content image";
+  align-items:center;
+  gap:clamp(38px,6vw,76px);
+  background:#fff!important;
+}
+.home-page .home-hero-content{
+  grid-area:content;
+  width:auto!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+.home-page .home-hero-image{
+  grid-area:image;
+  position:relative;
+  height:clamp(420px,46vw,560px)!important;
+  overflow:hidden;
+  border:1px solid var(--ui3-line)!important;
+  border-bottom:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-xl);
+  background:var(--ui3-soft-blue);
+  box-shadow:var(--ui3-shadow-md);
+}
+.home-page .home-hero-image::after{
+  background:linear-gradient(180deg,rgba(4,23,52,.02),rgba(4,23,52,.12))!important;
+}
+.home-page .home-hero-image img{
+  object-position:center 56%!important;
+}
+.home-page .home-hero-content .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin:0 0 15px;
+  color:var(--ui3-red)!important;
+  font-size:.72rem!important;
+  font-weight:900!important;
+  letter-spacing:.12em!important;
+}
+.home-page .home-hero-content .eyebrow::before{
+  content:"";
+  width:24px;
+  height:2px;
+  border-radius:999px;
+  background:var(--ui3-red);
+}
+.home-page .home-campaign-badge:not([hidden]){
+  display:inline-flex!important;
+  align-items:center;
+  min-height:30px;
+  margin:0 0 12px;
+  padding:5px 9px;
+  border:1px solid #f0c8ca;
+  border-radius:var(--ui3-radius-pill);
+  background:var(--ui3-red-soft);
+  color:var(--ui3-red-700);
+  font-size:.69rem;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.home-page .home-hero-content h1{
+  max-width:780px!important;
+  margin:0 0 20px!important;
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(3rem,5.3vw,5.25rem)!important;
+  line-height:.98!important;
+  letter-spacing:-.052em!important;
+}
+.home-page .home-hero-lead{
+  max-width:650px;
+  margin:0 0 9px!important;
+  color:var(--ui3-navy-800)!important;
+  font-size:clamp(1.08rem,1.5vw,1.28rem)!important;
+  font-weight:800!important;
+  line-height:1.45!important;
+}
+.home-page .home-hero-copy{
+  max-width:680px!important;
+  margin:0!important;
+  color:var(--ui3-muted)!important;
+  font-size:1rem!important;
+  line-height:1.7!important;
+}
+.home-page .home-hero-actions{
+  justify-content:flex-start!important;
+  gap:10px!important;
+  margin-top:26px!important;
+}
+.home-page .home-primary-cta{
+  min-width:0!important;
+  min-height:50px!important;
+  padding:0 18px!important;
+  gap:18px!important;
+  border:1px solid var(--ui3-red)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:var(--ui3-red)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+  font-size:.92rem!important;
+}
+.home-page .home-primary-cta:hover{
+  border-color:var(--ui3-red-700)!important;
+  background:var(--ui3-red-700)!important;
+  filter:none!important;
+  transform:translateY(-1px)!important;
+}
+.home-page .home-text-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 16px;
+  border:1px solid var(--ui3-line-strong);
+  border-radius:var(--ui3-radius-sm);
+  background:#fff;
+  color:var(--ui3-navy-800)!important;
+  font-size:.86rem;
+  font-weight:750!important;
+  text-decoration:none!important;
+  gap:4px;
+}
+.home-page .home-text-cta:hover{background:var(--ui3-soft);}
+.home-page .home-hero-reassurance{
+  max-width:660px;
+  margin:16px 0 0!important;
+  color:var(--ui3-muted)!important;
+  font-size:.78rem!important;
+  line-height:1.55!important;
+}
+
+/* --- Guided review shell ------------------------------------------------- */
+.home-page .home-review-section{
+  width:min(var(--ui3-container),calc(100% - 40px))!important;
+  margin:0 auto clamp(64px,8vw,96px)!important;
+  padding:clamp(30px,4.5vw,52px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(280px,.78fr) minmax(480px,1.22fr)!important;
+  gap:clamp(34px,5vw,62px)!important;
+  align-items:start!important;
+  border:1px solid var(--ui3-line);
+  border-radius:var(--ui3-radius-xl);
+  background:var(--ui3-soft)!important;
+}
+.home-page .home-review-intro{
+  position:sticky!important;
+  top:94px!important;
+  padding:5px 0 0!important;
+}
+.home-page .home-review-intro .section-kicker{
+  color:var(--ui3-red)!important;
+  font-size:.7rem!important;
+  letter-spacing:.12em!important;
+}
+.home-page .home-review-intro h2{
+  margin:12px 0 16px!important;
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(2.2rem,3.7vw,3.7rem)!important;
+  line-height:1.02!important;
+  letter-spacing:-.045em!important;
+}
+.home-page .home-review-intro>p{
+  max-width:480px;
+  margin:0!important;
+  color:var(--ui3-muted)!important;
+  font-size:.98rem!important;
+  line-height:1.68!important;
+}
+.home-page .home-benefit-list{
+  display:grid;
+  gap:8px;
+  margin:24px 0 0!important;
+}
+.home-page .home-benefit-list li{
+  min-height:48px;
+  padding:11px 12px 11px 42px!important;
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-sm);
+  background:#fff;
+  color:var(--ui3-navy-800)!important;
+  font-size:.84rem;
+  font-weight:750!important;
+  line-height:1.4;
+}
+.home-page .home-benefit-list li::before{
+  left:12px!important;
+  top:11px!important;
+  width:22px!important;
+  height:22px!important;
+  border:0!important;
+  background:var(--ui3-red-soft)!important;
+  color:var(--ui3-red)!important;
+  font-size:.72rem!important;
+}
+
+/* Main conversion card. */
+.home-page .home-quote-card{
+  width:100%!important;
+  margin:0!important;
+  padding:clamp(22px,3.5vw,34px)!important;
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-lg)!important;
+  background:#fff!important;
+  box-shadow:var(--ui3-shadow-sm)!important;
+  backdrop-filter:none!important;
+}
+.home-page .home-quote-card .card-kicker{
+  color:var(--ui3-red)!important;
+  font-size:.67rem!important;
+  letter-spacing:.12em!important;
+}
+.home-page .home-lead-intro>h2,
+.home-page .home-payoff h2,
+.home-page .post-lead-engagement h2,
+.home-page .coveragefit-invitation h2{
+  color:var(--ui3-navy-950)!important;
+  letter-spacing:-.035em!important;
+}
+.home-page .home-lead-intro>h2{
+  margin:7px 0 7px!important;
+  font-size:clamp(1.65rem,2.6vw,2.15rem)!important;
+}
+.home-page .home-lead-intro>p{font-size:.88rem!important;}
+
+/* Progress consistently uses Farmers red rather than legacy multi-color gradients. */
+.home-page :is(.home-engagement-progress-track,.home-lead-progress-track,.post-lead-progress-track){
+  height:6px!important;
+  background:#e7ecf2!important;
+}
+.home-page :is(.home-engagement-progress-track,.home-lead-progress-track,.post-lead-progress-track)>span{
+  background:var(--ui3-red)!important;
+}
+.home-page :is(.home-engagement-progress,.home-lead-progress,.post-lead-progress-row){
+  color:#51647c!important;
+  font-size:.75rem!important;
+}
+
+/* Choice cards. */
+.home-page .home-engagement-step legend{
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(1.45rem,2.5vw,1.9rem)!important;
+}
+.home-page .home-engagement-helper{font-size:.86rem!important;}
+.home-page .home-engagement-options{gap:9px!important;}
+.home-page .home-engagement-option{
+  min-height:68px!important;
+  grid-template-columns:20px 1fr!important;
+  gap:11px!important;
+  padding:13px 14px!important;
+  border:1px solid var(--ui3-line-strong)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  box-shadow:none!important;
+}
+.home-page .home-engagement-option:hover{
+  border-color:#aebdcd!important;
+  background:var(--ui3-soft)!important;
+}
+.home-page .home-engagement-option:has(input:checked){
+  border-color:var(--ui3-red)!important;
+  background:var(--ui3-red-soft)!important;
+  box-shadow:0 0 0 2px rgba(215,25,32,.08)!important;
+}
+.home-page .home-engagement-option input{accent-color:var(--ui3-red)!important;}
+.home-page .home-engagement-option strong{color:var(--ui3-navy-900)!important;font-size:.91rem!important;}
+.home-page .home-engagement-option small{color:var(--ui3-muted)!important;font-size:.76rem!important;}
+.home-page .home-engagement-back,
+.home-page .home-lead-back{
+  min-height:50px!important;
+  border:1px solid var(--ui3-line-strong)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:#fff!important;
+  color:var(--ui3-navy-800)!important;
+  box-shadow:none!important;
+}
+.home-page .home-engagement-actions,
+.home-page .home-lead-actions{gap:9px!important;}
+
+/* Payoff / continuity state. */
+.home-page .home-payoff-points{gap:8px!important;}
+.home-page .home-payoff-points article,
+.home-page .post-lead-summary>div{
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:var(--ui3-soft)!important;
+  box-shadow:none!important;
+}
+.home-page .home-payoff-points article>span,
+.home-page .post-lead-summary span{color:var(--ui3-red)!important;}
+.home-page .home-payoff-next,
+.home-page .post-lead-next-step{
+  border:1px solid #dce5ef!important;
+  border-left:4px solid var(--ui3-navy-700)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:var(--ui3-soft-blue)!important;
+}
+.home-page .home-payoff-edit,
+.home-page .post-lead-back,
+.home-page .post-lead-secondary,
+.home-page .post-lead-edit,
+.home-page .coveragefit-invitation-back{
+  color:var(--ui3-navy-700)!important;
+}
+
+/* Contact/property form refinement. */
+.home-page #leadForm fieldset{min-width:0;}
+.home-page .home-lead-step legend{
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(1.35rem,2.4vw,1.75rem)!important;
+}
+.home-page .home-lead-step-helper{font-size:.84rem!important;}
+.home-page .field-grid{gap:12px!important;}
+.home-page #leadForm label{margin-bottom:12px!important;}
+.home-page #leadForm label>span:first-child{
+  margin-bottom:6px!important;
+  color:#354b66!important;
+  font-size:.76rem!important;
+  font-weight:850!important;
+}
+.home-page #leadForm :is(input:not([type="checkbox"]):not([type="radio"]),select){
+  min-height:50px!important;
+  border-radius:8px!important;
+  box-shadow:none!important;
+}
+.home-page #leadForm .consent{
+  margin:7px 0 16px!important;
+  padding:13px;
+  border:1px solid var(--ui3-line);
+  border-radius:var(--ui3-radius-sm);
+  background:var(--ui3-soft);
+}
+.home-page #leadForm .consent span{
+  color:#5a6b80!important;
+  font-size:.69rem!important;
+  line-height:1.5!important;
+}
+.home-page .cta-reassurance{
+  margin:0 0 13px;
+  padding:10px 12px;
+  border-radius:8px;
+  background:var(--ui3-success-soft);
+  color:#236044;
+  font-size:.72rem;
+  font-weight:750;
+  line-height:1.45;
+}
+.home-page .address-suggestion-list{
+  border-color:var(--ui3-line-strong)!important;
+  border-radius:10px!important;
+  box-shadow:var(--ui3-shadow-md)!important;
+}
+.home-page .address-suggestion:hover,
+.home-page .address-suggestion:focus-visible,
+.home-page .address-suggestion.is-active{background:var(--ui3-soft-blue)!important;}
+
+/* Direct producer contact should read as a secondary utility, not a competing CTA. */
+.home-page .or-divider{margin:15px 0 12px!important;}
+.home-page .direct-contact-choice{gap:8px!important;font-size:.73rem!important;}
+.home-page .direct-contact-choice .text-link{
+  min-height:40px!important;
+  padding:8px 12px!important;
+  border:1px solid var(--ui3-line)!important;
+  border-radius:8px!important;
+  color:var(--ui3-navy-700)!important;
+  font-size:.76rem;
+}
+
+/* Post-lead receipt, questions and optional CoverageFit invitation. */
+.home-page .post-lead-receipt,
+.home-page .coveragefit-invitation-status{
+  border:1px solid #cbe5d6!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:var(--ui3-success-soft)!important;
+}
+.home-page .post-lead-check,
+.home-page .coveragefit-invitation-status>span{background:var(--ui3-success)!important;}
+.home-page .post-lead-kicker,
+.home-page .coveragefit-invitation-kicker{color:#176640!important;}
+.home-page .post-lead-option{
+  border-color:var(--ui3-line-strong)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+}
+.home-page .post-lead-option:has(input:checked){
+  border-color:var(--ui3-red)!important;
+  background:var(--ui3-red-soft)!important;
+  box-shadow:0 0 0 2px rgba(215,25,32,.08)!important;
+}
+.home-page .post-lead-option input{accent-color:var(--ui3-red)!important;}
+.home-page .coveragefit-invitation-options{gap:10px!important;}
+.home-page .coveragefit-invitation-option{
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.home-page .coveragefit-invitation-option--score{
+  border-color:#bdd0e3!important;
+  background:var(--ui3-soft-blue)!important;
+}
+.home-page .coveragefit-invitation-tag{
+  background:#edf1f6!important;
+  color:#53667d!important;
+}
+.home-page .coveragefit-invitation-option--score .coveragefit-invitation-tag{
+  background:#e8eef7!important;
+  color:var(--ui3-navy-700)!important;
+}
+.home-page .coveragefit-invitation-finish{
+  min-height:48px!important;
+  border:1px solid var(--ui3-line-strong)!important;
+  border-radius:var(--ui3-radius-sm)!important;
+  background:#fff!important;
+  color:var(--ui3-navy-800)!important;
+}
+.home-page :is(.post-lead-contact-actions,.coveragefit-invitation-contact) a{
+  border-color:var(--ui3-line)!important;
+  border-radius:8px!important;
+  color:var(--ui3-navy-700)!important;
+}
+
+/* --- What happens next --------------------------------------------------- */
+.home-page .steps{
+  width:min(var(--ui3-container),calc(100% - 40px))!important;
+  gap:12px!important;
+  padding:0 0 clamp(64px,8vw,96px)!important;
+}
+.home-page .steps article{
+  position:relative;
+  min-height:180px;
+  padding:24px!important;
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-md)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.home-page .steps article>span{
+  display:inline-grid;
+  place-items:center;
+  min-width:34px;
+  min-height:28px;
+  padding:4px 8px;
+  border-radius:var(--ui3-radius-pill);
+  background:var(--ui3-red-soft);
+  color:var(--ui3-red)!important;
+  font-size:.68rem;
+  font-weight:900!important;
+}
+.home-page .steps h3{
+  margin:18px 0 7px!important;
+  color:var(--ui3-navy-900)!important;
+  font-size:1.08rem!important;
+  line-height:1.3;
+}
+.home-page .steps p{color:var(--ui3-muted)!important;font-size:.86rem;}
+
+/* Producer credibility module. */
+.home-page .agent-section{
+  width:min(var(--ui3-container),calc(100% - 40px))!important;
+  margin:0 auto clamp(68px,8vw,96px)!important;
+  padding:clamp(28px,4vw,42px)!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr)!important;
+  gap:32px!important;
+  border:1px solid var(--ui3-line)!important;
+  border-radius:var(--ui3-radius-xl);
+  background:var(--ui3-soft)!important;
+}
+.home-page .agent-section .section-kicker{color:var(--ui3-red)!important;}
+.home-page .agent-section h2{
+  margin:10px 0 8px!important;
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(2rem,3.4vw,3.25rem)!important;
+  line-height:1.02!important;
+  letter-spacing:-.04em!important;
+}
+.home-page .agent-title{color:var(--ui3-navy-700)!important;font-size:.86rem;}
+.home-page .agent-copy p{font-size:.9rem;line-height:1.65!important;}
+.home-page .agent-links{gap:8px!important;margin-top:16px!important;}
+.home-page .agent-links a{
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:8px 12px;
+  border:1px solid var(--ui3-line-strong);
+  border-radius:8px;
+  background:#fff;
+  color:var(--ui3-navy-800)!important;
+  font-size:.77rem;
+}
+.home-page .agent-profile{gap:16px!important;}
+.home-page .agent-headshot{
+  width:104px!important;
+  height:104px!important;
+  border:4px solid #fff;
+  box-shadow:var(--ui3-shadow-sm)!important;
+}
+.home-page .agent-profile .carrier-mark{
+  width:min(250px,100%)!important;
+  padding:14px!important;
+  border-radius:var(--ui3-radius-md)!important;
+  box-shadow:none!important;
+}
+
+/* Stronger focus treatment on Home-specific secondary controls. */
+.home-page :is(.home-text-cta,.direct-contact-choice .text-link,.agent-links a):focus-visible{
+  outline:3px solid rgba(215,25,32,.28)!important;
+  outline-offset:3px!important;
+}
+
+@media(max-width:980px){
+  .home-page .home-flyer-hero{
+    grid-template-columns:1fr minmax(300px,.72fr);
+    gap:32px;
+  }
+  .home-page .home-hero-image{height:460px!important;}
+  .home-page .home-review-section{
+    grid-template-columns:1fr!important;
+    gap:28px!important;
+  }
+  .home-page .home-review-intro{position:static!important;max-width:720px;}
+  .home-page .home-benefit-list{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .home-page .home-benefit-list li{padding:38px 12px 12px!important;}
+  .home-page .home-benefit-list li::before{top:11px!important;}
+}
+
+@media(max-width:760px){
+  .home-page .home-flyer-hero{
+    width:min(100% - 30px,var(--ui3-container));
+    grid-template-columns:1fr;
+    grid-template-areas:"content" "image";
+    gap:28px;
+    padding:38px 0 52px;
+  }
+  .home-page .home-hero-content h1{
+    font-size:clamp(2.75rem,12vw,4.2rem)!important;
+  }
+  .home-page .home-hero-image{
+    height:340px!important;
+    border-radius:var(--ui3-radius-lg);
+  }
+  .home-page .home-hero-actions{display:grid!important;grid-template-columns:1fr;}
+  .home-page .home-primary-cta,.home-page .home-text-cta{width:100%!important;}
+  .home-page .home-review-section,
+  .home-page .steps,
+  .home-page .agent-section{width:min(100% - 30px,var(--ui3-container))!important;}
+  .home-page .home-review-section{
+    padding:20px!important;
+    border-radius:var(--ui3-radius-lg);
+  }
+  .home-page .home-benefit-list{grid-template-columns:1fr;}
+  .home-page .home-benefit-list li{padding:11px 12px 11px 42px!important;}
+  .home-page .field-grid{grid-template-columns:1fr!important;gap:0!important;}
+  .home-page .steps{grid-template-columns:1fr!important;}
+  .home-page .steps article{min-height:0;}
+  .home-page .agent-section{grid-template-columns:1fr!important;}
+  .home-page .agent-profile{justify-content:flex-start!important;}
+  .home-page .coveragefit-invitation-options{grid-template-columns:1fr!important;}
+}
+
+@media(max-width:520px){
+  .home-page .home-flyer-hero,
+  .home-page .home-review-section,
+  .home-page .steps,
+  .home-page .agent-section{width:min(100% - 24px,var(--ui3-container))!important;}
+  .home-page .home-flyer-hero{padding-top:30px;}
+  .home-page .home-hero-image{height:285px!important;}
+  .home-page .home-review-section{padding:14px!important;}
+  .home-page .home-quote-card{padding:19px 14px!important;}
+  .home-page .home-engagement-actions,
+  .home-page .home-lead-actions{grid-template-columns:1fr!important;}
+  .home-page .home-engagement-back,.home-page .home-lead-back{order:2;}
+  .home-page .agent-section{padding:22px!important;}
+  .home-page .agent-profile{display:grid!important;grid-template-columns:76px 1fr!important;align-items:center!important;}
+  .home-page .agent-headshot{width:76px!important;height:76px!important;}
+}
+
+@media(max-height:520px) and (orientation:landscape){
+  .home-page .home-flyer-hero{
+    grid-template-columns:1.15fr .85fr;
+    grid-template-areas:"content image";
+    padding:30px 0 40px;
+  }
+  .home-page .home-hero-image{height:300px!important;}
+  .home-page .home-hero-content h1{font-size:clamp(2.4rem,7vw,3.4rem)!important;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .home-page :is(.home-primary-cta,.home-text-cta,.home-engagement-option,.post-lead-option){transition:none!important;}
+  .home-page :is(.home-primary-cta,.home-text-cta):hover{transform:none!important;}
+}
+
+@media(forced-colors:active){
+  .home-page :is(.home-flyer-hero,.home-review-section,.home-quote-card,.steps article,.agent-section,.home-benefit-list li){border:1px solid CanvasText!important;}
+  .home-page .home-engagement-option:has(input:checked),
+  .home-page .post-lead-option:has(input:checked){outline:3px solid Highlight!important;}
+}
+
+/* Defensive intrinsic-size containment for narrow mobile screens. */
+.home-page .agent-section>*{min-width:0;}
+.home-page .agent-profile{min-width:0;}
+.home-page .agent-profile .responsive-headshot{min-width:0;}
+.home-page .agent-profile .carrier-mark{min-width:0;max-width:100%;}
+.home-page .agent-links a{max-width:100%;overflow-wrap:anywhere;}
+@media(max-width:520px){
+  .home-page .agent-profile{grid-template-columns:76px minmax(0,1fr)!important;}
+  .home-page .agent-profile .responsive-headshot{width:76px!important;height:76px!important;}
+  .home-page .agent-profile .carrier-mark{width:100%!important;}
+}

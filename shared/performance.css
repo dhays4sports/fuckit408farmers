@@ -1,0 +1,137 @@
+/* 408-CRO-1.3 — shared responsive-media layout contracts. */
+.responsive-headshot {
+  display: block;
+  line-height: 0;
+}
+
+.responsive-headshot img,
+.carrier-mark picture img,
+.agent-carrier picture img {
+  display: block;
+}
+
+.carrier-mark picture img,
+.agent-carrier picture,
+.agent-carrier picture img {
+  width: 100%;
+  height: auto;
+}
+
+.contact-choice-agent > .contact-agent-headshot {
+  width: 120px;
+  height: 120px;
+}
+
+.contact-agent-headshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 18px 42px rgba(4, 26, 59, .14);
+}
+
+.contact-choice-carrier,
+.contact-choice-carrier img {
+  display: block;
+}
+
+.contact-choice-carrier img {
+  width: 100%;
+  height: auto;
+}
+
+.buyer-agent > .responsive-headshot {
+  width: 100px;
+  height: 100px;
+}
+
+.buyer-carrier,
+.buyer-carrier img {
+  display: block;
+}
+
+.buyer-carrier img {
+  width: 100%;
+  height: auto;
+}
+
+.score-agent > .score-agent-headshot {
+  width: 180px;
+  height: 180px;
+}
+
+.score-agent-headshot img {
+  width: 100%;
+  height: 100%;
+  border: 7px solid #fff;
+  border-radius: 50%;
+  outline: 1px solid var(--cf-line-soft);
+  object-fit: cover;
+  box-shadow: var(--cf-shadow-premium);
+}
+
+.homepage-agent-headshot,
+.homepage-agent-headshot img {
+  display: block;
+  width: 100%;
+}
+
+.homepage-agent-headshot img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid #dfe8f0;
+  border-radius: 26px;
+  background: #eaf0f5;
+  box-shadow: var(--shadow);
+}
+
+.agent-carrier-line picture {
+  display: block;
+  width: 190px;
+  max-width: 42%;
+}
+
+.agent-carrier-line picture img {
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+@media (max-width: 980px) {
+  .buyer-agent > .responsive-headshot {
+    width: 90px;
+    height: 90px;
+  }
+
+  .score-agent > .score-agent-headshot {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 850px) {
+  .contact-choice-agent > .contact-agent-headshot {
+    width: 92px;
+    height: 92px;
+  }
+}
+
+@media (max-width: 700px) {
+  .buyer-agent > .responsive-headshot {
+    width: 76px;
+    height: 76px;
+  }
+
+  .score-agent > .score-agent-headshot {
+    margin: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .contact-choice-agent > .contact-agent-headshot {
+    width: 88px;
+    height: 88px;
+    margin: auto;
+  }
+}

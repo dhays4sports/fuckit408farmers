@@ -1,0 +1,4 @@
+/* 408-UI-3.11.1 — intentionally minimal. Campaign matching uses the certified route visual systems. */
+body[data-campaign-entry-active="true"] [data-campaign-entry-title],
+body[data-campaign-entry-active="true"] [data-home-campaign-title]{text-wrap:balance}
+@media (prefers-reduced-motion:reduce){body[data-campaign-entry-active="true"] *{scroll-behavior:auto}}

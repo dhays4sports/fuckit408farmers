@@ -1,0 +1,67 @@
+/* 408-FLOW-2.1 — Occupational Visual Simplification */
+.occupational-page .occupational-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 500px);
+  align-items: center;
+  gap: clamp(44px, 6vw, 92px);
+  min-height: auto;
+  overflow: visible;
+  padding-block: clamp(56px, 7vw, 92px);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(8, 40, 90, .07), transparent 34%),
+    linear-gradient(110deg, #fff 0%, #f9fbfe 55%, #eef4fa 100%);
+}
+
+.occupational-page .occupational-hero .hero-copy {
+  align-self: center;
+  max-width: 720px;
+}
+
+.occupational-page .occupational-hero .quote-card {
+  position: relative;
+  inset: auto;
+  justify-self: end;
+  align-self: start;
+  width: 100%;
+  max-width: 500px;
+  backdrop-filter: none;
+}
+
+@media (max-width: 1050px) {
+  .occupational-page .occupational-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .occupational-page .occupational-hero .hero-copy {
+    max-width: 760px;
+  }
+
+  .occupational-page .occupational-hero .quote-card {
+    justify-self: start;
+    width: min(760px, 100%);
+    max-width: none;
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .occupational-page .occupational-hero {
+    padding: 44px 17px 54px;
+  }
+
+  .occupational-page .occupational-hero h1 {
+    font-size: clamp(2.9rem, 14vw, 4.4rem);
+  }
+
+  .occupational-page .occupational-hero .quote-card {
+    width: 100%;
+    margin-top: 26px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .occupational-page .occupational-hero {
+    background: #fff;
+  }
+}

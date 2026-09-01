@@ -1,0 +1,104 @@
+/* 408-UI-3.11 — Accessibility Certification
+   Final accessibility layer for the public consumer UI-3 surface.
+   Presentation/semantics only: product, submission, routing, attribution and CoverageFit contracts remain authoritative. */
+:root{
+  --ui311-focus:#005fcc;
+  --ui311-control-border:#8291a3;
+  --ui311-placeholder:#637287;
+  --ui311-life-accent:#ff6670;
+}
+
+/* Preserve user zoom/reflow and keep anchored/focused content clear of the sticky platform header. */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  scroll-padding-top:max(88px,calc(72px + env(safe-area-inset-top)));
+}
+:where(main,section,article,form,fieldset,[id]){scroll-margin-top:max(88px,calc(72px + env(safe-area-inset-top)));}
+
+/* WCAG 2.2 focus appearance: an opaque, high-contrast indicator that survives light, dark and image surfaces. */
+body.ui3-page :where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{
+  outline:3px solid var(--ui311-focus)!important;
+  outline-offset:3px!important;
+  box-shadow:0 0 0 2px #fff,0 0 0 5px var(--ui311-focus)!important;
+}
+body.ui3-page :where(input,select,textarea)[aria-invalid="true"]:focus-visible{
+  outline-color:#b42318!important;
+  box-shadow:0 0 0 2px #fff,0 0 0 5px #b42318!important;
+}
+body.ui3-page main[tabindex="-1"]:focus{outline:none!important;box-shadow:none!important;}
+
+/* Form boundaries and instructional placeholder text remain perceivable at AA contrast. */
+body.ui3-page :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){
+  border-color:var(--ui311-control-border)!important;
+}
+body.ui3-page :is(input,textarea)::placeholder{color:var(--ui311-placeholder)!important;opacity:1!important;}
+body.ui3-page :is(
+  .root-secondary,.cf-button--secondary,.cf-btn--secondary,.buyer-button--secondary,
+  .life-secondary-cta,.local-secondary,.thanks-actions .secondary,.home-recovery__restart,
+  .home-engagement-back,.life-back-button,.post-submit-local-secondary
+){border-color:var(--ui311-control-border)!important;}
+
+/* Don't rely on color alone for links embedded in prose/legal copy. */
+body.ui3-page main :where(p,li,dd) > a[href]:not([class]),
+body.ui3-page .ui3-footer-legal a,
+body.ui3-page :where(.legal-copy,.utility-copy,.privacy-copy,.terms-copy) a[href]{
+  text-decoration:underline!important;
+  text-decoration-thickness:.08em!important;
+  text-underline-offset:.18em!important;
+}
+
+/* Small campaign-red text on the Life dark canvas receives a lighter AA-safe accent.
+   Red CTA backgrounds remain unchanged so white button text keeps its certified contrast. */
+body.life-page.ui3-page :is(
+  .life-start-heading .section-kicker,
+  .life-why-heading .section-kicker,
+  .life-agent-copy .section-kicker,
+  .life-why-grid article>span
+){color:var(--ui311-life-accent)!important;}
+
+/* Invalid state is conveyed by more than color: border + outline + native/ARIA announcement. */
+body.ui3-page :where(input,select,textarea)[aria-invalid="true"]{
+  border-width:2px!important;
+  border-color:#b42318!important;
+}
+
+/* Zoom/reflow resilience: allow long identifiers, URLs, contact text and status messages to wrap. */
+body.ui3-page :where(.ui3-site-footer,.ui3-alert,.form-status,.local-form-status,.life-submit-status,.thanks-card,.buyer-thanks-card){
+  overflow-wrap:anywhere;
+}
+
+/* Reduced motion is a user preference, not merely a page-mode preference. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+  body.ui3-page *,body.ui3-page *::before,body.ui3-page *::after{
+    animation:none!important;
+    transition-duration:.01ms!important;
+    transition-delay:0ms!important;
+    scroll-behavior:auto!important;
+  }
+  body.ui3-page :where(.reveal,.cf-agent-motion,.cf-agent-motion>*){
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+/* Windows High Contrast / forced-colors support. */
+@media (forced-colors:active){
+  body.ui3-page :where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{
+    outline:3px solid Highlight!important;
+    box-shadow:none!important;
+  }
+  body.ui3-page :where(input,select,textarea){border:1px solid ButtonText!important;}
+  body.ui3-page :where(input,select,textarea)[aria-invalid="true"]{outline:2px solid Mark!important;}
+  body.ui3-page :where(.primary-button,.root-primary,.cf-button--primary,.cf-btn--primary,.home-primary-cta,.buyer-button--primary,.life-primary-cta,.life-button,.local-primary,.local-use-perk,.score-primary,.post-submit-local-primary){
+    border:1px solid ButtonText!important;
+  }
+}
+
+/* At 400% zoom the layout reaches narrow-screen rules; never introduce horizontal page scrolling from chrome. */
+@media (max-width:360px){
+  body.ui3-page{max-width:100%;overflow-x:hidden;}
+  .ui3-site-header,.ui3-site-footer{max-width:100%;}
+  .ui3-footer-links{grid-template-columns:1fr!important;}
+}

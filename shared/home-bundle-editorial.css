@@ -1,0 +1,202 @@
+/* 408-UI-4.3 — Home + Bundle Editorial Convergence
+   Presentation only. Existing forms, progressive intake, campaign message matching,
+   branching, submission, post-lead, and CoverageFit contracts are unchanged. */
+
+body.ui43-home-bundle{background:#fbfcfe;}
+body.ui43-home-bundle main{overflow:clip;}
+
+/* Master first screen --------------------------------------------------- */
+body.ui43-home-bundle .ui43-hero{
+  width:min(1240px,calc(100% - 40px))!important;
+  margin:0 auto!important;
+  padding:clamp(30px,4.6vw,60px) 0 20px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.88fr) minmax(330px,.98fr) minmax(330px,.78fr)!important;
+  grid-template-areas:"copy media action"!important;
+  gap:0!important;
+  align-items:stretch!important;
+  min-height:0!important;
+  background:transparent!important;
+  position:relative!important;
+}
+body.ui43-home-bundle .ui43-hero-copy{
+  grid-area:copy!important;
+  position:relative!important;
+  z-index:3!important;
+  align-self:center!important;
+  max-width:none!important;
+  padding:clamp(20px,3.1vw,40px) clamp(20px,3vw,38px) clamp(20px,3vw,38px) 0!important;
+  background:transparent!important;
+}
+body.ui43-home-bundle .ui43-hero-copy :is(.eyebrow,.home-campaign-badge){
+  color:var(--ui4-gold-700)!important;
+  font-size:.76rem!important;
+  font-weight:900!important;
+  letter-spacing:.11em!important;
+  text-transform:uppercase!important;
+}
+body.ui43-home-bundle .ui43-hero-copy .eyebrow::before{display:none!important;}
+body.ui43-home-bundle .ui43-hero-copy h1{
+  max-width:10.5ch!important;
+  margin:0 0 18px!important;
+  color:var(--ui3-navy-950)!important;
+  font-size:clamp(3rem,5.7vw,5.55rem)!important;
+  line-height:.94!important;
+  letter-spacing:-.055em!important;
+  font-weight:900!important;
+  text-wrap:balance!important;
+}
+body.ui43-home-bundle .ui43-hero-copy h1 .ui43-gold{color:var(--ui4-gold-600)!important;}
+body.ui43-home-bundle .ui43-hero-copy :is(.home-hero-lead,.subhead){
+  max-width:37ch!important;
+  color:var(--ui3-navy-900)!important;
+  font-size:clamp(1.04rem,1.3vw,1.16rem)!important;
+  line-height:1.58!important;
+}
+body.ui43-home-bundle .ui43-hero-copy .home-hero-copy{
+  max-width:38ch!important;
+  color:var(--ui4-muted)!important;
+  font-size:.98rem!important;
+  line-height:1.62!important;
+}
+body.ui43-home-bundle .ui43-hero-copy::after{
+  content:"";display:block;width:130px;height:3px;margin-top:18px;border-radius:99px;background:var(--ui4-gold-500);
+}
+body.ui43-home-bundle .ui43-benefits{display:flex;flex-wrap:wrap;gap:14px 24px;margin:26px 0 0;}
+body.ui43-home-bundle .ui43-benefit{display:flex;align-items:center;gap:9px;max-width:155px;color:var(--ui3-navy-900);font-size:.78rem;font-weight:800;line-height:1.35;}
+body.ui43-home-bundle .ui43-benefit i{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border:1.5px solid var(--ui3-navy-800);border-radius:50%;font-style:normal;font-size:1rem;}
+body.ui43-home-bundle .ui43-benefit em{color:var(--ui4-gold-700);font-style:normal;}
+
+body.ui43-home-bundle .ui43-hero-media{
+  grid-area:media!important;
+  position:relative!important;
+  z-index:1!important;
+  min-height:600px!important;
+  height:auto!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:#eef2f6!important;
+}
+body.ui43-home-bundle .ui43-hero-media picture,
+body.ui43-home-bundle .ui43-hero-media img{display:block;width:100%;height:100%;}
+body.ui43-home-bundle .ui43-hero-media img{object-fit:cover!important;object-position:center!important;}
+body.ui43-home-bundle .ui43-hero-media::before{
+  content:"";position:absolute;z-index:2;inset:0 auto 0 0;width:34%;pointer-events:none;background:linear-gradient(90deg,#fbfcfe 0%,rgba(251,252,254,.93) 24%,rgba(251,252,254,0) 100%);
+}
+body.ui43-home-bundle.auto-bundle-page .ui43-hero-media img{object-position:72% 49%!important;transform:scale(1.06);}
+body.ui43-home-bundle.home-page .ui43-hero-media img{object-position:center 44%!important;}
+
+body.ui43-home-bundle .ui43-hero-action{
+  grid-area:action!important;
+  position:relative!important;
+  z-index:4!important;
+  display:flex!important;
+  align-items:center!important;
+  padding:20px 0 20px 20px!important;
+}
+body.ui43-home-bundle .ui43-hero-action>.quote-card,
+body.ui43-home-bundle .ui43-hero-action.quote-card{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:clamp(20px,2.4vw,28px)!important;
+  border:1px solid var(--ui4-line)!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:var(--ui4-shadow)!important;
+  position:relative!important;
+  inset:auto!important;
+}
+body.ui43-home-bundle .ui43-hero-action .quote-card::before,
+body.ui43-home-bundle .ui43-hero-action.quote-card::before{display:none!important;}
+body.ui43-home-bundle .quote-card .card-kicker{color:var(--ui4-gold-700)!important;}
+body.ui43-home-bundle .quote-card h2{font-size:clamp(1.65rem,2.5vw,2.25rem)!important;letter-spacing:-.035em!important;}
+body.ui43-home-bundle .quote-card .review-intro{font-size:.78rem!important;background:#fbfcfe!important;border-color:var(--ui4-line)!important;}
+body.ui43-home-bundle .quote-card :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){min-height:48px!important;box-shadow:none!important;}
+body.ui43-home-bundle .quote-card .primary-button{background:var(--ui3-red)!important;border-color:var(--ui3-red)!important;color:#fff!important;}
+body.ui43-home-bundle .ui43-legacy-review-intro,
+body.ui43-home-bundle .bundle-human-signature{display:none!important;}
+body.ui43-home-bundle .home-hero-actions{margin-top:22px!important;}
+body.ui43-home-bundle .home-primary-cta{background:var(--ui3-red)!important;border-color:var(--ui3-red)!important;color:#fff!important;}
+body.ui43-home-bundle .home-text-cta{color:var(--ui3-navy-800)!important;}
+
+/* Relationship band ---------------------------------------------------- */
+body.ui43-home-bundle .ui43-relationship-band{margin-top:0!important;margin-bottom:18px!important;}
+body.ui43-home-bundle .ui43-relationship-band .ht-signature{border:0!important;background:transparent!important;padding:0!important;box-shadow:none!important;}
+body.ui43-home-bundle .ui43-relationship-band .ht-signature__portrait{width:62px!important;height:62px!important;}
+
+/* Lower editorial explanation ----------------------------------------- */
+body.ui43-home-bundle .ui43-support-columns{padding-top:clamp(38px,5.5vw,66px)!important;padding-bottom:clamp(38px,5.5vw,66px)!important;}
+body.ui43-home-bundle .ui43-support-columns h2{margin:14px 0 12px!important;color:var(--ui3-navy-950)!important;font-size:1.12rem!important;line-height:1.2!important;letter-spacing:-.015em!important;}
+body.ui43-home-bundle .ui43-support-columns p{font-size:.88rem!important;}
+body.ui43-home-bundle .ui43-support-columns strong{color:var(--ui3-navy-900);}
+body.ui43-home-bundle .ui43-support-columns .ui4-context-image{max-height:150px;}
+body.ui43-home-bundle .ui43-support-columns .ui4-context-image img{object-position:center 55%;}
+body.ui43-home-bundle .ui43-legacy-support{display:none!important;}
+
+body.ui43-home-bundle .ui43-trust-strip{margin-bottom:28px;}
+body.ui43-home-bundle .ui43-trust-strip__icon{display:grid;place-items:center;width:34px;height:34px;border:1.25px solid var(--ui3-navy-800);border-radius:50%;font-size:.85rem;}
+
+/* Campaign-aware Home overrides remain authoritative. Dynamic campaign JS
+   updates the same data-home-campaign-* nodes inside this composition. */
+body.ui43-home-bundle.home-page[data-home-campaign-active="true"] .ui43-hero-copy::after{background:var(--ui4-gold-500)!important;}
+
+@media(max-width:1120px){
+  body.ui43-home-bundle .ui43-hero{grid-template-columns:minmax(0,.9fr) minmax(330px,1.1fr)!important;grid-template-areas:"copy media" "action action"!important;}
+  body.ui43-home-bundle .ui43-hero-action{padding:0!important;margin:-42px 20px 0 auto!important;width:min(560px,calc(100% - 40px))!important;justify-self:end!important;}
+  body.ui43-home-bundle .ui43-hero-media{min-height:520px!important;}
+}
+@media(max-width:860px){
+  body.ui43-home-bundle .ui43-hero{width:min(100% - 28px,760px)!important;grid-template-columns:1fr!important;grid-template-areas:"copy" "media" "action"!important;padding-top:20px!important;}
+  body.ui43-home-bundle .ui43-hero-copy{padding:22px 0 20px!important;}
+  body.ui43-home-bundle .ui43-hero-copy h1{max-width:11ch!important;font-size:clamp(2.75rem,12vw,4.7rem)!important;}
+  body.ui43-home-bundle .ui43-hero-media{min-height:430px!important;border-radius:18px!important;}
+  body.ui43-home-bundle .ui43-hero-media::before{inset:auto 0 0 0;width:auto;height:26%;background:linear-gradient(0deg,#fbfcfe 0%,rgba(251,252,254,0) 100%);}
+  body.ui43-home-bundle .ui43-hero-action{width:auto!important;margin:-36px 14px 0!important;padding:0!important;justify-self:stretch!important;}
+  body.ui43-home-bundle .ui43-relationship-band{width:min(100% - 28px,760px)!important;}
+  body.ui43-home-bundle .ui43-support-columns{width:min(100% - 28px,760px)!important;grid-template-columns:1fr!important;padding-block:42px!important;}
+  body.ui43-home-bundle .ui43-support-columns .ui4-editorial-column{padding:26px 0!important;border-left:0!important;border-top:1px solid var(--ui4-line);}
+  body.ui43-home-bundle .ui43-support-columns .ui4-editorial-column:first-child{border-top:0;padding-top:0!important;}
+  body.ui43-home-bundle .ui43-trust-strip{width:min(100% - 28px,760px)!important;grid-template-columns:1fr 1fr!important;}
+  body.ui43-home-bundle .ui43-trust-strip__item:nth-child(3){border-left:0!important;border-top:1px solid var(--ui4-line);}
+  body.ui43-home-bundle .ui43-trust-strip__item:nth-child(4){border-top:1px solid var(--ui4-line);}
+}
+@media(max-width:620px){
+  body.ui43-home-bundle .ui43-hero-copy h1{font-size:clamp(2.55rem,14vw,3.9rem)!important;}
+  body.ui43-home-bundle .ui43-benefits{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  body.ui43-home-bundle .ui43-benefit{max-width:none;}
+  body.ui43-home-bundle .ui43-benefit:last-child{grid-column:1/-1;}
+  body.ui43-home-bundle .ui43-hero-media{min-height:350px!important;}
+  body.ui43-home-bundle .ui43-hero-action{margin:-24px 8px 0!important;}
+  body.ui43-home-bundle .ui43-hero-action>.quote-card,body.ui43-home-bundle .ui43-hero-action.quote-card{padding:20px 16px!important;}
+  body.ui43-home-bundle .ui43-trust-strip{grid-template-columns:1fr!important;}
+  body.ui43-home-bundle .ui43-trust-strip__item{border-left:0!important;border-top:1px solid var(--ui4-line)!important;justify-content:flex-start;}
+  body.ui43-home-bundle .ui43-trust-strip__item:first-child{border-top:0!important;}
+}
+@media(prefers-reduced-motion:reduce){body.ui43-home-bundle .ui43-hero-media img{transform:none!important;}}
+
+/* Legacy route styles set the raw footer to flex; once the UI-3 runtime upgrades
+   it to the universal footer, reassert the responsive grid contract here. */
+body.ui43-home-bundle .ui3-site-footer{
+  display:grid!important;
+  grid-template-columns:minmax(220px,.8fr) minmax(0,1.45fr)!important;
+  gap:48px 64px!important;
+  width:100%!important;
+  max-width:100%!important;
+}
+body.ui43-home-bundle :is(.ui3-footer-brand,.ui3-footer-links,.ui3-footer-legal){min-width:0!important;}
+@media(max-width:1120px){
+  body.ui43-home-bundle .ui3-site-footer{grid-template-columns:1fr!important;gap:34px!important;}
+  body.ui43-home-bundle .ui3-footer-links{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:26px 18px!important;}
+  body.ui43-home-bundle .ui3-footer-legal{display:flex!important;flex-wrap:wrap!important;}
+}
+@media(max-width:620px){
+  body.ui43-home-bundle .ui3-footer-links{grid-template-columns:1fr 1fr!important;}
+  body.ui43-home-bundle .ui3-footer-legal{flex-direction:column!important;gap:8px!important;}
+}
+
+/* Action panel is both the grid-area and the white working surface in UI-4.3;
+   override the foundation wrapper flex behavior so its form content remains a normal vertical document flow. */
+body.ui43-home-bundle .ui43-hero-action.quote-card{display:block!important;align-self:center!important;}

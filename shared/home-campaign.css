@@ -1,0 +1,24 @@
+.home-campaign-badge {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 1rem;
+  padding: .48rem .75rem;
+  border: 1px solid rgba(11, 47, 87, .16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .9);
+  color: #0b2f57;
+  font-size: .78rem;
+  font-weight: 750;
+  line-height: 1.25;
+  box-shadow: 0 8px 24px rgba(11, 47, 87, .08);
+}
+.home-campaign-badge[hidden] { display: none !important; }
+body[data-home-campaign-variant="rate"] .home-flyer-hero,
+body[data-home-campaign-variant="fit"] .home-flyer-hero { scroll-margin-top: 1rem; }
+@media (max-width: 640px) {
+  .home-campaign-badge { margin-bottom: .8rem; font-size: .72rem; white-space: normal; }
+  body[data-home-campaign] .home-hero-content h1 { font-size: clamp(2.45rem, 12vw, 4rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-campaign-badge { scroll-behavior: auto; }
+}

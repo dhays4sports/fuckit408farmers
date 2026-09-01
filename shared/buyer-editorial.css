@@ -1,0 +1,140 @@
+/* 408-UI-4.4 — Buyer Editorial Convergence
+   Presentation only. Buyer form, referral context, closing urgency, attribution,
+   submission, CoverageFit, and messaging contracts remain unchanged. */
+body.ui44-buyer-editorial{background:#fbfcfe;}
+body.ui44-buyer-editorial main{overflow:clip;}
+body.ui44-buyer-editorial .ui44-buyer-hero{
+  width:min(1240px,calc(100% - 40px))!important;margin:0 auto!important;padding:clamp(28px,4.4vw,56px) 0 18px!important;
+  display:grid!important;grid-template-columns:minmax(0,.86fr) minmax(330px,.96fr) minmax(340px,.78fr)!important;
+  grid-template-areas:"copy media action"!important;gap:0!important;align-items:stretch!important;background:transparent!important;min-height:0!important;
+}
+body.ui44-buyer-editorial .ui44-buyer-copy{grid-area:copy!important;align-self:center!important;padding:clamp(18px,3vw,38px) clamp(20px,3vw,38px) clamp(18px,3vw,36px) 0!important;z-index:3!important;}
+body.ui44-buyer-editorial .buyer-referral-pill{display:inline-flex!important;width:max-content;max-width:100%;margin:0 0 12px!important;padding:7px 11px!important;border:1px solid var(--ui4-line-warm)!important;border-radius:999px!important;background:var(--ui4-gold-100)!important;color:var(--ui3-navy-900)!important;font-size:.77rem!important;}
+body.ui44-buyer-editorial .buyer-referral-pill[hidden]{display:none!important;}
+body.ui44-buyer-editorial .buyer-kicker{margin:0 0 12px!important;color:var(--ui4-gold-700)!important;font-size:.76rem!important;font-weight:900!important;letter-spacing:.11em!important;text-transform:uppercase!important;}
+body.ui44-buyer-editorial .ui44-buyer-copy h1{max-width:9.8ch!important;margin:0!important;color:var(--ui3-navy-950)!important;font-size:clamp(3rem,5.8vw,5.55rem)!important;line-height:.94!important;letter-spacing:-.055em!important;font-weight:900!important;text-wrap:balance!important;}
+body.ui44-buyer-editorial .ui44-buyer-copy h1 strong,body.ui44-buyer-editorial .ui44-buyer-copy h1 em{color:var(--ui4-gold-600)!important;font-style:normal!important;}
+body.ui44-buyer-editorial .ui44-buyer-copy .ui4-editorial-rule{margin:17px 0 20px!important;}
+body.ui44-buyer-editorial .buyer-hero-lead{max-width:34ch!important;margin:0 0 8px!important;color:var(--ui3-navy-900)!important;font-size:1.08rem!important;line-height:1.5!important;font-weight:800!important;}
+body.ui44-buyer-editorial .ui44-buyer-body{max-width:38ch!important;margin:0!important;color:var(--ui4-muted)!important;font-size:.98rem!important;line-height:1.62!important;}
+body.ui44-buyer-editorial .ui44-buyer-benefits{display:flex;flex-wrap:wrap;gap:14px 20px;margin:26px 0 0;}
+body.ui44-buyer-editorial .ui44-buyer-benefit{display:flex;align-items:center;gap:8px;max-width:150px;color:var(--ui3-navy-900);font-size:.78rem;font-weight:800;line-height:1.35;}
+body.ui44-buyer-editorial .ui44-buyer-benefit i{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1.5px solid var(--ui3-navy-800);border-radius:50%;font-style:normal;font-size:.85rem;}
+body.ui44-buyer-editorial .ui44-buyer-actions{margin-top:24px!important;gap:10px!important;}
+body.ui44-buyer-editorial .ui44-buyer-actions .buyer-button{min-height:50px!important;padding:0 18px!important;border-radius:10px!important;box-shadow:none!important;}
+body.ui44-buyer-editorial .ui44-buyer-actions .buyer-button--primary{background:var(--ui3-red)!important;border-color:var(--ui3-red)!important;color:#fff!important;}
+body.ui44-buyer-editorial .ui44-buyer-actions .buyer-button--secondary{background:#fff!important;border-color:var(--ui4-line)!important;color:var(--ui3-navy-800)!important;}
+body.ui44-buyer-editorial .buyer-reassurance{max-width:45ch!important;margin-top:13px!important;color:var(--ui4-muted)!important;font-size:.76rem!important;line-height:1.45!important;}
+
+body.ui44-buyer-editorial .ui44-buyer-media{grid-area:media!important;position:relative!important;z-index:1!important;min-height:610px!important;height:auto!important;overflow:hidden!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#edf2f6!important;}
+body.ui44-buyer-editorial .ui44-buyer-media picture,body.ui44-buyer-editorial .ui44-buyer-media img{display:block!important;width:100%!important;height:100%!important;}
+body.ui44-buyer-editorial .ui44-buyer-media img{object-fit:cover!important;object-position:center 52%!important;}
+body.ui44-buyer-editorial .ui44-buyer-media:after{display:none!important;}
+body.ui44-buyer-editorial .ui44-buyer-media-caption{position:absolute;z-index:3;left:22px;right:22px;bottom:18px;display:flex;flex-wrap:wrap;gap:7px;}
+body.ui44-buyer-editorial .ui44-buyer-media-caption span{padding:7px 9px;border:1px solid rgba(255,255,255,.48);border-radius:999px;background:rgba(3,26,61,.76);backdrop-filter:blur(5px);color:#fff;font-size:.7rem;font-weight:800;}
+
+body.ui44-buyer-editorial .ui44-buyer-action{grid-area:action!important;position:relative!important;z-index:4!important;display:flex!important;align-items:center!important;padding:20px 0 20px 20px!important;}
+body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card{width:100%!important;max-width:none!important;margin:0!important;padding:clamp(20px,2.5vw,29px)!important;border:1px solid var(--ui4-line)!important;border-radius:14px!important;background:#fff!important;box-shadow:var(--ui4-shadow)!important;}
+body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card .buyer-section-kicker{color:var(--ui4-gold-700)!important;}
+body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card>h2{margin:0 0 10px!important;color:var(--ui3-navy-950)!important;font-size:clamp(1.7rem,2.6vw,2.3rem)!important;line-height:1.04!important;letter-spacing:-.035em!important;}
+body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card>p{margin:0 0 18px!important;color:var(--ui4-muted)!important;font-size:.88rem!important;line-height:1.5!important;}
+body.ui44-buyer-editorial .buyer-progress{margin-bottom:18px!important;}
+body.ui44-buyer-editorial .buyer-step legend{font-size:.96rem!important;}
+body.ui44-buyer-editorial .buyer-step label>span:first-child{font-size:.76rem!important;}
+body.ui44-buyer-editorial .buyer-form-card :is(input:not([type="checkbox"]),select,textarea){min-height:48px!important;box-shadow:none!important;}
+body.ui44-buyer-editorial .buyer-next,body.ui44-buyer-editorial .buyer-submit{background:var(--ui3-red)!important;border-color:var(--ui3-red)!important;color:#fff!important;}
+body.ui44-buyer-editorial .buyer-inline-text{display:inline-flex!important;margin-top:14px!important;font-size:.8rem!important;}
+body.ui44-buyer-editorial .ui4-action-panel__note{margin-bottom:0!important;font-size:.72rem!important;}
+
+body.ui44-buyer-editorial .ui44-buyer-relationship{margin-top:0!important;margin-bottom:14px!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature{display:grid!important;grid-template-columns:62px 1fr!important;align-items:center!important;gap:14px!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature__portrait{width:62px!important;height:62px!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature__eyebrow{margin:0 0 2px!important;color:var(--ui4-muted)!important;font-size:.7rem!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature__title{margin:0!important;color:var(--ui3-navy-950)!important;font-size:1.24rem!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature__meta{margin:2px 0 0!important;color:var(--ui4-muted)!important;font-size:.74rem!important;}
+
+body.ui44-buyer-editorial .ui44-buyer-support{padding-top:clamp(38px,5vw,60px)!important;padding-bottom:clamp(38px,5vw,60px)!important;}
+body.ui44-buyer-editorial .ui44-buyer-support h2{margin:14px 0 12px!important;color:var(--ui3-navy-950)!important;font-size:1.16rem!important;line-height:1.22!important;}
+body.ui44-buyer-editorial .ui44-buyer-support p,body.ui44-buyer-editorial .ui44-buyer-support li{font-size:.88rem!important;}
+body.ui44-buyer-editorial .ui44-buyer-support .buyer-promise{display:grid!important;grid-template-columns:34px 1fr!important;gap:12px!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;}
+body.ui44-buyer-editorial .ui44-buyer-support .buyer-promise>span{width:34px!important;height:34px!important;min-width:34px!important;background:#edf2f8!important;color:var(--ui3-navy-900)!important;border-radius:50%!important;}
+body.ui44-buyer-editorial .ui44-buyer-support .buyer-promise strong{font-size:.88rem!important;}
+body.ui44-buyer-editorial .ui44-buyer-support .buyer-promise p{margin:3px 0 0!important;}
+body.ui44-buyer-editorial .ui44-trust-icon{display:grid;place-items:center;width:34px;height:34px;border:1.25px solid var(--ui3-navy-800);border-radius:50%;font-size:.78rem;font-weight:900;}
+body.ui44-buyer-editorial .buyer-carrier{display:none!important;}
+body.ui44-buyer-editorial .ui44-buyer-trust{margin-bottom:28px!important;}
+
+@media(max-width:1120px){
+  body.ui44-buyer-editorial .ui44-buyer-hero{grid-template-columns:minmax(0,.9fr) minmax(330px,1.1fr)!important;grid-template-areas:"copy media" "action action"!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media{min-height:520px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-action{width:min(570px,calc(100% - 40px))!important;margin:-46px 20px 0 auto!important;padding:0!important;justify-self:end!important;}
+}
+@media(max-width:860px){
+  body.ui44-buyer-editorial .ui44-buyer-hero{width:min(100% - 28px,760px)!important;grid-template-columns:1fr!important;grid-template-areas:"copy" "media" "action"!important;padding-top:20px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-copy{padding:22px 0 20px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-copy h1{max-width:10.5ch!important;font-size:clamp(2.75rem,12vw,4.65rem)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media{min-height:430px!important;border-radius:18px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media.ui4-editorial-hero__media--feather::before{inset:auto 0 0 0;width:auto;height:28%;background:linear-gradient(0deg,#fbfcfe 0%,rgba(251,252,254,0) 100%);}
+  body.ui44-buyer-editorial .ui44-buyer-action{width:auto!important;margin:-38px 14px 0!important;padding:0!important;justify-self:stretch!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship{width:min(100% - 28px,760px)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-support{width:min(100% - 28px,760px)!important;grid-template-columns:1fr!important;padding-block:40px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-support .ui4-editorial-column{padding:26px 0!important;border-left:0!important;border-top:1px solid var(--ui4-line)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-support .ui4-editorial-column:first-child{padding-top:0!important;border-top:0!important;}
+  body.ui44-buyer-editorial .ui44-buyer-trust{width:min(100% - 28px,760px)!important;grid-template-columns:1fr 1fr!important;}
+  body.ui44-buyer-editorial .ui44-buyer-trust .ui4-trust-strip__item:nth-child(3){border-left:0!important;border-top:1px solid var(--ui4-line)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-trust .ui4-trust-strip__item:nth-child(4){border-top:1px solid var(--ui4-line)!important;}
+}
+@media(max-width:620px){
+  body.ui44-buyer-editorial .ui44-buyer-copy h1{font-size:clamp(2.55rem,14vw,3.9rem)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  body.ui44-buyer-editorial .ui44-buyer-actions{display:grid!important;grid-template-columns:1fr!important;}
+  body.ui44-buyer-editorial .ui44-buyer-actions .buyer-button{width:100%!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media{min-height:360px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media-caption{left:12px;right:12px;bottom:12px;}
+  body.ui44-buyer-editorial .ui44-buyer-action{margin:-26px 8px 0!important;}
+  body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card{padding:20px 17px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship{grid-template-columns:1fr!important;padding:16px 18px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship .ui4-relationship-action,body.ui44-buyer-editorial .ui44-buyer-relationship .ui4-relationship-action + .ui4-relationship-action{border-left:0!important;border-top:1px solid var(--ui4-line)!important;padding:13px 0 0!important;}
+  body.ui44-buyer-editorial .ui44-buyer-trust{grid-template-columns:1fr!important;}
+  body.ui44-buyer-editorial .ui44-buyer-trust .ui4-trust-strip__item + .ui4-trust-strip__item,body.ui44-buyer-editorial .ui44-buyer-trust .ui4-trust-strip__item:nth-child(3),body.ui44-buyer-editorial .ui44-buyer-trust .ui4-trust-strip__item:nth-child(4){border-left:0!important;border-top:1px solid var(--ui4-line)!important;}
+}
+@media(max-height:540px) and (orientation:landscape){
+  body.ui44-buyer-editorial .ui44-buyer-hero{padding-top:12px!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media{min-height:340px!important;}
+}
+@media(prefers-reduced-motion:reduce){body.ui44-buyer-editorial *{scroll-behavior:auto!important;}}
+@media(forced-colors:active){body.ui44-buyer-editorial .ui44-buyer-media-caption span{border:1px solid CanvasText;background:Canvas;color:CanvasText;}body.ui44-buyer-editorial .ui44-trust-icon{border-color:CanvasText;}}
+/* UI-4.4 calibration: keep the concierge headline editorial without word breaking,
+   and neutralize legacy buyer-agent grid rules inside the new relationship band. */
+body.ui44-buyer-editorial .ui44-buyer-copy h1{
+  max-width:11.5ch!important;
+  font-size:clamp(3rem,4.7vw,4.75rem)!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+body.ui44-buyer-editorial .ui44-buyer-relationship{
+  width:min(980px,calc(100% - 40px))!important;
+  max-width:980px!important;
+  display:grid!important;
+  grid-template-columns:minmax(320px,1.35fr) minmax(180px,.65fr) minmax(180px,.65fr)!important;
+  align-items:center!important;
+  gap:18px!important;
+  padding:17px 22px!important;
+  border:1px solid var(--ui4-line)!important;
+  border-radius:var(--ui4-radius)!important;
+  background:rgba(255,255,255,.96)!important;
+  box-shadow:var(--ui4-shadow-soft)!important;
+}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature{grid-column:auto!important;min-width:0!important;}
+body.ui44-buyer-editorial .ui44-buyer-relationship .ui4-relationship-action{min-width:0!important;}
+@media(max-width:860px){
+  body.ui44-buyer-editorial .ui44-buyer-copy h1{font-size:clamp(2.75rem,11vw,4.3rem)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship{grid-template-columns:1fr 1fr!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature{grid-column:1/-1!important;}
+}
+@media(max-width:620px){
+  body.ui44-buyer-editorial .ui44-buyer-copy h1{font-size:clamp(2.5rem,13vw,3.75rem)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-relationship{grid-template-columns:1fr!important;}
+}
+body.ui44-buyer-editorial .ui44-buyer-gold{color:var(--ui4-gold-600)!important;}

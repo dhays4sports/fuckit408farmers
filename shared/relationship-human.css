@@ -1,0 +1,99 @@
+/* 408-UI-3.13.1D — Relationship + Completion Humanization
+   Presentation-only refinement. Life surfaces intentionally do not load this file. */
+:root{
+  --relationship-red:var(--ui3-red,#d71920);
+  --relationship-navy:var(--ui3-navy-950,#031a3d);
+  --relationship-muted:var(--ui3-muted,#5e7087);
+  --relationship-line:#dbe3ec;
+  --relationship-soft:#f7f9fc;
+}
+
+/* Post-submit: confirmed handoff should read like Dylan speaking through a useful tool. */
+.post-lead-engagement,.coveragefit-invitation{max-width:760px;margin-inline:auto}
+.post-lead-receipt,.coveragefit-invitation-status{
+  display:flex;align-items:center;gap:13px;margin:0 0 26px;padding:0 0 18px;
+  border:0;border-bottom:1px solid var(--relationship-line);border-radius:0;background:transparent;box-shadow:none;
+}
+.post-lead-check,.coveragefit-invitation-status>span{
+  width:auto;height:auto;min-width:0;display:block;background:transparent!important;color:var(--relationship-red)!important;
+  font-size:1.05rem;line-height:1;font-weight:950;
+}
+.post-lead-receipt>div,.coveragefit-invitation-status>div{min-width:0}
+.post-lead-human-portrait,.coveragefit-human-portrait{
+  width:52px;height:52px;flex:0 0 52px;border-radius:50%;object-fit:cover;object-position:center;
+  border:1px solid rgba(3,26,61,.14);background:#edf3f8;
+}
+.post-lead-kicker,.coveragefit-invitation-kicker{color:var(--relationship-red)}
+.post-lead-receipt p,.coveragefit-invitation-status p{color:var(--relationship-muted)!important}
+.post-lead-engagement h2,.coveragefit-invitation h2{font-size:clamp(1.55rem,4.8vw,2rem);letter-spacing:-.025em}
+.post-lead-intro strong{color:var(--relationship-navy)}
+.post-lead-progress-track>span{background:var(--relationship-red)}
+.post-lead-option{border-color:#d6dee8;border-radius:16px;box-shadow:none}
+.post-lead-option:hover{border-color:#9fb0c3}
+.post-lead-option:has(input:checked){border-color:#506f95;background:#fff;box-shadow:inset 4px 0 0 var(--relationship-red)}
+.post-lead-option input{accent-color:var(--relationship-red)}
+.post-lead-summary{margin:20px 0;border-top:1px solid var(--relationship-line);border-bottom:1px solid var(--relationship-line)}
+.post-lead-summary>div{padding:14px 0;border:0;border-radius:0;background:transparent}
+.post-lead-summary>div+div{border-left:1px solid var(--relationship-line);padding-left:18px}
+.post-lead-next-step{padding:14px 0 14px 16px;border:0;border-left:3px solid var(--relationship-red);border-radius:0;background:transparent}
+.post-lead-disclosure,.coveragefit-invitation-disclosure{text-align:left}
+.post-lead-finished,.coveragefit-invitation-finished{max-width:650px}
+
+/* CoverageFit stays optional and useful, not another software product card wall. */
+.coveragefit-invitation-options{gap:18px}
+.coveragefit-invitation-option{padding:18px 0;border:0;border-top:1px solid var(--relationship-line);border-radius:0;background:transparent;box-shadow:none}
+.coveragefit-invitation-option--score{border-color:var(--relationship-line);background:transparent;box-shadow:none}
+.coveragefit-invitation-tag{padding:0;border-radius:0;background:transparent!important;color:var(--relationship-muted)!important}
+.coveragefit-invitation-option--score .coveragefit-invitation-tag{color:var(--relationship-red)!important}
+.coveragefit-invitation-finish{border-color:#aab8c8}
+
+/* Static completion surfaces. */
+body.relationship-completion .thanks,
+body.relationship-completion .buyer-thanks{padding-top:clamp(38px,6vw,70px)}
+body.relationship-completion .thanks-card,
+body.relationship-completion .buyer-thanks-card{
+  border-color:transparent;background:transparent;box-shadow:none;padding-top:0;
+}
+body.relationship-completion .relationship-receipt-signature{margin:18px 0 20px}
+body.relationship-completion .next-steps{border-top:1px solid var(--relationship-line);padding-top:28px}
+body.relationship-completion .next-steps p{padding-left:0}
+body.relationship-completion .thanks-actions .primary,
+body.relationship-completion .buyer-button--primary{background:var(--relationship-red)!important;color:#fff!important;border-color:var(--relationship-red)!important}
+body.relationship-completion .post-submit-local{border-radius:18px;box-shadow:none}
+
+/* Contact: make direct access to Dylan concrete without a duplicate portrait wall. */
+body.relationship-humanized .contact-hero-signature{margin:18px 0 24px}
+body.relationship-humanized .contact-human-note{margin-top:10px}
+body.relationship-humanized .contact-choice-agent picture,
+body.relationship-humanized .contact-choice-agent .agent-headshot{display:none!important}
+
+/* Local: warmer community language while insurance separation stays explicit. */
+body.local-page.relationship-humanized .local-hero{background:linear-gradient(145deg,#fbfdff,#f3f7fb)}
+body.local-page.relationship-humanized .local-hero-inner{min-height:auto;padding-top:clamp(62px,8vw,96px);padding-bottom:clamp(52px,7vw,84px)}
+body.local-page.relationship-humanized .local-human-rule{width:64px;height:3px;margin:20px 0;background:var(--relationship-red);border:0;border-radius:99px}
+body.local-page.relationship-humanized .local-human-note{max-width:66ch;margin-top:24px;color:var(--relationship-muted);line-height:1.62}
+body.local-page.relationship-humanized .local-directory,
+body.local-page.relationship-humanized .local-intro,
+body.local-page.relationship-humanized .local-business{padding-top:clamp(44px,6vw,70px)}
+body.local-page.relationship-humanized .local-business-human{margin-top:22px}
+body.local-page.relationship-humanized .local-join-hero{background:linear-gradient(145deg,#fbfdff,#f3f7fb)}
+body.local-page.relationship-humanized .local-join-principles{border:0;border-left:3px solid var(--relationship-red);border-radius:0;background:transparent;box-shadow:none;padding:4px 0 4px 22px}
+body.local-page.relationship-humanized .local-join-principles li{padding:7px 0 7px 28px;background:transparent}
+body.local-page.relationship-humanized .local-join-principles li:before{left:0;top:7px;color:var(--relationship-red)}
+body.local-page.relationship-humanized .local-join-boundary{border-radius:14px;box-shadow:none}
+body.local-page.relationship-humanized .local-join-thanks{border-radius:20px;box-shadow:none}
+body.local-page.relationship-humanized .local-detail-perk{border-radius:20px;box-shadow:none}
+
+@media(max-width:620px){
+  .post-lead-summary>div+div{border-left:0;border-top:1px solid var(--relationship-line);padding-left:0}
+  .post-lead-human-portrait,.coveragefit-human-portrait{width:48px;height:48px;flex-basis:48px}
+  body.relationship-completion .thanks-card,body.relationship-completion .buyer-thanks-card{padding-left:0;padding-right:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .post-lead-engagement *,.coveragefit-invitation *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+@media(forced-colors:active){
+  .post-lead-receipt,.coveragefit-invitation-status,.post-lead-summary,.coveragefit-invitation-option{border-color:CanvasText}
+  .post-lead-human-portrait,.coveragefit-human-portrait{border:1px solid CanvasText}
+  .post-lead-next-step,.local-join-principles{border-left-color:CanvasText!important}
+}

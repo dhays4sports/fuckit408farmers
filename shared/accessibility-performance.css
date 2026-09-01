@@ -1,0 +1,96 @@
+/* 408-UI-4.9 — Accessibility + Performance Certification
+   Late-cascade non-Life hardening only. No workflow, form, routing, attribution, eligibility,
+   pricing, Local runtime, Worker, Life or Life Ops behavior is defined here. */
+:root{
+  --ui49-focus:#005fcc;
+  --ui49-gold-text:#8e5f00;
+  --ui49-control-border:#71849a;
+}
+
+/* WCAG-oriented focus appearance independent of legacy body markers. */
+body.ui49-accessibility-performance :where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{
+  outline:3px solid var(--ui49-focus)!important;
+  outline-offset:3px!important;
+  box-shadow:0 0 0 2px #fff,0 0 0 5px var(--ui49-focus)!important;
+}
+body.ui49-accessibility-performance main[tabindex="-1"]:focus{outline:none!important;box-shadow:none!important;}
+body.ui49-accessibility-performance :where(input,select,textarea)[aria-invalid="true"]{
+  border-width:2px!important;
+  border-color:#b42318!important;
+}
+body.ui49-accessibility-performance :where(input,select,textarea)[aria-invalid="true"]:focus-visible{
+  outline-color:#b42318!important;
+  box-shadow:0 0 0 2px #fff,0 0 0 5px #b42318!important;
+}
+
+/* Small gold text uses the AA-safe token. Large display accents keep the brighter editorial gold. */
+body.ui49-accessibility-performance .ui44-buyer-gold{color:var(--ui49-gold-text)!important;}
+body.ui49-accessibility-performance :where(.ui4-kicker,.buyer-kicker,.card-kicker,.local-kicker,.score-eyebrow){color:var(--ui49-gold-text)!important;}
+
+/* Prose links remain identifiable without relying on color alone. */
+body.ui49-accessibility-performance main :where(p,li,dd) > a[href]:not([class]),
+body.ui49-accessibility-performance :where(.legal-copy,.utility-copy,.privacy-copy,.terms-copy) a[href]{
+  text-decoration:underline!important;
+  text-decoration-thickness:.08em!important;
+  text-underline-offset:.18em!important;
+}
+
+/* Reflow / intrinsic sizing guards. */
+body.ui49-accessibility-performance :where(main,section,article,form,fieldset,[id]){
+  scroll-margin-top:max(88px,calc(72px + env(safe-area-inset-top)));
+}
+body.ui49-accessibility-performance :where(.ui4-editorial-hero,.ui4-editorial-columns,.ui43-relationship-band,.ui44-buyer-editorial-grid,.ui45-professional-layout,.ui46-local-hero,.ui46-local-join-hero) > *{
+  min-width:0;
+}
+body.ui49-accessibility-performance :where(img,picture,svg){max-width:100%;}
+body.ui49-accessibility-performance picture{line-height:0;}
+body.ui49-accessibility-performance :where(.form-status,.local-form-status,.thanks-card,.buyer-thanks-card,.ui3-alert,.ui4-relationship-copy){overflow-wrap:anywhere;}
+
+/* User motion preference applies to the current UI-4 generation, regardless of older scope classes. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important;}
+  body.ui49-accessibility-performance *,
+  body.ui49-accessibility-performance *::before,
+  body.ui49-accessibility-performance *::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    transition-delay:0ms!important;
+    scroll-behavior:auto!important;
+  }
+  body.ui49-accessibility-performance :where(.reveal,.cf-agent-motion,.cf-agent-motion>*){
+    opacity:1!important;
+    transform:none!important;
+  }
+}
+
+/* Windows High Contrast / forced-colors: preserve boundaries, current state and focus. */
+@media (forced-colors:active){
+  body.ui49-accessibility-performance :where(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible{
+    outline:3px solid Highlight!important;
+    box-shadow:none!important;
+  }
+  body.ui49-accessibility-performance :where(input,select,textarea){border:1px solid ButtonText!important;}
+  body.ui49-accessibility-performance :where(input,select,textarea)[aria-invalid="true"]{outline:2px solid Mark!important;}
+  body.ui49-accessibility-performance :where(.primary-button,.root-primary,.cf-button--primary,.cf-btn--primary,.home-primary-cta,.buyer-button--primary,.local-primary,.local-use-perk,.score-primary,.post-submit-local-primary,.ui45-professional-hero-cta){
+    border:1px solid ButtonText!important;
+    forced-color-adjust:auto;
+  }
+  body.ui49-accessibility-performance :where([aria-current="page"],.ui4-editorial-rule,.ui4-section-label::after){forced-color-adjust:auto;}
+}
+
+/* 400% desktop zoom resolves into the same narrow CSS viewport regime as the 320px certification. */
+@media (max-width:360px){
+  body.ui49-accessibility-performance :where(.ui4-editorial-hero,.ui4-editorial-columns,.ui43-relationship-band,.ui44-buyer-editorial-grid,.ui45-professional-layout,.ui46-local-hero,.ui46-local-join-hero){
+    max-width:100%;
+  }
+  body.ui49-accessibility-performance :where(h1,h2,h3,p,li,a,button,label,legend){overflow-wrap:break-word;}
+}
+
+/* Intrinsic logo dimensions must not become grid min-content constraints in legacy footers. */
+body.ui49-accessibility-performance :where(
+  .footer-brand,.footer-links,.footer-links>div,.footer-legal,
+  .local-footer-brand,.local-footer-links,.local-footer-links>div,.local-footer-legal,
+  .ui3-footer-brand,.ui3-footer-links,.ui3-footer-links>div,.ui3-footer-legal
+){min-width:0;max-width:100%;}
+body.ui49-accessibility-performance :where(.footer-brand,.local-footer-brand,.ui3-footer-brand) img{height:auto;}

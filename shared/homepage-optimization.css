@@ -1,0 +1,10 @@
+/* Sprint 1.4C — Homepage optimization and accessibility */
+.skip-link{position:fixed;left:16px;top:12px;z-index:9999;padding:11px 15px;border-radius:10px;background:#fff;color:#061f48;font-weight:900;box-shadow:0 8px 30px rgba(0,0,0,.18);transform:translateY(-160%);transition:transform .18s ease}.skip-link:focus{transform:translateY(0)}
+:focus-visible{outline:3px solid #49d07f;outline-offset:4px}
+.intent-card,.professional-links a,.hub-actions a,.root-nav a,.footer-links a{touch-action:manipulation}
+.intent-card:focus-visible,.professional-links a:focus-visible{box-shadow:0 0 0 4px rgba(73,208,127,.25),var(--shadow);border-color:#49d07f}
+.hub-hero-visual img,.agent-photo-wrap>img{background:#eaf0f5}
+.hub-hero-visual{contain:layout paint}.reason-grid article,.story-steps article,.intent-card{content-visibility:auto;contain-intrinsic-size:300px}
+@media(max-width:720px){.root-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.root-nav{display:none}.header-contact span{display:none}.header-contact strong{font-size:.87rem}.hub-hero{min-height:auto}.hub-hero-copy{padding-top:48px}.hub-hero-support{font-size:1rem;line-height:1.65}.hub-trust{gap:8px}.hub-trust span{font-size:.75rem}.hub-visual-panel{padding:19px 20px}.hub-section-heading h2,.story-heading h2,.coveragefit-copy h2{letter-spacing:-.045em}.professional-links a{min-height:112px}.agent-carrier-line{align-items:flex-start}.agent-carrier-line img{width:150px;max-width:40%}}
+@media(max-width:390px){.brand img{max-width:170px}.header-contact strong{font-size:.8rem}.hub-hero h1{font-size:3.75rem}.hub-hero-lead{font-size:1.28rem}.intent-card{padding:22px}.hub-footer{padding-left:18px;padding-right:18px}}
+@media(prefers-reduced-data:reduce){.hub-hero-visual:before{display:none}.hub-hero-visual img{filter:none}}

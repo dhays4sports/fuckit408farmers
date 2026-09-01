@@ -1,0 +1,97 @@
+/* 408-AUTHORITY-1.0 — carrier/agency/producer authority with mnemonic continuity. */
+.agency-authority-header{
+  position:relative;
+  z-index:40;
+  display:grid;
+  grid-template-columns:minmax(132px,190px) minmax(0,1fr);
+  align-items:center;
+  gap:clamp(16px,3vw,34px);
+  min-height:82px;
+  padding:10px clamp(18px,5vw,72px);
+  color:#fff;
+  background:#061f46;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.agency-authority-header__farmers{
+  display:flex;
+  align-items:center;
+  width:min(182px,100%);
+  min-height:58px;
+  padding:6px 10px;
+  border-radius:10px;
+  background:#fff;
+  text-decoration:none;
+}
+.agency-authority-header__farmers img{display:block;width:100%;height:auto;max-height:52px;object-fit:contain}
+.agency-authority-header__identity{min-width:0;line-height:1.25}
+.agency-authority-header__identity strong{
+  display:block;
+  font-size:clamp(.76rem,1.25vw,.96rem);
+  font-weight:850;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+.agency-authority-header__identity span{
+  display:block;
+  margin-top:5px;
+  color:rgba(255,255,255,.82);
+  font-size:clamp(.72rem,1.05vw,.86rem);
+  font-weight:650;
+}
+.agency-authority-header ~ .site-header,
+.agency-authority-header ~ .root-header,
+.agency-authority-header ~ .buyer-header,
+.agency-authority-header ~ .life-header,
+.agency-authority-header ~ .score-header,
+.agency-authority-header ~ .local-header,
+.agency-authority-header ~ .life-ops-header,
+.agency-authority-header ~ .referral-bridge-header{
+  min-height:56px;
+  height:auto;
+  padding-top:7px;
+  padding-bottom:7px;
+}
+.agency-authority-header ~ .site-header .brand img,
+.agency-authority-header ~ .root-header .brand img,
+.agency-authority-header ~ .buyer-header .buyer-brand img,
+.agency-authority-header ~ .life-header .life-brand img,
+.agency-authority-header ~ .score-header .score-brand img,
+.agency-authority-header ~ .local-header .brand img,
+.agency-authority-header ~ .life-ops-header .life-ops-brand img,
+.agency-authority-header ~ .referral-bridge-header .referral-bridge-408-logo{
+  width:auto;
+  max-width:min(178px,44vw);
+  height:36px;
+  object-fit:contain;
+  object-position:left center;
+}
+@media(max-width:700px){
+  .agency-authority-header{
+    grid-template-columns:112px minmax(0,1fr);
+    gap:12px;
+    min-height:76px;
+    padding:8px 14px;
+  }
+  .agency-authority-header__farmers{min-height:50px;padding:5px 7px;border-radius:8px}
+  .agency-authority-header__farmers img{max-height:44px}
+  .agency-authority-header__identity strong{font-size:.67rem;letter-spacing:.045em}
+  .agency-authority-header__identity span{font-size:.66rem;line-height:1.35}
+  .agency-authority-header ~ .site-header,
+  .agency-authority-header ~ .root-header,
+  .agency-authority-header ~ .buyer-header,
+  .agency-authority-header ~ .life-header,
+  .agency-authority-header ~ .score-header,
+  .agency-authority-header ~ .local-header,
+  .agency-authority-header ~ .life-ops-header,
+  .agency-authority-header ~ .referral-bridge-header{min-height:52px;padding-top:6px;padding-bottom:6px}
+  .agency-authority-header ~ .site-header .brand img,
+  .agency-authority-header ~ .root-header .brand img,
+  .agency-authority-header ~ .buyer-header .buyer-brand img,
+  .agency-authority-header ~ .life-header .life-brand img,
+  .agency-authority-header ~ .score-header .score-brand img,
+  .agency-authority-header ~ .local-header .brand img,
+  .agency-authority-header ~ .life-ops-header .life-ops-brand img,
+  .agency-authority-header ~ .referral-bridge-header .referral-bridge-408-logo{height:30px;max-width:min(148px,42vw)}
+}
+@media(forced-colors:active){.agency-authority-header{border:1px solid CanvasText}.agency-authority-header__farmers{border:1px solid CanvasText}}

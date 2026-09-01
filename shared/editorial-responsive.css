@@ -1,0 +1,393 @@
+/* 408-UI-4.8 — Mobile + Responsive Editorial Pass
+   Presentation-only responsive convergence for the UI-4 non-Life platform.
+   No form fields, endpoints, attribution, Workers, Local data, CoverageFit
+   behavior, pricing, eligibility, underwriting, Life or Life Ops are changed. */
+
+/* Resilient geometry: every editorial region may shrink without forcing the page wider. */
+body.ui48-responsive,
+body.ui48-responsive main,
+body.ui48-responsive :is(section,article,aside,form,fieldset,.ui4-action-panel){min-width:0;}
+body.ui48-responsive{overflow-x:clip;}
+body.ui48-responsive :is(img,svg,video,canvas){max-width:100%;}
+body.ui48-responsive :is(.ui4-editorial-hero,.ui4-relationship-band,.ui4-editorial-columns,.ui4-trust-strip){box-sizing:border-box;}
+body.ui48-responsive :is(.ui4-action-panel,.quote-card,.buyer-form-card,.ui45-professional-panel,.ui46-local-category-panel,.local-join-form-card){max-width:100%;}
+body.ui48-responsive :is(input,select,textarea,button){max-width:100%;}
+body.ui48-responsive :is(p,li,label,legend,a,button,.ui4-relationship-action span){overflow-wrap:anywhere;}
+
+/* Keyboard / virtual-keyboard ergonomics. Keep the focused field clear of the header
+   and leave enough trailing viewport for iOS/Android keyboards to scroll it upward. */
+@media(max-width:860px){
+  html{scroll-padding-top:calc(70px + env(safe-area-inset-top,0px));}
+  body.ui48-responsive :is(input,select,textarea,[contenteditable="true"]){
+    font-size:16px!important;
+    scroll-margin-top:calc(82px + env(safe-area-inset-top,0px));
+    scroll-margin-bottom:38vh;
+  }
+  body.ui48-responsive textarea{min-height:112px;resize:vertical;}
+  body.ui48-responsive :is(button,[role="button"],a[class*="button"],a[class*="primary"],a[class*="secondary"],.contact-method,.professional-program-switcher a,.local-filter,.ui46-local-category-button){
+    min-height:44px;
+    touch-action:manipulation;
+  }
+
+  /* UI-4.1's 60px header refinement previously overwrote the safe-area-aware UI-3.10
+     minimum. Restore the safe-area contract after the editorial cascade. */
+  body.ui48-responsive .ui3-site-header{
+    height:auto!important;
+    min-height:calc(60px + env(safe-area-inset-top,0px))!important;
+    padding-top:env(safe-area-inset-top,0px)!important;
+    padding-left:max(14px,env(safe-area-inset-left,0px))!important;
+    padding-right:max(14px,env(safe-area-inset-right,0px))!important;
+  }
+  body.ui48-responsive .ui3-primary-nav{
+    max-height:calc(100vh - 72px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+    overscroll-behavior:contain;
+  }
+  @supports(height:100dvh){
+    body.ui48-responsive .ui3-primary-nav{max-height:calc(100dvh - 72px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+  }
+  body.ui48-responsive .ui3-site-footer{
+    padding-left:max(18px,env(safe-area-inset-left,0px))!important;
+    padding-right:max(18px,env(safe-area-inset-right,0px))!important;
+    padding-bottom:max(26px,calc(18px + env(safe-area-inset-bottom,0px)))!important;
+  }
+
+  /* Tablet editorial translation: one reading column with a deliberate working panel,
+     not a desktop sidecar accidentally wrapped underneath. */
+  body.ui48-responsive .ui4-editorial-hero{width:min(760px,calc(100% - 28px));}
+  body.ui48-responsive .ui4-editorial-hero__copy{min-width:0;}
+  body.ui48-responsive .ui4-editorial-hero__action{min-width:0;}
+  body.ui48-responsive .ui4-action-panel{width:100%;}
+  body.ui48-responsive .ui4-relationship-band{width:min(760px,calc(100% - 28px));}
+  body.ui48-responsive .ui4-editorial-columns{width:min(760px,calc(100% - 32px));}
+  body.ui48-responsive .ui4-trust-strip{width:min(760px,calc(100% - 28px));}
+
+  /* All certified forms collapse cleanly before the phone breakpoint. */
+  body.ui48-responsive :is(.field-grid,.buyer-field-grid,.local-form-grid--two){grid-template-columns:minmax(0,1fr)!important;}
+  body.ui48-responsive :is(.consent,.local-check-row){align-items:flex-start!important;}
+  body.ui48-responsive :is(.consent,.local-check-row) :is(input[type="checkbox"],input[type="radio"]){flex:0 0 auto;}
+
+  /* Horizontal navigation families remain finger-sized and scroll instead of squeezing. */
+  body.ui48-responsive .professional-program-switcher,
+  body.ui48-responsive .local-filter-scroll{
+    overflow-x:auto!important;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  body.ui48-responsive .professional-program-switcher::-webkit-scrollbar,
+  body.ui48-responsive .local-filter-scroll::-webkit-scrollbar{display:none;}
+  body.ui48-responsive .professional-program-switcher a,
+  body.ui48-responsive .local-filter{flex:0 0 auto;}
+
+  /* Completion, Contact and utility surfaces should use the visual viewport cleanly. */
+  body.ui47-completion-editorial :is(.thanks,.buyer-thanks),
+  body.ui47-contact-editorial .contact-choice-main,
+  body.ui47-local-completion .local-join-thanks,
+  body.ui47-legal-editorial .thanks{
+    width:min(760px,calc(100% - 28px))!important;
+  }
+  body.ui47-contact-editorial .contact-choice-shell{gap:30px!important;}
+  body.ui47-contact-editorial .contact-choice-card{min-width:0;}
+  body.ui47-handoff-editorial .referral-bridge-shell{width:min(760px,calc(100% - 28px));}
+  body.ui47-score-editorial :is(.score-hero,.score-benefits,.score-process,.score-agent,.score-final,.score-footer){min-width:0;}
+
+  /* Score has a certified fixed mobile CTA. Reserve space including the home indicator so
+     disclosures/final content can never finish underneath it. */
+  body.ui47-score-editorial{padding-bottom:max(92px,calc(82px + env(safe-area-inset-bottom,0px)))!important;}
+  body.ui47-score-editorial :is(.score-final,.score-footer){scroll-margin-bottom:calc(108px + env(safe-area-inset-bottom,0px));}
+}
+
+/* Phones: preserve editorial sequence while shortening photography enough that the
+   first working action remains within a practical swipe of the proposition. */
+@media(max-width:680px){
+  body.ui48-responsive .ui4-editorial-hero,
+  body.ui43-home-bundle .ui43-hero,
+  body.ui44-buyer-editorial .ui44-buyer-hero,
+  body.ui45-professional-editorial .ui45-professional-hero,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-hero{
+    width:calc(100% - 24px)!important;
+    max-width:620px!important;
+  }
+
+  body.ui48-responsive .ui4-editorial-hero__copy,
+  body.ui43-home-bundle .ui43-hero-copy,
+  body.ui44-buyer-editorial .ui44-buyer-copy,
+  body.ui45-professional-editorial .ui45-professional-copy,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__copy,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-copy{
+    padding-top:18px!important;
+    padding-bottom:17px!important;
+  }
+
+  /* Context photos become concise editorial beats instead of full desktop panels. */
+  body.ui48-responsive .ui4-editorial-hero__media,
+  .ui42-home-main .ui42-hero-media,
+  body.ui43-home-bundle .ui43-hero-media,
+  body.ui44-buyer-editorial .ui44-buyer-media,
+  body.ui45-professional-editorial .ui45-professional-media,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__media,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-media{
+    min-height:clamp(220px,64vw,300px)!important;
+    height:auto!important;
+    aspect-ratio:4/3;
+    border-radius:14px!important;
+  }
+  .ui42-home-main .ui42-hero-media img{object-position:center 46%!important;}
+  body.ui43-home-bundle .ui43-hero-media img{object-position:center 48%!important;}
+  body.ui44-buyer-editorial .ui44-buyer-media img{object-position:center 50%!important;}
+  body.ui45-professional-editorial .ui45-professional-media img{object-position:center 46%!important;}
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__media img,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-media img{object-position:center 50%!important;}
+
+  /* Keep the panel visually connected to the image without the aggressive desktop overlap. */
+  body.ui48-responsive .ui4-editorial-hero__action,
+  .ui42-home-main .ui42-hero-action,
+  body.ui43-home-bundle .ui43-hero-action,
+  body.ui44-buyer-editorial .ui44-buyer-action,
+  body.ui45-professional-editorial .ui45-professional-action,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__action,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-action{
+    width:auto!important;
+    max-width:none!important;
+    margin:-18px 6px 0!important;
+    padding:0!important;
+    justify-self:stretch!important;
+  }
+  body.ui48-responsive .ui4-action-panel,
+  body.ui43-home-bundle .ui43-hero-action>.quote-card,
+  body.ui43-home-bundle .ui43-hero-action.quote-card,
+  body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card,
+  body.ui45-professional-editorial .ui45-professional-panel,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-category-panel,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-principles{
+    padding:19px 16px!important;
+    border-radius:12px!important;
+  }
+
+  /* Relationship band becomes a compact contact block earlier than the previous 560px rule. */
+  body.ui48-responsive .ui4-relationship-band,
+  .ui42-home-main .ui42-relationship-band,
+  body.ui43-home-bundle .ui43-relationship-band,
+  body.ui44-buyer-editorial .ui44-buyer-relationship,
+  body.ui45-professional-editorial .ui45-professional-relationship{
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:0!important;
+    width:calc(100% - 24px)!important;
+    max-width:620px!important;
+    padding:15px 16px!important;
+  }
+  body.ui48-responsive .ui4-relationship-band .ht-signature,
+  .ui42-home-main .ui42-relationship-band .ht-signature,
+  body.ui43-home-bundle .ui43-relationship-band .ht-signature,
+  body.ui44-buyer-editorial .ui44-buyer-relationship .ht-signature,
+  body.ui45-professional-editorial .ui45-professional-relationship .ht-signature{grid-column:auto!important;min-width:0;}
+  body.ui48-responsive .ui4-relationship-action,
+  body.ui48-responsive .ui4-relationship-action + .ui4-relationship-action{
+    border-left:0!important;
+    border-top:1px solid var(--ui4-line)!important;
+    padding:12px 0 0!important;
+    margin-top:12px;
+  }
+
+  /* Lower editorial content is a readable sequence, not mini desktop columns. */
+  body.ui48-responsive .ui4-editorial-columns,
+  body.ui43-home-bundle .ui43-support-columns,
+  body.ui44-buyer-editorial .ui44-buyer-support,
+  body.ui45-professional-editorial .ui45-professional-support,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-editorial{
+    width:calc(100% - 28px)!important;
+    max-width:620px!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.ui48-responsive .ui4-editorial-column{padding:23px 0!important;}
+  body.ui48-responsive .ui4-editorial-column + .ui4-editorial-column{border-left:0!important;border-top:1px solid var(--ui4-line)!important;}
+
+  /* Conversion actions and direct-contact options become full-width, reliable touch rows. */
+  body.ui48-responsive :is(.ui42-hero-actions,.home-hero-actions,.ui44-buyer-actions,.ui45-professional-hero-cta,.thanks-actions,.buyer-thanks-actions,.local-join-thanks-actions,.ui3-error-actions,.ui46-local-merchant-cta__actions,.local-detail-perk-actions,.local-insurance-bridge-actions){
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    align-items:stretch!important;
+    gap:9px!important;
+  }
+  body.ui48-responsive :is(.ui42-hero-actions,.home-hero-actions,.ui44-buyer-actions,.ui45-professional-hero-cta,.thanks-actions,.buyer-thanks-actions,.local-join-thanks-actions,.ui3-error-actions,.ui46-local-merchant-cta__actions,.local-detail-perk-actions,.local-insurance-bridge-actions)>:is(a,button){
+    width:100%!important;
+    justify-content:center!important;
+  }
+  body.ui47-contact-editorial .contact-choice-card{padding:20px 16px!important;}
+  body.ui47-contact-editorial .contact-method{width:100%;min-width:0;}
+  body.ui47-handoff-editorial .referral-bridge-panel{padding-left:0!important;padding-right:0!important;}
+
+  /* Dynamic post-submit choices: large labels stay readable and disclosures stay in flow. */
+  body.ui47-relationship-editorial :is(.post-lead-engagement,.coveragefit-invitation){padding-block:20px;}
+  body.ui47-relationship-editorial :is(.post-lead-receipt,.coveragefit-invitation-status){align-items:flex-start;}
+  body.ui47-relationship-editorial .post-lead-option{padding:13px 12px;}
+  body.ui47-relationship-editorial :is(.coveragefit-invitation-disclosure,.post-lead-disclosure,.consent){padding-bottom:max(8px,env(safe-area-inset-bottom,0px));}
+
+  /* Local detail / join working surfaces. */
+  body.local-detail-page[data-ui4-local="408-UI-4.6"] .local-detail-shell,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .local-join-layout,
+  body.local-page[data-ui4-local="408-UI-4.6"] .local-directory{width:calc(100% - 24px)!important;max-width:620px!important;}
+  body.local-detail-page[data-ui4-local="408-UI-4.6"] .local-detail-media{min-height:240px!important;}
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-category-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+  /* Receipts / utility spacing is compact but never edge-to-edge. */
+  body.ui47-completion-editorial :is(.thanks,.buyer-thanks),
+  body.ui47-contact-editorial .contact-choice-main,
+  body.ui47-local-completion .local-join-thanks,
+  body.ui47-legal-editorial .thanks,
+  body.ui47-handoff-editorial .referral-bridge-shell{
+    width:calc(100% - 24px)!important;
+    max-width:620px!important;
+  }
+  body.ui47-completion-editorial :is(.thanks,.buyer-thanks),
+  body.ui47-contact-editorial .contact-choice-main,
+  body.ui47-local-completion .local-join-thanks,
+  body.ui47-legal-editorial .thanks{padding-top:38px!important;padding-bottom:46px!important;}
+}
+
+/* 320–420px devices: tighten type and panels without shrinking interaction targets. */
+@media(max-width:420px){
+  body.ui48-responsive .ui4-headline,
+  .ui42-home-main .ui42-hero-copy .ui4-headline,
+  body.ui43-home-bundle .ui43-hero-copy h1,
+  body.ui44-buyer-editorial .ui44-buyer-copy h1,
+  body.ui45-professional-editorial .ui45-professional-title,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__copy h1,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-copy h1{
+    font-size:clamp(2.5rem,13.5vw,3.5rem)!important;
+    line-height:.96!important;
+    letter-spacing:-.05em!important;
+  }
+  body.ui48-responsive .ui4-action-panel,
+  body.ui43-home-bundle .ui43-hero-action>.quote-card,
+  body.ui43-home-bundle .ui43-hero-action.quote-card,
+  body.ui44-buyer-editorial .ui44-buyer-action .buyer-form-card,
+  body.ui45-professional-editorial .ui45-professional-panel,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-category-panel,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-principles{padding:17px 14px!important;}
+  body.ui48-responsive :is(.ui4-benefits,.ui43-benefits,.ui44-buyer-benefits,.ui45-professional-benefits,.ui46-local-benefits){grid-template-columns:minmax(0,1fr)!important;}
+  body.ui44-buyer-editorial .ui44-buyer-benefit{max-width:none!important;}
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-category-list{grid-template-columns:minmax(0,1fr);}
+  body.ui44-buyer-editorial .ui44-buyer-media-caption{left:10px;right:10px;bottom:10px;gap:5px;}
+  body.ui44-buyer-editorial .ui44-buyer-media-caption span{padding:6px 8px;font-size:.64rem;}
+  body.ui47-contact-editorial .contact-choice-copy h1,
+  body.ui47-handoff-editorial .referral-bridge-panel h1,
+  body.ui47-completion-editorial :is(.thanks-card h1,.buyer-thanks-card h1),
+  body.ui47-local-completion .local-join-thanks h1{font-size:clamp(2.35rem,12.8vw,3.35rem)!important;}
+}
+
+@media(max-width:359px){
+  body.ui48-responsive .ui4-editorial-hero,
+  body.ui43-home-bundle .ui43-hero,
+  body.ui44-buyer-editorial .ui44-buyer-hero,
+  body.ui45-professional-editorial .ui45-professional-hero,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-hero,
+  body.ui48-responsive .ui4-relationship-band,
+  .ui42-home-main .ui42-relationship-band,
+  body.ui43-home-bundle .ui43-relationship-band,
+  body.ui44-buyer-editorial .ui44-buyer-relationship,
+  body.ui45-professional-editorial .ui45-professional-relationship,
+  body.ui47-completion-editorial :is(.thanks,.buyer-thanks),
+  body.ui47-contact-editorial .contact-choice-main,
+  body.ui47-local-completion .local-join-thanks,
+  body.ui47-legal-editorial .thanks,
+  body.ui47-handoff-editorial .referral-bridge-shell,
+  body.local-detail-page[data-ui4-local="408-UI-4.6"] .local-detail-shell,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .local-join-layout,
+  body.local-page[data-ui4-local="408-UI-4.6"] .local-directory{width:calc(100% - 20px)!important;}
+  body.ui48-responsive .ui4-editorial-hero__media,
+  .ui42-home-main .ui42-hero-media,
+  body.ui43-home-bundle .ui43-hero-media,
+  body.ui44-buyer-editorial .ui44-buyer-media,
+  body.ui45-professional-editorial .ui45-professional-media,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__media,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-media{min-height:210px!important;}
+  body.ui48-responsive .ui4-action-panel__title{font-size:1.7rem;}
+  body.ui48-responsive .ui4-relationship-action{font-size:.84rem;}
+}
+
+/* Short landscape / in-app browser: compress art and remove sidecar stickiness so the
+   working task owns the limited vertical viewport. */
+@media(max-height:560px) and (orientation:landscape) and (max-width:960px){
+  html{scroll-padding-top:calc(58px + env(safe-area-inset-top,0px));}
+  body.ui48-responsive .ui3-site-header{min-height:calc(52px + env(safe-area-inset-top,0px))!important;}
+  body.ui48-responsive .ui3-site-header .ui3-brand img{height:27px!important;max-width:170px!important;}
+
+  body.ui48-responsive .ui4-editorial-hero,
+  body.ui43-home-bundle .ui43-hero,
+  body.ui44-buyer-editorial .ui44-buyer-hero,
+  body.ui45-professional-editorial .ui45-professional-hero,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-hero{padding-top:10px!important;padding-bottom:22px!important;}
+
+  body.ui48-responsive .ui4-editorial-hero__copy,
+  body.ui43-home-bundle .ui43-hero-copy,
+  body.ui44-buyer-editorial .ui44-buyer-copy,
+  body.ui45-professional-editorial .ui45-professional-copy,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__copy,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-copy{padding-top:14px!important;padding-bottom:14px!important;}
+
+  body.ui48-responsive .ui4-editorial-hero__media,
+  .ui42-home-main .ui42-hero-media,
+  body.ui43-home-bundle .ui43-hero-media,
+  body.ui44-buyer-editorial .ui44-buyer-media,
+  body.ui45-professional-editorial .ui45-professional-media,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__media,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-media{
+    min-height:220px!important;
+    max-height:260px!important;
+    aspect-ratio:16/7;
+  }
+
+  body.ui48-responsive .ui4-editorial-hero__action,
+  .ui42-home-main .ui42-hero-action,
+  body.ui43-home-bundle .ui43-hero-action,
+  body.ui44-buyer-editorial .ui44-buyer-action,
+  body.ui45-professional-editorial .ui45-professional-action,
+  body.local-page[data-ui4-local="408-UI-4.6"] .ui46-local-hero__action,
+  body.local-join-page[data-ui4-local="408-UI-4.6"] .ui46-local-join-action{margin:-16px 8px 0!important;}
+
+  body.ui48-responsive :is(.home-review-intro,.buyer-intake-copy,.local-join-context){position:static!important;top:auto!important;}
+  body.ui48-responsive .ui4-relationship-band{margin-bottom:30px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.ui48-responsive *{scroll-behavior:auto!important;}
+}
+
+@media(forced-colors:active){
+  body.ui48-responsive .ui4-action-panel,
+  body.ui48-responsive .ui4-relationship-band{border-color:CanvasText!important;}
+}
+
+/* Professional switcher overflow correction: UI-4.5 gave the switcher a fixed
+   560–620px minimum. In 4.8 the viewport is the scrollport; the links themselves
+   remain intrinsic, so 320px devices scroll the family without widening the page. */
+@media(max-width:860px){
+  body.ui48-responsive.ui45-professional-editorial .professional-program-bar__inner{
+    width:100%!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    overflow:hidden!important;
+  }
+  body.ui48-responsive.ui45-professional-editorial .professional-program-switcher{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+    justify-content:flex-start!important;
+    overflow-x:auto!important;
+  }
+  body.ui48-responsive.ui45-professional-editorial .professional-program-switcher a{
+    flex:0 0 auto!important;
+    min-width:max-content;
+    padding-inline:14px!important;
+  }
+}
+
+/* Native <figure> margins must not survive into constrained editorial grids. */
+body.ui48-responsive :is(.ui42-hero-media,.ui43-hero-media,.ui44-buyer-media,.ui45-professional-media,.ui46-local-hero__media,.ui46-local-join-media){
+  margin:0!important;
+}

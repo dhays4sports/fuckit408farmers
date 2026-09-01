@@ -1,0 +1,80 @@
+.home-confirmation {
+  --home-confirmation-delay: 1250ms;
+  text-align: left;
+  outline: 0;
+}
+
+.home-confirmation[hidden] { display: none !important; }
+
+.home-confirmation-mark {
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1rem;
+  place-items: center;
+  color: #fff;
+  background: #166534;
+  border-radius: 50%;
+  box-shadow: 0 10px 24px rgba(22, 101, 52, .2);
+}
+
+.home-confirmation-mark svg {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.home-confirmation h2 { margin-bottom: .65rem; }
+.home-confirmation-status { margin: 0 0 1rem; color: var(--navy); }
+
+.home-confirmation-next {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f4f8fc;
+  border: 1px solid #d9e4ef;
+  border-radius: 14px;
+}
+
+.home-confirmation-next strong { display: block; color: var(--navy); }
+.home-confirmation-next p { margin: .35rem 0 0; }
+
+.home-confirmation-progress {
+  height: 4px;
+  overflow: hidden;
+  background: #e6edf5;
+  border-radius: 999px;
+}
+
+.home-confirmation-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #d71920, #f5b21a);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: home-confirmation-progress var(--home-confirmation-delay) linear forwards;
+}
+
+.home-confirmation-auto { margin: .6rem 0 1rem; color: #485b73; font-size: .9rem; }
+.home-confirmation-continue { width: 100%; }
+.home-confirmation-disclosure { margin: .8rem 0 0; color: #5d6c80; font-size: .78rem; }
+
+@keyframes home-confirmation-progress { to { transform: scaleX(1); } }
+
+@media(max-width:520px) {
+  .home-confirmation-mark { width: 3rem; height: 3rem; }
+  .home-confirmation-next { padding: .85rem; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .home-confirmation-progress span { animation: none; transform: scaleX(1); }
+}
+
+@media(forced-colors:active) {
+  .home-confirmation-mark, .home-confirmation-next, .home-confirmation-progress { border: 1px solid CanvasText; }
+  .home-confirmation-progress span { background: Highlight; }
+}

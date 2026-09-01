@@ -1,0 +1,557 @@
+/* 408-UI-4.7 — Relationship + Completion Editorial Convergence
+   Presentation-only convergence for non-Life dynamic states, receipts, Contact,
+   Neighbor handoff, Score/utility, recovery and error surfaces. */
+:root{
+  --ui47-gold:var(--ui4-gold-600,#a86f00);
+  --ui47-gold-dark:var(--ui4-gold-700,#8e5f00);
+  --ui47-navy:var(--ui3-navy-950,#031a3d);
+  --ui47-ink:var(--ui4-ink,#082752);
+  --ui47-muted:var(--ui4-muted,#566a84);
+  --ui47-line:var(--ui4-line,#dce3eb);
+  --ui47-paper:var(--ui4-paper-cool,#fbfcfe);
+  --ui47-red:var(--ui3-red,#d71920);
+}
+
+/* Progressive / dynamic workflow states:
+   keep controls functional, but make the surrounding explanation editorial. */
+body.ui47-relationship-editorial :is(.post-lead-engagement,.coveragefit-invitation){
+  width:min(760px,100%);
+  padding:clamp(22px,3vw,34px) 0;
+  border-top:1px solid var(--ui47-line);
+  border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-relationship-editorial :is(.post-lead-kicker,.coveragefit-invitation-kicker){
+  color:var(--ui47-gold-dark)!important;
+  letter-spacing:.12em;
+}
+body.ui47-relationship-editorial .post-lead-progress-track{
+  height:5px;
+  background:#e8edf3;
+}
+body.ui47-relationship-editorial .post-lead-progress-track>span{
+  background:var(--ui47-gold)!important;
+}
+body.ui47-relationship-editorial :is(.post-lead-receipt,.coveragefit-invitation-status){
+  gap:14px;
+  padding:0 0 20px;
+  margin-bottom:24px;
+  border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-relationship-editorial :is(.post-lead-human-portrait,.coveragefit-human-portrait){
+  width:56px;height:56px;flex-basis:56px;
+}
+body.ui47-relationship-editorial .post-lead-fieldset legend{
+  color:var(--ui47-navy);
+  font-size:clamp(1.18rem,2vw,1.42rem);
+  letter-spacing:-.015em;
+}
+body.ui47-relationship-editorial .post-lead-options{gap:9px;}
+body.ui47-relationship-editorial .post-lead-option{
+  border-radius:12px;
+  padding:14px 15px;
+  background:#fff;
+  box-shadow:none;
+}
+body.ui47-relationship-editorial .post-lead-option:has(input:checked){
+  border-color:#7189a6;
+  box-shadow:inset 4px 0 0 var(--ui47-red);
+}
+body.ui47-relationship-editorial .post-lead-summary{
+  gap:0;
+  border-top:1px solid var(--ui47-line);
+  border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-relationship-editorial .post-lead-summary>div{
+  padding:15px 0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+body.ui47-relationship-editorial .post-lead-next-step{
+  margin-top:18px;
+  padding:14px 0 14px 18px;
+  border:0;
+  border-left:3px solid var(--ui47-gold);
+  border-radius:0;
+  background:transparent;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-options{
+  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:22px;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-option{
+  padding:18px 0;
+  border:0;
+  border-top:1px solid var(--ui47-line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-option--score{
+  border-color:var(--ui47-line);
+  background:transparent;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-tag{
+  padding:0!important;
+  background:transparent!important;
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-relationship-editorial .coveragefit-invitation-option--score .coveragefit-invitation-tag{
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-relationship-editorial :is(.coveragefit-invitation-disclosure,.post-lead-disclosure){
+  text-align:left;
+  max-width:70ch;
+}
+
+/* Existing expanding form panels should read like a working editorial panel, not nested cards. */
+body.ui47-relationship-editorial :is(.home-lead-step,.buyer-step){
+  box-shadow:none!important;
+}
+body.ui47-relationship-editorial :is(.home-lead-progress-track,.buyer-progress){
+  accent-color:var(--ui47-gold);
+}
+body.ui47-relationship-editorial .form-status{
+  border-radius:0!important;
+  border:0!important;
+  border-left:3px solid var(--ui47-gold)!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  padding-left:14px!important;
+}
+
+/* Static completion receipts: acknowledgement + next steps + local value as an editorial sequence. */
+body.ui47-completion-editorial{
+  background:var(--ui47-paper)!important;
+}
+body.ui47-completion-editorial :is(.thanks,.buyer-thanks){
+  width:min(1080px,calc(100% - 40px));
+  margin-inline:auto;
+  padding:clamp(48px,7vw,86px) 0!important;
+}
+body.ui47-completion-editorial .thanks{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+  gap:0 56px;
+}
+body.ui47-completion-editorial :is(.thanks-card,.buyer-thanks-card){
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-completion-editorial :is(.section-kicker,.buyer-section-kicker){
+  color:var(--ui47-gold-dark)!important;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+body.ui47-completion-editorial :is(.thanks-card h1,.buyer-thanks-card h1){
+  max-width:13ch;
+  margin:.18em 0 .35em;
+  color:var(--ui47-navy)!important;
+  font-size:clamp(2.7rem,6vw,5.2rem)!important;
+  line-height:.95!important;
+  letter-spacing:-.05em!important;
+}
+body.ui47-completion-editorial .buyer-thanks-human-title{
+  margin:0 0 14px;
+  color:var(--ui47-ink);
+  font-size:clamp(1.2rem,2vw,1.45rem);
+}
+body.ui47-completion-editorial .relationship-receipt-signature{
+  width:min(520px,100%);
+  margin:22px 0!important;
+  padding:16px 0;
+  border-top:1px solid var(--ui47-line);
+  border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-completion-editorial .thanks-card>p,
+body.ui47-completion-editorial .buyer-thanks-card>p{
+  max-width:62ch;
+  color:var(--ui47-muted)!important;
+  font-size:1rem;
+  line-height:1.65;
+}
+body.ui47-completion-editorial :is(.thanks-actions,.buyer-thanks-actions){
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:24px;
+}
+body.ui47-completion-editorial :is(.thanks-actions a,.buyer-thanks-actions a){
+  min-height:48px;
+}
+body.ui47-completion-editorial .next-steps{
+  align-self:start;
+  margin-top:8px;
+  padding:0 0 0 32px!important;
+  border:0!important;
+  border-left:1px solid var(--ui47-line)!important;
+}
+body.ui47-completion-editorial .next-steps::before{
+  content:"Here’s what happens next";
+  display:block;
+  margin-bottom:10px;
+  color:var(--ui47-gold-dark);
+  font-size:.73rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+body.ui47-completion-editorial .next-steps h2{
+  margin:0 0 18px;
+  color:var(--ui47-navy);
+  font-size:clamp(1.45rem,2.3vw,2rem);
+}
+body.ui47-completion-editorial .next-steps p{
+  position:relative;
+  margin:0;
+  padding:11px 0 11px 28px!important;
+  border-top:1px solid var(--ui47-line);
+  color:var(--ui47-muted);
+  line-height:1.5;
+}
+body.ui47-completion-editorial .next-steps p::first-letter{color:var(--ui47-gold-dark);}
+body.ui47-completion-editorial .post-submit-local{
+  grid-column:1/-1;
+  margin-top:clamp(38px,6vw,68px)!important;
+  padding:28px 0!important;
+  border:0!important;
+  border-top:1px solid var(--ui47-line)!important;
+  border-bottom:1px solid var(--ui47-line)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-completion-editorial .post-submit-local-kicker{
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-completion-editorial .post-submit-local h2{
+  color:var(--ui47-navy)!important;
+  font-size:clamp(1.55rem,2.8vw,2.35rem)!important;
+}
+body.ui47-completion-editorial .post-submit-local p{
+  max-width:68ch;
+  color:var(--ui47-muted)!important;
+}
+body.ui47-completion-editorial .post-submit-local a{color:var(--ui47-red)!important;font-weight:850;}
+
+/* Buyer receipt has no separate legacy next-steps block; keep it as a strong editorial acknowledgement. */
+body.ui47-completion-editorial .buyer-thanks{
+  max-width:960px;
+}
+body.ui47-completion-editorial .buyer-thanks .post-submit-local{grid-column:auto;}
+
+/* Contact: editorial proposition + direct-contact action panel, then quiet agency proof. */
+body.ui47-contact-editorial .contact-choice-main{
+  width:min(1160px,calc(100% - 40px));
+  margin-inline:auto;
+  padding-block:clamp(42px,7vw,82px);
+}
+body.ui47-contact-editorial .contact-choice-shell{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(340px,.72fr);
+  gap:clamp(36px,6vw,76px);
+  align-items:center;
+}
+body.ui47-contact-editorial .contact-choice-copy{
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-contact-editorial .contact-choice-kicker{
+  color:var(--ui47-gold-dark)!important;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+body.ui47-contact-editorial .contact-choice-copy h1{
+  max-width:11ch;
+  margin:.18em 0 .35em;
+  color:var(--ui47-navy);
+  font-size:clamp(3rem,6vw,5.5rem);
+  line-height:.94;
+  letter-spacing:-.055em;
+}
+body.ui47-contact-editorial .contact-choice-copy>p{
+  max-width:60ch;
+  color:var(--ui47-muted);
+  font-size:1.05rem;
+  line-height:1.65;
+}
+body.ui47-contact-editorial .contact-hero-signature{
+  margin-top:24px!important;
+  padding-top:18px;
+  border-top:1px solid var(--ui47-line);
+}
+body.ui47-contact-editorial .contact-choice-card{
+  border:1px solid var(--ui47-line)!important;
+  border-radius:var(--ui4-radius,14px)!important;
+  background:#fff!important;
+  box-shadow:var(--ui4-shadow,0 16px 42px rgba(3,26,61,.09))!important;
+}
+body.ui47-contact-editorial .contact-choice-card-heading span{
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-contact-editorial .contact-method{
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+body.ui47-contact-editorial .contact-choice-agent{
+  margin-top:clamp(44px,7vw,78px);
+  padding:28px 0!important;
+  border:0!important;
+  border-top:1px solid var(--ui47-line)!important;
+  border-bottom:1px solid var(--ui47-line)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Neighbor handoff: a secure utility, presented as a calm editorial transition. */
+body.ui47-handoff-editorial{
+  background:var(--ui47-paper)!important;
+}
+body.ui47-handoff-editorial .referral-bridge-ambient{display:none!important;}
+body.ui47-handoff-editorial .referral-bridge-shell{
+  width:min(920px,calc(100% - 36px));
+  margin-inline:auto;
+  padding:clamp(38px,7vw,82px) 0;
+}
+body.ui47-handoff-editorial .referral-bridge-header{
+  justify-content:flex-start;
+  padding-bottom:22px;
+  border-bottom:1px solid var(--ui47-line);
+}
+body.ui47-handoff-editorial .referral-bridge-panel{
+  margin-top:32px;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  text-align:left!important;
+}
+body.ui47-handoff-editorial .referral-bridge-mark{display:none!important;}
+body.ui47-handoff-editorial .referral-bridge-kicker{
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-handoff-editorial .referral-bridge-panel h1{
+  max-width:14ch;
+  color:var(--ui47-navy)!important;
+  font-size:clamp(2.7rem,6vw,4.9rem)!important;
+  line-height:.98!important;
+  letter-spacing:-.05em!important;
+}
+body.ui47-handoff-editorial .referral-bridge-copy{
+  max-width:62ch;
+  color:var(--ui47-muted)!important;
+  font-size:1rem!important;
+  line-height:1.65!important;
+}
+body.ui47-handoff-editorial .referral-bridge-route{
+  margin:28px 0;
+  padding:18px 0;
+  border-top:1px solid var(--ui47-line);
+  border-bottom:1px solid var(--ui47-line);
+  background:transparent!important;
+  border-radius:0!important;
+}
+body.ui47-handoff-editorial .referral-bridge-steps{
+  max-width:680px;
+  margin:26px 0;
+}
+body.ui47-handoff-editorial .referral-bridge-continue{
+  background:var(--ui47-red)!important;
+  border-color:var(--ui47-red)!important;
+  color:#fff!important;
+}
+
+/* Protection Score / utility: keep the gauge/tool, remove excess dashboard chrome around it. */
+body.ui47-score-editorial{
+  background:var(--ui47-paper)!important;
+}
+body.ui47-score-editorial .score-header{
+  background:var(--ui3-navy-950,#031a3d)!important;
+  border-bottom:2px solid var(--ui47-gold)!important;
+}
+body.ui47-score-editorial .score-hero{
+  background:var(--ui47-paper)!important;
+}
+body.ui47-score-editorial .hero-glow{display:none!important;}
+body.ui47-score-editorial .score-copy h1,
+body.ui47-score-editorial .score-section-heading h2,
+body.ui47-score-editorial .score-agent h2,
+body.ui47-score-editorial .score-final h2{
+  color:var(--ui47-navy)!important;
+}
+body.ui47-score-editorial .score-eyebrow{color:var(--ui47-gold-dark)!important;}
+body.ui47-score-editorial .score-primary{background:var(--ui47-red)!important;border-color:var(--ui47-red)!important;}
+body.ui47-score-editorial :is(.score-benefits,.score-process,.score-agent){
+  background:transparent!important;
+}
+body.ui47-score-editorial .score-card-grid,
+body.ui47-score-editorial .process-grid{
+  gap:0!important;
+}
+body.ui47-score-editorial :is(.score-card-grid .cf-card,.process-grid .cf-card){
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-score-editorial :is(.score-card-grid .cf-card,.process-grid .cf-card)+:is(.cf-card){
+  border-left:1px solid var(--ui47-line)!important;
+}
+body.ui47-score-editorial .score-agent{
+  border-top:1px solid var(--ui47-line)!important;
+  border-bottom:1px solid var(--ui47-line)!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+body.ui47-score-editorial .score-final{
+  background:var(--ui47-navy)!important;
+}
+body.ui47-score-editorial .score-final h2{color:#fff!important;}
+
+/* Errors, recovery, empty and legal/utility surfaces. */
+body.ui47-utility-editorial,
+body.ui47-legal-editorial{
+  background:var(--ui47-paper)!important;
+}
+body.ui47-utility-editorial .ui3-error-card,
+body.ui47-legal-editorial .thanks-card{
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-utility-editorial .ui3-error-card{
+  max-width:760px;
+  padding:0!important;
+  text-align:left!important;
+}
+body.ui47-utility-editorial .ui3-error-code,
+body.ui47-legal-editorial .section-kicker{
+  color:var(--ui47-gold-dark)!important;
+}
+body.ui47-utility-editorial .ui3-error-card h1,
+body.ui47-legal-editorial .thanks-card h1{
+  color:var(--ui47-navy)!important;
+  letter-spacing:-.04em;
+}
+body.ui47-utility-editorial .ui3-error-actions .primary{background:var(--ui47-red)!important;}
+body.ui47-legal-editorial .thanks{
+  width:min(920px,calc(100% - 40px));
+  padding-block:clamp(44px,7vw,82px)!important;
+}
+body.ui47-relationship-editorial :is(.home-recovery,.local-directory-empty,.ui3-error-card),
+body.ui47-completion-editorial :is(.home-recovery,.local-directory-empty){
+  border:0!important;
+  border-left:3px solid var(--ui47-gold)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Mobile / responsive */
+@media(max-width:860px){
+  body.ui47-completion-editorial .thanks{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+  body.ui47-completion-editorial .next-steps{
+    padding:26px 0 0!important;
+    border-left:0!important;
+    border-top:1px solid var(--ui47-line)!important;
+  }
+  body.ui47-contact-editorial .contact-choice-shell{
+    grid-template-columns:1fr;
+  }
+  body.ui47-score-editorial :is(.score-card-grid .cf-card,.process-grid .cf-card)+:is(.cf-card){
+    border-left:0!important;
+    border-top:1px solid var(--ui47-line)!important;
+  }
+  body.ui47-relationship-editorial .coveragefit-invitation-options{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:560px){
+  body.ui47-completion-editorial :is(.thanks,.buyer-thanks),
+  body.ui47-contact-editorial .contact-choice-main{
+    width:min(100% - 28px,760px);
+  }
+  body.ui47-completion-editorial :is(.thanks-card h1,.buyer-thanks-card h1),
+  body.ui47-contact-editorial .contact-choice-copy h1,
+  body.ui47-handoff-editorial .referral-bridge-panel h1{
+    font-size:clamp(2.45rem,13vw,3.8rem)!important;
+  }
+  body.ui47-completion-editorial :is(.thanks-actions,.buyer-thanks-actions){
+    display:grid;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  body.ui47-score-editorial .reveal{transition:none!important;animation:none!important;transform:none!important;}
+}
+@media(forced-colors:active){
+  body.ui47-relationship-editorial .post-lead-progress-track>span{background:Highlight!important;}
+  body.ui47-completion-editorial .next-steps,
+  body.ui47-contact-editorial .contact-choice-agent,
+  body.ui47-handoff-editorial .referral-bridge-route{border-color:CanvasText!important;}
+  body.ui47-completion-editorial :is(.section-kicker,.buyer-section-kicker,.post-submit-local-kicker),
+  body.ui47-contact-editorial .contact-choice-kicker,
+  body.ui47-handoff-editorial .referral-bridge-kicker,
+  body.ui47-score-editorial .score-eyebrow{color:CanvasText!important;}
+}
+
+
+/* Local merchant application completion: editorial receipt, still clearly separate from insurance. */
+body.ui47-local-completion .local-join-thanks{
+  width:min(900px,calc(100% - 40px));
+  margin-inline:auto;
+  padding:clamp(48px,7vw,84px) 0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-local-completion .local-join-thanks .local-kicker{color:var(--ui47-gold-dark)!important;}
+body.ui47-local-completion .local-join-thanks h1{
+  max-width:14ch;
+  color:var(--ui47-navy)!important;
+  font-size:clamp(2.7rem,6vw,4.9rem)!important;
+  line-height:.98!important;
+  letter-spacing:-.05em!important;
+}
+body.ui47-local-completion .local-join-thanks>p{
+  max-width:65ch;
+  color:var(--ui47-muted)!important;
+  line-height:1.65!important;
+}
+body.ui47-local-completion .local-join-thanks :is(.local-join-thanks-actions,.local-join-thanks-next){
+  margin-top:26px;
+  padding-top:22px;
+  border-top:1px solid var(--ui47-line);
+}
+
+/* Final cascade locks for route-specific legacy layers. */
+body.ui47-relationship-editorial .coveragefit-invitation-options .coveragefit-invitation-option{
+  border-radius:0!important;
+  border-left:0!important;
+  border-right:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.ui47-score-editorial .score-card-grid.cf-grid-3 > article.cf-card,
+body.ui47-score-editorial .process-grid > article.cf-card{
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+body.ui47-score-editorial,
+body.ui47-score-editorial main,
+body.ui47-score-editorial .score-hero{
+  max-width:100%!important;
+  overflow-x:hidden!important;
+}

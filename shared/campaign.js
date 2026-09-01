@@ -1,0 +1,1 @@
+(function(){const p=new URLSearchParams(location.search);const c=p.get('campaign');if(c)localStorage.setItem('cf_campaign',c);window.CFCampaign={current:localStorage.getItem('cf_campaign')||'direct'};window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'campaign_loaded',campaign:window.CFCampaign.current});})();

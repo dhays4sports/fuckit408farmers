@@ -1,0 +1,28 @@
+.coveragefit-invitation{color:#142b4a}
+.coveragefit-invitation[hidden],.coveragefit-invitation [hidden]{display:none!important}
+.coveragefit-invitation-status{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:start;margin:0 0 22px;padding:15px 16px;border:1px solid #c9dfd1;border-radius:14px;background:#f2faf5}
+.coveragefit-invitation-status>span{display:grid;place-items:center;width:32px;height:32px;border-radius:999px;background:#176b42;color:#fff;font-size:1.15rem;font-weight:900}
+.coveragefit-invitation-status strong{display:block;color:#124a32}
+.coveragefit-invitation-status p{margin:3px 0 0!important;color:#354e43!important;font-size:.88rem!important;line-height:1.45!important}
+.coveragefit-invitation-kicker{margin:0 0 5px;color:#0b5d3b;font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.coveragefit-invitation h2{margin:0 0 8px;color:#08285a;font-size:clamp(1.45rem,3vw,2rem);line-height:1.16}
+.coveragefit-invitation-intro{margin:0 0 18px!important;color:#526279!important;line-height:1.55!important}
+.coveragefit-invitation-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.coveragefit-invitation-option{display:flex;flex-direction:column;min-width:0;padding:17px;border:1px solid #d4dde8;border-radius:14px;background:#fff}
+.coveragefit-invitation-option--score{border-color:#b8cde1;background:#f7fbff;box-shadow:0 10px 24px rgba(8,40,90,.07)}
+.coveragefit-invitation-tag{align-self:flex-start;margin-bottom:10px;padding:4px 8px;border-radius:999px;background:#e8eef6;color:#38516d;font-size:.66rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+.coveragefit-invitation-option--score .coveragefit-invitation-tag{background:#e5f2ea;color:#145c3b}
+.coveragefit-invitation-option h3{margin:0 0 7px;color:#08285a;font-size:1.03rem;line-height:1.3}
+.coveragefit-invitation-option p{margin:0 0 12px!important;color:#526279!important;font-size:.84rem!important;line-height:1.5!important}
+.coveragefit-invitation-option ul{margin:0 0 15px;padding-left:19px;color:#42566f;font-size:.79rem;line-height:1.5}
+.coveragefit-invitation-option li+li{margin-top:5px}
+.coveragefit-invitation-option button{width:100%;min-height:48px;margin-top:auto}
+.coveragefit-invitation-finish{border:1px solid #9eafc2;border-radius:10px;background:#fff;color:#08285a;font:inherit;font-size:.86rem;font-weight:900;cursor:pointer}
+.coveragefit-invitation-back{display:block;min-height:44px;margin:10px auto 0;border:0;background:transparent;color:#08285a;font:inherit;font-size:.82rem;font-weight:850;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.coveragefit-invitation-disclosure{margin:12px 0 0!important;color:#6b7789!important;font-size:.72rem!important;line-height:1.45!important;text-align:center}
+.coveragefit-invitation-finished p{color:#526279;line-height:1.55}
+.coveragefit-invitation-contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.coveragefit-invitation-contact a{display:grid;place-items:center;min-height:46px;border:1px solid #cbd7e5;border-radius:10px;color:#08285a;font-weight:850;text-decoration:none}
+@media(max-width:620px){.coveragefit-invitation-options,.coveragefit-invitation-contact{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.coveragefit-invitation-option{scroll-behavior:auto}}
+@media(forced-colors:active){.coveragefit-invitation-status,.coveragefit-invitation-option{border:1px solid CanvasText}.coveragefit-invitation-status>span{background:Highlight}.coveragefit-invitation-option--score{outline:2px solid Highlight}}

@@ -1,0 +1,271 @@
+/* 408-UI-3.10 — Mobile Interaction Pass
+   Interaction-only responsive layer. It does not change form names, endpoints,
+   attribution, routing, Local merchant data, Life secure submission, or CoverageFit handoffs. */
+
+/* Dynamic viewport + anchor ergonomics. */
+html{
+  scroll-padding-top:calc(76px + env(safe-area-inset-top,0px));
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body.ui3-page{
+  min-width:0;
+  overflow-x:clip;
+}
+body.ui3-page main{min-width:0;}
+body.ui3-page :is(main [id],section[id],form[id],input,select,textarea,button,a[href]){
+  scroll-margin-top:calc(78px + env(safe-area-inset-top,0px));
+}
+body.ui3-page :is(input,select,textarea){
+  scroll-margin-bottom:28vh;
+}
+body.ui3-page img,body.ui3-page svg{max-width:100%;}
+body.ui3-page :is(a,p,li,span,strong){overflow-wrap:break-word;}
+
+/* Touch devices: prevent double-tap delay and guarantee primary controls are finger-sized. */
+@media (pointer:coarse), (max-width:860px){
+  body.ui3-page :is(button,[role="button"],input[type="submit"],input[type="button"],input[type="reset"],select){
+    min-height:44px;
+    touch-action:manipulation;
+  }
+  body.ui3-page :is(
+    .primary-button,.root-primary,.root-secondary,.cf-button,.cf-btn,.home-primary-cta,
+    .buyer-button,.life-primary-cta,.life-secondary-cta,.life-button,.local-primary,
+    .local-secondary,.local-use-perk,.local-join-submit,.score-primary,.text-link,
+    .contact-method,.thanks-actions a,.buyer-thanks-actions a,.local-join-thanks-actions a,
+    .ui3-error-actions a,.professional-program-switcher a,.local-filter
+  ){
+    min-height:44px!important;
+    touch-action:manipulation;
+  }
+  body.ui3-page :is(
+    .primary-button,.root-primary,.root-secondary,.cf-button,.cf-btn,.home-primary-cta,
+    .buyer-button,.life-primary-cta,.life-secondary-cta,.life-button,.local-primary,
+    .local-secondary,.local-use-perk,.local-join-submit,.score-primary,.contact-method
+  ){
+    min-height:48px!important;
+  }
+  body.ui3-page :is(input[type="checkbox"],input[type="radio"]){
+    width:22px!important;
+    height:22px!important;
+    min-width:22px!important;
+    min-height:22px!important;
+    accent-color:var(--ui3-red);
+  }
+  body.ui3-page :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){
+    font-size:16px!important;
+    line-height:1.35!important;
+  }
+  body.ui3-page textarea{min-height:112px!important;resize:vertical;}
+  body.ui3-page :is(button,a,[role="button"]){-webkit-tap-highlight-color:rgba(215,25,32,.12);}
+}
+
+/* Universal navigation: safe-area aware and usable on short screens. */
+@media(max-width:860px){
+  .ui3-site-header{
+    height:auto!important;
+    min-height:calc(60px + env(safe-area-inset-top,0px))!important;
+    padding-top:env(safe-area-inset-top,0px)!important;
+    padding-left:max(16px,env(safe-area-inset-left,0px))!important;
+    padding-right:max(16px,env(safe-area-inset-right,0px))!important;
+  }
+  .ui3-menu-toggle{flex:0 0 44px;}
+  .ui3-primary-nav{
+    left:max(12px,env(safe-area-inset-left,0px))!important;
+    right:max(12px,env(safe-area-inset-right,0px))!important;
+    max-height:calc(100vh - 82px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:max(10px,env(safe-area-inset-bottom,0px))!important;
+  }
+  @supports(height:100dvh){
+    .ui3-primary-nav{max-height:calc(100dvh - 82px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+  }
+  body.ui3-menu-locked{overscroll-behavior:none;}
+  .ui3-site-footer{
+    padding-left:max(20px,env(safe-area-inset-left,0px))!important;
+    padding-right:max(20px,env(safe-area-inset-right,0px))!important;
+    padding-bottom:max(24px,calc(18px + env(safe-area-inset-bottom,0px)))!important;
+  }
+
+  /* Horizontal families remain usable without shrinking their labels into tiny targets. */
+  body.occupational-page .professional-program-bar__inner{
+    width:100%!important;
+    padding-left:max(16px,env(safe-area-inset-left,0px));
+    padding-right:max(16px,env(safe-area-inset-right,0px));
+    gap:12px!important;
+    overflow:hidden;
+  }
+  body.occupational-page .professional-program-bar__label{display:none!important;}
+  body.occupational-page .professional-program-switcher{
+    width:100%;
+    justify-content:flex-start!important;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+  }
+  body.occupational-page .professional-program-switcher::-webkit-scrollbar{display:none;}
+  body.occupational-page .professional-program-switcher a{flex:0 0 auto;scroll-snap-align:start;}
+
+  body.local-page .local-filter-scroll{
+    width:100%;
+    overflow-x:auto!important;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    scroll-snap-type:x proximity;
+    padding-bottom:2px;
+  }
+  body.local-page .local-filter-scroll::-webkit-scrollbar{display:none;}
+  body.local-page .local-filter{flex:0 0 auto;scroll-snap-align:start;}
+
+  /* Native and Local dialogs must fit the visual viewport and remain scrollable. */
+  body.ui3-page dialog,
+  body.local-detail-page .local-redemption-dialog{
+    max-width:calc(100vw - 24px)!important;
+    max-height:calc(100vh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;
+    overflow:auto!important;
+    overscroll-behavior:contain;
+  }
+  @supports(height:100dvh){
+    body.ui3-page dialog,
+    body.local-detail-page .local-redemption-dialog{
+      max-height:calc(100dvh - 24px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;
+    }
+  }
+}
+
+/* Phone composition: preserve hierarchy, eliminate accidental side-by-side controls. */
+@media(max-width:620px){
+  .ui3-container,.ui3-shell{width:min(var(--ui3-container),calc(100% - 28px));}
+
+  body.ui3-page :is(.field-grid,.buyer-field-grid,.local-form-grid--two){
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  body.ui3-page :is(
+    .home-hero-actions,.buyer-hero-actions,.life-hero-actions,.life-intake-actions,
+    .ui32-hero-actions,.ui321-coveragefit-bridge,.local-hero-actions,
+    .local-detail-perk-actions,.local-insurance-bridge-actions,.direct-contact-choice
+  ){
+    max-width:100%;
+  }
+
+  body.ui3-page :is(
+    .home-hero-actions,.buyer-hero-actions,.life-hero-actions,.ui32-hero-actions,
+    .local-hero-actions,.thanks-actions,.buyer-thanks-actions,.local-join-thanks-actions
+  ) > :is(a,button){
+    width:100%!important;
+    justify-content:center!important;
+  }
+
+  body.ui3-page :is(.quote-card,.local-join-form-card,.life-application-panel,.life-intake-card){
+    max-width:100%!important;
+  }
+
+  body.ui3-page .consent,
+  body.local-join-page .local-check-row{
+    align-items:flex-start!important;
+    gap:11px!important;
+  }
+
+  /* Avoid giant campaign/media blocks pushing the first action below several screens. */
+  .home-page .home-hero-image{height:clamp(250px,72vw,310px)!important;}
+  .auto-bundle-page .visual-card{height:clamp(260px,78vw,320px)!important;}
+  body.buyer-page .buyer-visual,body.buyer-page .buyer-visual>img{min-height:280px!important;}
+  .ui32-hero-image-wrap{aspect-ratio:4/3!important;}
+  body.life-page .life-campaign-photo{min-height:260px!important;}
+
+  /* Dense cards and receipts get usable edge room without becoming visually bulky. */
+  body.ui3-page :is(.ui3-card,.thanks>.thanks-card,.local-join-form-card,.local-redemption-card){
+    padding-left:max(18px,env(safe-area-inset-left,0px))!important;
+    padding-right:max(18px,env(safe-area-inset-right,0px))!important;
+  }
+}
+
+/* Very narrow devices (320–359 px): protect copy and utility actions from clipping. */
+@media(max-width:359px){
+  body.ui3-page h1{font-size:clamp(2.25rem,12.5vw,3.1rem)!important;}
+  body.ui3-page h2{font-size:clamp(1.8rem,9.5vw,2.55rem)!important;}
+  .ui3-site-header .ui3-brand img{max-width:158px!important;height:28px!important;}
+  .ui3-footer-links{grid-template-columns:1fr!important;}
+  body.ui3-page :is(.quote-card,.local-join-form-card){padding:18px!important;}
+  body.local-page .local-merchant-card{grid-template-columns:1fr!important;}
+}
+
+/* Short landscape / in-app browser: prioritize the task, not oversized art. */
+@media(max-height:540px) and (orientation:landscape){
+  html{scroll-padding-top:calc(60px + env(safe-area-inset-top,0px));}
+  .ui3-site-header{
+    min-height:calc(52px + env(safe-area-inset-top,0px))!important;
+  }
+  .ui3-site-header .ui3-brand img{height:27px!important;max-width:170px!important;}
+  .ui3-menu-toggle{width:44px;height:44px;}
+  .ui3-primary-nav{max-height:calc(100dvh - 66px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));}
+
+  body.ui3-page h1{font-size:clamp(2.15rem,6.2vw,3.45rem)!important;}
+  body.ui3-page h2{font-size:clamp(1.8rem,4.8vw,2.75rem)!important;}
+
+  .ui32-hero,
+  .home-page .home-flyer-hero,
+  .auto-bundle-page .hero,
+  body.buyer-page .buyer-hero,
+  body.occupational-page .occupational-hero,
+  body.local-page .local-hero-inner,
+  body.local-join-page .local-join-hero-inner{
+    padding-top:24px!important;
+    padding-bottom:30px!important;
+  }
+  .home-page .home-hero-image,
+  .auto-bundle-page .visual-card,
+  body.buyer-page .buyer-visual,
+  body.buyer-page .buyer-visual>img{
+    height:250px!important;
+    min-height:250px!important;
+  }
+  body.life-page .life-campaign-photo{min-height:230px!important;}
+
+  /* Sticky sidecars are counterproductive when the viewport is shorter than the form. */
+  .home-page .home-review-side,
+  body.local-join-page .local-join-context{
+    position:static!important;
+    top:auto!important;
+  }
+  body.ui3-page dialog,body.local-detail-page .local-redemption-dialog{max-height:calc(100dvh - 16px)!important;}
+}
+
+/* Hover effects should never create a 'stuck' raised state on touch screens. */
+@media(hover:none){
+  body.ui3-page :is(.root-tile,.professional-links a,.root-process article,.steps article):hover{
+    transform:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.ui3-page{scroll-behavior:auto!important;}
+}
+
+/* Preserve established homepage conversion target sizing after mobile stacking. */
+@media(max-width:860px){
+  body.ui3-page .ui32-hero-actions .cf-button{
+    display:inline-flex!important;
+    align-items:center!important;
+    min-height:52px!important;
+  }
+}
+
+/* Never shrink previously certified conversion targets while normalizing touch UI. */
+@media(max-width:860px){
+  body.ui3-page.home-page :is(.home-primary-cta,.home-text-cta,#leadForm .primary-button){min-height:50px!important;}
+  body.ui3-page.auto-bundle-page :is(#leadForm .primary-button,.text-link){min-height:50px!important;}
+  body.ui3-page.buyer-page :is(.buyer-button,.buyer-submit){min-height:50px!important;}
+  body.ui3-page.occupational-page :is(#leadForm .primary-button,.text-link){min-height:50px!important;}
+  body.ui3-page.life-page :is(.life-primary-cta,.life-button){min-height:50px!important;}
+  body.ui3-page.local-page :is(.local-primary,.local-secondary,.local-use-perk,.local-join-submit){min-height:50px!important;}
+}
+@media(max-width:860px){
+  body.ui3-page.buyer-page :is(.buyer-next,.buyer-back){min-height:50px!important;}
+}

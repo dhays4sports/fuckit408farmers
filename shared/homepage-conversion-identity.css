@@ -1,0 +1,60 @@
+/* 408-UI-3.2.1 — Homepage Conversion Identity Alignment
+   Narrow homepage overlay: preserves UI-3.2 platform styling while restoring the
+   coverage-review identity, situation-first chooser, and central CoverageFit role. */
+
+.ui32-home-main .ui32-hero-copy h1{max-width:700px;}
+.ui32-hero-copy .eyebrow{color:var(--ui3-red);}
+.ui32-hero-card-foot span:first-child{color:var(--ui3-navy-800);font-weight:850;}
+
+/* Situation first: this is the primary conversion chooser. */
+.ui321-situation-section{padding-bottom:clamp(62px,7vw,90px);}
+.ui321-situation-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:0;}
+.ui321-situation-grid a{min-height:174px;display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:20px 20px 18px;border-radius:14px;background:#fff;box-shadow:var(--ui3-shadow-xs);}
+.ui321-situation-grid a:hover{border-color:#c8d5e2;box-shadow:var(--ui3-shadow-sm);}
+.ui321-situation-grid span{margin-bottom:18px;color:var(--ui3-red);font-size:.69rem;line-height:1.2;letter-spacing:.095em;}
+.ui321-situation-grid strong{color:var(--ui3-navy-950);font-size:1rem;line-height:1.42;letter-spacing:-.012em;}
+.ui321-situation-grid em{margin-top:auto;padding-top:20px;color:var(--ui3-navy-800);font-size:.79rem;}
+
+/* CoverageFit remains part of the value proposition, not a buried feature card. */
+.ui321-coveragefit-bridge{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:30px;align-items:center;margin-top:22px;padding:24px 26px;border:1px solid #cbd9e8;border-radius:15px;background:linear-gradient(135deg,#f1f6fc 0%,#fff 72%);}
+.ui321-coveragefit-bridge>div{max-width:790px;}
+.ui321-coveragefit-mark{display:block;margin-bottom:7px;color:var(--ui3-red);font-size:.7rem;font-weight:950;letter-spacing:.11em;text-transform:uppercase;}
+.ui321-coveragefit-bridge strong{display:block;color:var(--ui3-navy-950);font-size:1.16rem;line-height:1.35;letter-spacing:-.018em;}
+.ui321-coveragefit-bridge p{margin:8px 0 0;color:var(--ui3-muted);font-size:.88rem;line-height:1.62;}
+.ui321-coveragefit-bridge .cf-button{min-height:46px!important;white-space:nowrap;}
+
+/* Product browsing is intentionally secondary. */
+.ui321-secondary-products{margin-top:54px;padding-top:34px;border-top:1px solid var(--ui3-line);}
+.ui321-secondary-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:36px;align-items:end;margin-bottom:20px;}
+.ui321-secondary-heading span{display:block;margin-bottom:7px;color:var(--ui3-red);font-size:.68rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;}
+.ui321-secondary-heading h3{margin:0;color:var(--ui3-navy-950);font-size:clamp(1.55rem,2.8vw,2.2rem);line-height:1.05;letter-spacing:-.035em;}
+.ui321-secondary-heading p{margin:0;color:var(--ui3-muted);font-size:.9rem;line-height:1.6;}
+.ui321-secondary-products .ui32-product-card{min-height:242px;padding:19px;}
+.ui321-secondary-products .ui32-product-icon{width:38px;height:38px;margin-bottom:14px;}
+.ui321-secondary-products .ui32-product-icon svg{width:19px;height:19px;}
+.ui321-secondary-products .ui32-product-card h3{margin:6px 0 8px;font-size:1.15rem;}
+.ui321-secondary-products .ui32-product-card p{font-size:.84rem;line-height:1.53;}
+.ui321-secondary-products .ui32-product-link{padding-top:18px;font-size:.77rem;}
+
+/* Give the full CoverageFit explanation a slightly stronger platform presence. */
+.ui321-coveragefit-section{background:#f7f9fc;border-top:1px solid var(--ui3-line);border-bottom:1px solid var(--ui3-line);}
+.ui321-coveragefit-section .ui32-method-steps article{background:#fff;}
+
+@media(max-width:900px){
+  .ui321-situation-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ui321-coveragefit-bridge,.ui321-secondary-heading{grid-template-columns:1fr;}
+  .ui321-coveragefit-bridge .cf-button{justify-self:start;}
+}
+
+@media(max-width:620px){
+  .ui321-situation-grid{grid-template-columns:1fr;}
+  .ui321-situation-grid a{min-height:150px;}
+  .ui321-coveragefit-bridge{padding:21px 18px;gap:18px;}
+  .ui321-coveragefit-bridge .cf-button{width:100%;justify-content:center;white-space:normal;}
+  .ui321-secondary-products{margin-top:42px;padding-top:28px;}
+  .ui321-secondary-heading{gap:10px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ui321-situation-grid a{transition:none;}
+}

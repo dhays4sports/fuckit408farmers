@@ -1,0 +1,74 @@
+/* 408-FARMERS / CoverageFit Design System — Sprint 1.2 */
+:root{
+  --cf-color-navy-950:#041a3b;
+  --cf-color-navy-900:#061d43;
+  --cf-color-navy-800:#08285a;
+  --cf-color-navy-700:#123d78;
+  --cf-color-green-700:#3f8d18;
+  --cf-color-green-600:#5bad2c;
+  --cf-color-green-500:#75c942;
+  --cf-color-ink:#10233d;
+  --cf-color-muted:#617187;
+  --cf-color-line:#dce5ee;
+  --cf-color-surface:#ffffff;
+  --cf-color-soft:#f4f8fb;
+  --cf-color-soft-blue:#eef5f8;
+  --cf-font-sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --cf-text-xs:.68rem;
+  --cf-text-sm:.8rem;
+  --cf-text-base:1rem;
+  --cf-text-lg:1.18rem;
+  --cf-text-xl:1.48rem;
+  --cf-radius-sm:12px;
+  --cf-radius-md:15px;
+  --cf-radius-lg:22px;
+  --cf-radius-xl:28px;
+  --cf-radius-2xl:32px;
+  --cf-radius-pill:999px;
+  --cf-shadow-sm:0 10px 24px rgba(4,26,59,.07);
+  --cf-shadow-md:0 14px 42px rgba(4,26,59,.065);
+  --cf-shadow-lg:0 28px 80px rgba(4,26,59,.16);
+  --cf-space-1:4px;
+  --cf-space-2:8px;
+  --cf-space-3:12px;
+  --cf-space-4:16px;
+  --cf-space-5:20px;
+  --cf-space-6:24px;
+  --cf-space-8:32px;
+  --cf-space-10:40px;
+  --cf-space-12:48px;
+  --cf-container:1180px;
+  --cf-transition-fast:.2s ease;
+  --cf-transition-base:.3s ease;
+}
+
+.cf-container{width:min(var(--cf-container),calc(100% - 40px));margin-inline:auto}
+.cf-eyebrow{color:var(--cf-color-navy-800);font-size:.74rem;line-height:1.3;font-weight:900;text-transform:uppercase;letter-spacing:.16em}
+.cf-heading{color:var(--cf-color-navy-800);letter-spacing:-.058em;line-height:.98;margin:14px 0}
+.cf-muted{color:var(--cf-color-muted);line-height:1.72}
+
+.cf-btn{border:0;border-radius:var(--cf-radius-md);min-height:56px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:14px;font:inherit;font-weight:900;text-decoration:none;cursor:pointer;transition:transform var(--cf-transition-fast),filter var(--cf-transition-fast),box-shadow var(--cf-transition-fast)}
+.cf-btn:hover{transform:translateY(-2px)}
+.cf-btn:focus-visible{outline:3px solid rgba(91,173,44,.33);outline-offset:4px}
+.cf-btn--primary{background:linear-gradient(135deg,var(--cf-color-green-600),var(--cf-color-green-700));color:#fff;box-shadow:0 16px 38px rgba(63,141,24,.25)}
+.cf-btn--primary:hover{filter:brightness(1.02);box-shadow:0 20px 44px rgba(63,141,24,.29)}
+.cf-btn--secondary{background:#fff;color:var(--cf-color-navy-800);border:1px solid var(--cf-color-line);box-shadow:var(--cf-shadow-sm)}
+.cf-btn--wide{justify-content:space-between;gap:40px}
+
+.cf-card{background:var(--cf-color-surface);border:1px solid var(--cf-color-line);border-radius:var(--cf-radius-lg);padding:28px;box-shadow:var(--cf-shadow-md)}
+.cf-card--flat{box-shadow:none}
+.cf-card--soft{background:var(--cf-color-soft)}
+.cf-icon-tile{width:50px;height:50px;border-radius:15px;background:rgba(91,173,44,.12);color:var(--cf-color-green-700);font-weight:950;display:grid;place-items:center}
+.cf-chip{display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(8,40,90,.09);border-radius:var(--cf-radius-pill);padding:9px 13px;color:var(--cf-color-navy-800);font-size:.75rem;font-weight:850;box-shadow:var(--cf-shadow-sm)}
+.cf-panel-dark{background:linear-gradient(135deg,var(--cf-color-navy-950),#0a326d);color:#fff;border-radius:var(--cf-radius-2xl);box-shadow:var(--cf-shadow-lg)}
+.cf-link-button{display:inline-flex;align-items:center;border:1px solid var(--cf-color-line);border-radius:var(--cf-radius-sm);padding:12px 15px;text-decoration:none;color:var(--cf-color-navy-800);font-weight:850;transition:transform var(--cf-transition-fast),border-color var(--cf-transition-fast)}
+.cf-link-button:hover{transform:translateY(-1px);border-color:#b7c6d5}
+
+.cf-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.cf-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.cf-reveal{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .72s ease}
+.cf-reveal.is-visible{opacity:1;transform:none}
+
+@media(max-width:980px){.cf-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.cf-container{width:min(var(--cf-container),calc(100% - 32px))}.cf-grid-3,.cf-grid-4{grid-template-columns:1fr}.cf-btn--wide{gap:24px}}
+@media(prefers-reduced-motion:reduce){.cf-btn,.cf-link-button,.cf-reveal{transition:none}.cf-reveal{opacity:1;transform:none}}

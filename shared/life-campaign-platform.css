@@ -1,0 +1,196 @@
+/* 408-UI-3.7 — Life Campaign + Platform Convergence
+   Campaign identity layer only. Secure submission, attribution, queue, and application contracts remain authoritative. */
+
+body.life-page.ui3-page{
+  --life-campaign-black:#020306;
+  --life-campaign-deep:#050b15;
+  --life-campaign-navy:#07162c;
+  --life-campaign-blue:#4f83c6;
+  --life-campaign-red:#e21c2a;
+  --life-campaign-white:#f8fafc;
+  --life-campaign-muted:#aab5c6;
+  background:var(--life-campaign-black)!important;
+  color:var(--life-campaign-white)!important;
+}
+body.life-page.ui3-page main{background:var(--life-campaign-black)!important;}
+body.life-page.ui3-page .ui3-site-header{background:rgba(2,7,16,.96)!important;border-bottom-color:rgba(255,255,255,.1)!important;box-shadow:none!important;}
+body.life-page.ui3-page .ui3-primary-nav a[aria-current="page"]::after{background:var(--life-campaign-red)!important;}
+
+/* Campaign-matched hero: the landing page should feel like the next frame of the ad. */
+body.life-page.ui3-page .life-hero{
+  width:min(1240px,calc(100% - 48px));
+  grid-template-columns:minmax(0,1.02fr) minmax(380px,.78fr);
+  gap:clamp(38px,6vw,88px);
+  min-height:calc(100svh - 64px);
+  padding:clamp(58px,7vw,92px) 0 clamp(68px,8vw,104px);
+  background:
+    radial-gradient(circle at 78% 32%,rgba(50,91,148,.13),transparent 26%),
+    radial-gradient(circle at 20% 12%,rgba(226,28,42,.055),transparent 24%),
+    var(--life-campaign-black)!important;
+}
+body.life-page.ui3-page .life-hero-copy{max-width:720px;}
+body.life-page.ui3-page .life-kicker{
+  color:#d7deea!important;
+  letter-spacing:.18em!important;
+  font-size:.72rem!important;
+}
+body.life-page.ui3-page .life-hero h1{
+  margin:18px 0 26px!important;
+  color:#fff!important;
+  font-size:clamp(4.4rem,8.4vw,8.25rem)!important;
+  line-height:.82!important;
+  letter-spacing:-.065em!important;
+  text-transform:uppercase;
+  font-weight:950!important;
+  max-width:780px;
+}
+body.life-page.ui3-page .life-hero h1 span{color:#fff!important;}
+body.life-page.ui3-page .life-hero h1 span::after{content:"";display:inline-block;width:.17em;height:.17em;margin-left:.06em;background:var(--life-campaign-red);vertical-align:.05em;}
+body.life-page.ui3-page[data-life-campaign-variant="20_minutes"] .life-hero h1 span::after{display:none;}
+body.life-page.ui3-page[data-life-campaign-variant="20_minutes"] .life-hero h1 span{font-size:1.08em!important;letter-spacing:-.055em;color:#fff!important;}
+body.life-page.ui3-page[data-life-campaign-variant="financial_picture"] .life-hero h1{font-size:clamp(3.4rem,6.6vw,6.6rem)!important;line-height:.88!important;}
+body.life-page.ui3-page[data-life-campaign-variant="financial_picture"] .life-hero h1 span{color:#fff!important;}
+body.life-page.ui3-page .life-hero-copy::after{content:"";display:block;width:88px;height:4px;background:var(--life-campaign-red);margin:28px 0 0;order:3;}
+body.life-page.ui3-page .life-hero-lead{
+  color:#fff!important;
+  font-size:clamp(1.25rem,1.75vw,1.52rem)!important;
+  line-height:1.5!important;
+  max-width:650px!important;
+  margin:0 0 10px!important;
+}
+body.life-page.ui3-page .life-hero-support{color:var(--life-campaign-muted)!important;font-size:1.02rem!important;line-height:1.7!important;}
+body.life-page.ui3-page .life-fast-facts{border-color:rgba(255,255,255,.15)!important;margin-top:30px!important;}
+body.life-page.ui3-page .life-fast-fact{border-color:rgba(255,255,255,.14)!important;box-shadow:none!important;border-radius:0!important;}
+body.life-page.ui3-page .life-fast-icon{border-color:var(--life-campaign-red)!important;color:#fff!important;}
+body.life-page.ui3-page .life-fast-fact small{color:#9ca9ba!important;}
+body.life-page.ui3-page .life-fast-fact strong{color:#fff!important;}
+body.life-page.ui3-page .life-primary-cta{
+  background:transparent!important;
+  border:1px solid var(--life-campaign-red)!important;
+  color:#fff!important;
+  text-transform:uppercase;
+  letter-spacing:.075em;
+  font-size:.78rem!important;
+  min-height:54px!important;
+  padding:0 20px!important;
+}
+body.life-page.ui3-page .life-primary-cta:hover{background:var(--life-campaign-red)!important;border-color:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-secondary-cta{background:transparent!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.45)!important;color:#fff!important;border-radius:0!important;}
+body.life-page.ui3-page .life-hero-fineprint{color:#6f7b8b!important;}
+
+/* Campaign photo panel — visual continuity with the paid creative without turning the page into a static ad. */
+body.life-page.ui3-page .life-campaign-visual{
+  position:relative;
+  min-height:610px;
+  padding:0!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  border-radius:18px!important;
+  background:#05070b!important;
+  overflow:hidden;
+  box-shadow:0 28px 80px rgba(0,0,0,.38)!important;
+}
+body.life-page.ui3-page .life-campaign-visual::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,.03) 34%,rgba(0,0,0,.2) 58%,rgba(0,0,0,.94) 100%),linear-gradient(90deg,rgba(0,0,0,.20),transparent 36%);pointer-events:none;}
+body.life-page.ui3-page .life-campaign-photo{position:absolute;inset:0;overflow:hidden;}
+body.life-page.ui3-page .life-campaign-photo img{width:100%;height:100%;object-fit:cover;object-position:72% 43%;filter:saturate(.82) contrast(1.03) brightness(.92);}
+body.life-page.ui3-page .life-campaign-photo-copy{position:absolute;z-index:3;left:30px;right:30px;bottom:84px;color:#fff;text-transform:uppercase;}
+body.life-page.ui3-page .life-campaign-photo-copy::before{content:"";display:block;width:72px;height:3px;background:var(--life-campaign-red);margin-bottom:16px;}
+body.life-page.ui3-page .life-campaign-photo-copy span{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;color:#d8dee7;}
+body.life-page.ui3-page .life-campaign-photo-copy strong{display:block;margin-top:7px;font-size:clamp(1.65rem,3vw,2.65rem);line-height:1.02;letter-spacing:-.035em;}
+body.life-page.ui3-page .life-campaign-credential{position:absolute;z-index:3;left:30px;right:30px;bottom:25px;padding-top:15px;border-top:1px solid rgba(255,255,255,.24);display:flex;align-items:center;justify-content:space-between;gap:16px;color:#fff;}
+body.life-page.ui3-page .life-campaign-credential span{font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;font-weight:850;}
+body.life-page.ui3-page .life-campaign-credential strong{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:#bfc9d6;}
+
+/* The application remains task-oriented: cinematic frame, high-readability white working surface. */
+body.life-page.ui3-page .life-start-section{
+  background:linear-gradient(180deg,#05070c 0%,#07111f 100%)!important;
+  color:#fff!important;
+  padding-top:clamp(76px,9vw,116px)!important;
+}
+body.life-page.ui3-page .life-start-heading{max-width:1040px;margin:0 auto 40px;}
+body.life-page.ui3-page .life-start-heading .section-kicker{color:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-start-heading h2{color:#fff!important;font-size:clamp(2.6rem,4.7vw,4.65rem)!important;}
+body.life-page.ui3-page .life-start-heading>p{color:#a9b5c5!important;}
+body.life-page.ui3-page .life-intake-shell{
+  border:1px solid rgba(255,255,255,.16)!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:0 34px 90px rgba(0,0,0,.34)!important;
+}
+body.life-page.ui3-page .life-intake-progress{background:#f6f8fb!important;border-bottom-color:#dfe6ed!important;}
+body.life-page.ui3-page .life-progress-track span{background:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-question-title,body.life-page.ui3-page .life-intake-complete h3,body.life-page.ui3-page .life-application-intro h3{color:var(--ui3-navy-950)!important;}
+body.life-page.ui3-page .life-choice-card{box-shadow:none!important;border-radius:12px!important;}
+body.life-page.ui3-page .life-choice-card:hover{border-color:#aebdcd!important;box-shadow:0 8px 24px rgba(3,26,61,.06)!important;}
+body.life-page.ui3-page .life-choice-card.is-selected,body.life-page.ui3-page .life-choice-card:has(input:checked){border-color:var(--life-campaign-red)!important;background:#fff6f7!important;}
+body.life-page.ui3-page .life-intake-step .life-primary-cta,body.life-page.ui3-page .life-application-intro .life-primary-cta,body.life-page.ui3-page .life-intake-complete .life-primary-cta{
+  background:var(--life-campaign-red)!important;
+  border-color:var(--life-campaign-red)!important;
+  letter-spacing:0!important;
+  text-transform:none!important;
+  font-size:.86rem!important;
+}
+body.life-page.ui3-page .life-intake-step .life-primary-cta:hover,body.life-page.ui3-page .life-application-intro .life-primary-cta:hover,body.life-page.ui3-page .life-intake-complete .life-primary-cta:hover{background:#bd111d!important;border-color:#bd111d!important;}
+body.life-page.ui3-page .life-intake-step .life-back-button{color:var(--ui3-navy-800)!important;background:#fff!important;border:1px solid var(--ui3-line-strong)!important;}
+
+/* Supporting campaign section: large statement, fewer SaaS-style cards. */
+body.life-page.ui3-page .life-why-now{
+  background:#020306!important;
+  color:#fff!important;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+body.life-page.ui3-page .life-why-heading{max-width:920px;}
+body.life-page.ui3-page .life-why-heading .section-kicker{color:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-why-heading h2{color:#fff!important;font-size:clamp(3rem,5.4vw,5.6rem)!important;text-transform:uppercase;letter-spacing:-.058em!important;}
+body.life-page.ui3-page .life-why-grid{border-top:1px solid rgba(255,255,255,.16);gap:0!important;}
+body.life-page.ui3-page .life-why-grid article{background:transparent!important;border:0!important;border-right:1px solid rgba(255,255,255,.12)!important;border-radius:0!important;box-shadow:none!important;padding:30px 28px 18px!important;}
+body.life-page.ui3-page .life-why-grid article:last-child{border-right:0!important;}
+body.life-page.ui3-page .life-why-grid article>span{color:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-why-grid h3{color:#fff!important;}
+body.life-page.ui3-page .life-why-grid p{color:#9eabbb!important;}
+
+body.life-page.ui3-page .life-agent{border-top:1px solid rgba(255,255,255,.1);}
+body.life-page.ui3-page .life-agent h2{color:#fff!important;}
+body.life-page.ui3-page .life-agent-copy .section-kicker{color:var(--life-campaign-red)!important;}
+body.life-page.ui3-page .life-agent-title,body.life-page.ui3-page .life-agent-copy>p{color:#a8b4c4!important;}
+body.life-page.ui3-page .life-agent-actions a{color:#fff!important;}
+body.life-page.ui3-page .life-carrier-mark{background:#fff!important;border-radius:12px!important;}
+
+/* Universal UI-3 footer remains the platform anchor, but Life keeps the darker campaign continuity. */
+body.life-page.ui3-page .ui3-site-footer{background:#010308!important;border-top:1px solid rgba(255,255,255,.1);}
+
+@media(max-width:980px){
+  body.life-page.ui3-page .life-hero{grid-template-columns:1fr;min-height:0;gap:34px;padding-top:52px;}
+  body.life-page.ui3-page .life-hero-copy{max-width:820px;}
+  body.life-page.ui3-page .life-campaign-visual{min-height:520px;max-width:720px;width:100%;margin:0 auto;}
+  body.life-page.ui3-page .life-start-heading{grid-template-columns:1fr!important;gap:16px!important;}
+  body.life-page.ui3-page .life-start-heading>p{grid-column:1!important;grid-row:auto!important;}
+}
+@media(max-width:700px){
+  body.life-page.ui3-page .life-hero{width:min(100% - 32px,1240px);padding:44px 0 64px;}
+  body.life-page.ui3-page .life-hero h1{font-size:clamp(3.3rem,17vw,5.25rem)!important;line-height:.84!important;}
+  body.life-page.ui3-page[data-life-campaign-variant="financial_picture"] .life-hero h1{font-size:clamp(2.85rem,13.5vw,4.25rem)!important;}
+  body.life-page.ui3-page .life-fast-facts{grid-template-columns:1fr;}
+  body.life-page.ui3-page .life-fast-fact+.life-fast-fact{border-left:0!important;border-top:1px solid rgba(255,255,255,.14)!important;padding:18px 0 0!important;}
+  body.life-page.ui3-page .life-hero-actions{align-items:stretch;}
+  body.life-page.ui3-page .life-hero-actions>a{width:100%;justify-content:center;}
+  body.life-page.ui3-page .life-campaign-visual{min-height:470px;border-radius:14px!important;}
+  body.life-page.ui3-page .life-campaign-photo img{object-position:71% 42%;}
+  body.life-page.ui3-page .life-campaign-photo-copy,body.life-page.ui3-page .life-campaign-credential{left:20px;right:20px;}
+  body.life-page.ui3-page .life-campaign-credential{align-items:flex-start;flex-direction:column;gap:4px;}
+  body.life-page.ui3-page .life-start-section,body.life-page.ui3-page .life-why-now{padding-left:16px!important;padding-right:16px!important;}
+  body.life-page.ui3-page .life-start-heading h2{font-size:clamp(2.35rem,11vw,3.65rem)!important;}
+  body.life-page.ui3-page .life-why-grid{grid-template-columns:1fr!important;}
+  body.life-page.ui3-page .life-why-grid article{border-right:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;padding-left:0!important;padding-right:0!important;}
+  body.life-page.ui3-page .life-why-grid article:last-child{border-bottom:0!important;}
+  body.life-page.ui3-page :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){font-size:16px!important;}
+}
+@media(max-height:520px) and (orientation:landscape){
+  body.life-page.ui3-page .life-hero{min-height:0;padding-top:34px;padding-bottom:44px;}
+  body.life-page.ui3-page .life-campaign-visual{min-height:390px;}
+}
+@media(prefers-reduced-motion:reduce){body.life-page.ui3-page *{scroll-behavior:auto!important;transition:none!important;animation:none!important;}}
+@media(forced-colors:active){body.life-page.ui3-page .life-campaign-visual,body.life-page.ui3-page .life-intake-shell{border:1px solid CanvasText!important;}body.life-page.ui3-page .life-primary-cta{border:2px solid ButtonText!important;}}
+
+/* UI-3.13 production image delivery: responsive campaign imagery fills the established Life frame. */
+body.life-page.ui3-page .life-campaign-photo>picture{display:block;width:100%;height:100%}
+body.life-page.ui3-page .life-campaign-photo>picture>img{display:block;width:100%;height:100%;object-fit:cover}

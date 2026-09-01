@@ -1,0 +1,160 @@
+/* 408-UI-3.13.1A — Human Trust Foundation
+   Inert by default: every selector is opt-in via ht-* classes.
+   Life campaign surfaces intentionally do not load this stylesheet. */
+:root{
+  --ht-gold-700:#805500;
+  --ht-gold-600:#966400;
+  --ht-gold-100:#f8f0df;
+  --ht-warm-paper:#fffdfa;
+  --ht-warm-line:#eadfc9;
+  --ht-signature-gap:14px;
+  --ht-photo-radius:18px;
+  --ht-editorial-measure:66ch;
+}
+
+/* Human Trust Signature — editorial identity, not a feature card. */
+.ht-signature{
+  display:flex;
+  align-items:center;
+  gap:var(--ht-signature-gap);
+  max-width:680px;
+  color:var(--ui3-ink,#152742);
+}
+.ht-signature__portrait{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center;
+  background:#eef3f8;
+  border:1px solid rgba(3,26,61,.12);
+}
+.ht-signature__copy{min-width:0;display:grid;gap:2px;}
+.ht-signature__title{
+  margin:0;
+  color:var(--ui3-navy-950,#031a3d);
+  font-size:.96rem;
+  font-weight:850;
+  line-height:1.25;
+}
+.ht-signature__meta{
+  margin:0;
+  color:var(--ui3-muted,#5e7087);
+  font-size:.82rem;
+  line-height:1.35;
+}
+.ht-signature__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+  margin-top:4px;
+}
+.ht-signature__actions a{
+  color:var(--ui3-navy-800,#0c3269);
+  font-size:.82rem;
+  font-weight:800;
+  text-underline-offset:3px;
+}
+.ht-signature--compact .ht-signature__portrait{width:48px;height:48px;flex-basis:48px;}
+.ht-signature--quiet .ht-signature__actions{display:none;}
+
+/* Editorial copy — used when a bordered card is unnecessary. */
+.ht-editorial-intro{
+  max-width:var(--ht-editorial-measure);
+  color:var(--ui3-muted,#5e7087);
+  font-size:clamp(1rem,1.4vw,1.12rem);
+  line-height:1.68;
+}
+.ht-human-note{
+  max-width:var(--ht-editorial-measure);
+  margin-block:18px;
+  padding:2px 0 2px 16px;
+  border-inline-start:3px solid var(--ui3-red,#d71920);
+  color:var(--ui3-muted,#5e7087);
+  line-height:1.58;
+}
+.ht-human-note strong{color:var(--ui3-navy-950,#031a3d);}
+.ht-unboxed{
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Human/context photography — never carries essential text. */
+.ht-photo-frame{
+  position:relative;
+  overflow:hidden;
+  border-radius:var(--ht-photo-radius);
+  background:#eef3f8;
+  border:1px solid rgba(3,26,61,.1);
+}
+.ht-photo-frame img,.ht-photo-frame picture{display:block;width:100%;height:100%;}
+.ht-photo-frame img{object-fit:cover;object-position:center;}
+.ht-photo-frame--portrait{aspect-ratio:4/5;}
+.ht-photo-frame--landscape{aspect-ratio:16/10;}
+.ht-photo-frame--professional{background:linear-gradient(145deg,#fff 0%,var(--ht-gold-100) 100%);}
+
+/* Professional Programs may use gold as a selective identity accent only. */
+.ht-professional-accent{color:var(--ht-gold-700);}
+.ht-professional-rule{
+  width:72px;
+  height:3px;
+  margin-block:14px 18px;
+  border:0;
+  border-radius:999px;
+  background:var(--ht-gold-600);
+}
+.ht-professional-kicker{
+  color:var(--ht-gold-700);
+  font-size:.74rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+/* Local relationship cues — warm, never insurance-gated. */
+.ht-local-cue{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  max-width:var(--ht-editorial-measure);
+  color:var(--ui3-muted,#5e7087);
+  line-height:1.55;
+}
+.ht-local-cue strong{color:var(--ui3-navy-950,#031a3d);}
+
+/* Completion voice / personal acknowledgement. */
+.ht-personal-receipt{
+  display:grid;
+  gap:14px;
+  max-width:720px;
+}
+.ht-personal-receipt__lead{
+  margin:0;
+  color:var(--ui3-navy-950,#031a3d);
+  font-size:clamp(1.35rem,2.8vw,2rem);
+  line-height:1.16;
+  letter-spacing:-.025em;
+  font-weight:850;
+}
+.ht-personal-receipt__body{max-width:62ch;color:var(--ui3-muted,#5e7087);line-height:1.62;}
+
+@media (max-width:560px){
+  .ht-signature{align-items:flex-start;gap:12px;}
+  .ht-signature__portrait{width:52px;height:52px;flex-basis:52px;}
+  .ht-signature__actions{gap:6px 12px;}
+  .ht-photo-frame{border-radius:14px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .ht-signature *,.ht-photo-frame *{scroll-behavior:auto!important;transition:none!important;animation:none!important;}
+}
+
+@media (forced-colors:active){
+  .ht-signature__portrait,.ht-photo-frame{border:1px solid CanvasText;}
+  .ht-professional-rule{background:CanvasText;}
+  .ht-human-note{border-inline-start-color:CanvasText;}
+  .ht-professional-accent,.ht-professional-kicker{color:CanvasText;}
+}

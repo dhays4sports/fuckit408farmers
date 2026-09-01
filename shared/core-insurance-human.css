@@ -1,0 +1,126 @@
+/* 408-UI-3.13.1C — Core Insurance Humanization
+   Restrained Human Trust layer for Homepage, Home, Home + Auto, and Buyer.
+   Life and Professional Programs intentionally remain in their existing calibrated modes. */
+
+[data-human-trust-core="408-UI-3.13.1C"] .core-human-signature{
+  max-width:620px;
+}
+[data-human-trust-core="408-UI-3.13.1C"] .core-human-cues{
+  margin:2px 0 0;
+  color:var(--ui3-muted,#5e7087);
+  font-size:.78rem;
+  line-height:1.4;
+}
+
+/* Homepage — replace abstract trust chips with a real producer cue while retaining the platform hero. */
+body.home-hub-page[data-human-trust-core="408-UI-3.13.1C"] .homepage-human-signature{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid var(--ui3-line,#dbe3ec);
+}
+body.home-hub-page[data-human-trust-core="408-UI-3.13.1C"] .ui32-hero-support{
+  max-width:650px;
+}
+body.home-hub-page[data-human-trust-core="408-UI-3.13.1C"] .ui32-method-copy>p{
+  max-width:590px;
+}
+
+/* Home — keep the flagship flow clean; make the reviewer tangible beside the review proposition. */
+body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-human-signature{
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--ui3-line,#dbe3ec);
+}
+body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-review-intro h2{
+  max-width:510px;
+}
+body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-benefit-list li{
+  background:transparent!important;
+  border:0!important;
+  border-bottom:1px solid var(--ui3-line,#dbe3ec)!important;
+  border-radius:0!important;
+}
+body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-benefit-list li:last-child{
+  border-bottom:0!important;
+}
+
+/* Home + Auto — consultative household framing; keep the existing conversion card and form intact. */
+body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .bundle-human-signature{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid var(--ui3-line,#dbe3ec);
+}
+body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .review-intro{
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:var(--ui3-muted,#5e7087)!important;
+}
+body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .content-section{
+  gap:clamp(28px,5vw,58px);
+}
+body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .content-section p{
+  margin-top:8px;
+}
+
+/* Buyer — a light concierge layer around the existing closing-first workflow. */
+body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-human-signature{
+  margin-top:22px;
+  padding-top:17px;
+  border-top:1px solid var(--ui3-line,#dbe3ec);
+}
+body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-visual-card{
+  padding:17px 18px;
+}
+body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-visual-card li{
+  padding:3px 0;
+  background:transparent;
+  border:0;
+}
+body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-promise{
+  padding:10px 0;
+  border:0!important;
+  border-bottom:1px solid var(--ui3-line,#dbe3ec)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-promise:last-child{
+  border-bottom:0!important;
+}
+
+@media(max-width:760px){
+  [data-human-trust-core="408-UI-3.13.1C"] .core-human-signature{
+    max-width:100%;
+  }
+  body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-benefit-list li{
+    min-height:44px;
+  }
+}
+
+@media(max-width:620px){
+  body.home-hub-page[data-human-trust-core="408-UI-3.13.1C"] .homepage-human-signature,
+  body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-human-signature{
+    margin-top:20px;
+  }
+  body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .bundle-human-signature{
+    margin-top:20px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  [data-human-trust-core="408-UI-3.13.1C"] .core-human-signature *{
+    transition:none!important;
+    animation:none!important;
+  }
+}
+
+@media(forced-colors:active){
+  body.home-hub-page[data-human-trust-core="408-UI-3.13.1C"] .homepage-human-signature,
+  body.home-page[data-human-trust-core="408-UI-3.13.1C"] .home-human-signature,
+  body.auto-bundle-page[data-human-trust-core="408-UI-3.13.1C"] .bundle-human-signature,
+  body.buyer-page[data-human-trust-core="408-UI-3.13.1C"] .buyer-human-signature{
+    border-top-color:CanvasText;
+  }
+}

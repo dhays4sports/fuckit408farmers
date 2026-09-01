@@ -1,0 +1,340 @@
+/* 408-UI-3.13.1B — Professional Programs Humanization
+   Campaign-informed, human-first presentation layer for Healthcare, Teachers,
+   Technology, and Engineers. Behavior, eligibility, forms, attribution, and
+   CoverageFit contracts remain authoritative and unchanged. */
+
+body.occupational-page[data-human-trust-professional="408-UI-3.13.1B"]{
+  --pro-gold:var(--ht-gold-700,#805500);
+  --pro-gold-bright:#a66f00;
+  --pro-paper:var(--ht-warm-paper,#fffdfa);
+  --pro-line:var(--ht-warm-line,#eadfc9);
+}
+
+/* Keep the family navigation, but let the profession—not the taxonomy—lead. */
+body.occupational-page[data-human-trust-professional] .professional-program-bar{
+  background:#fff;
+  border-bottom:1px solid #e4e9ef;
+}
+body.occupational-page[data-human-trust-professional] .professional-program-bar__label{
+  color:#6a788b;
+  font-weight:800;
+  letter-spacing:.085em;
+}
+body.occupational-page[data-human-trust-professional] .professional-program-bar__label::before{
+  background:var(--pro-gold-bright);
+  box-shadow:0 0 0 4px #fbf3e4;
+}
+body.occupational-page[data-human-trust-professional] .professional-program-switcher a[aria-current="page"]::after{
+  background:var(--pro-gold-bright);
+}
+
+/* Human-first hero: live campaign copy + real professional image + certified form. */
+body.occupational-page[data-human-trust-professional] .occupational-hero{
+  width:min(1240px,calc(100% - 42px));
+  padding:clamp(48px,5.2vw,76px) 0 clamp(64px,6.5vw,90px);
+  grid-template-columns:minmax(300px,.82fr) minmax(220px,.54fr) minmax(410px,1.08fr)!important;
+  gap:clamp(24px,3.1vw,44px);
+  align-items:start;
+  background:#fff!important;
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero .hero-copy{
+  max-width:none;
+  align-self:start;
+  padding-top:clamp(8px,1vw,18px);
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero .hero-copy::before,
+body.occupational-page[data-human-trust-professional] .occupational-hero .hero-copy::after{
+  display:none!important;
+  content:none!important;
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero .eyebrow{
+  margin:0 0 12px;
+  color:var(--pro-gold)!important;
+  font-size:.76rem;
+  letter-spacing:.11em;
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero h1{
+  margin:0;
+  max-width:540px;
+  font-size:clamp(3rem,4.8vw,4.75rem)!important;
+  line-height:.96!important;
+  letter-spacing:-.052em!important;
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero .ht-professional-rule{
+  width:84px;
+  height:3px;
+  margin:18px 0 20px;
+  background:var(--pro-gold-bright);
+}
+body.occupational-page[data-human-trust-professional] .occupational-hero .subhead{
+  max-width:520px;
+  color:#43556d;
+  font-size:clamp(1.03rem,1.28vw,1.16rem);
+  line-height:1.65;
+}
+
+/* Editorial benefit list replaces SaaS-style pill density. */
+body.occupational-page[data-human-trust-professional] .professional-benefits{
+  list-style:none;
+  margin:25px 0 0;
+  padding:0;
+  display:grid;
+  gap:9px;
+  color:#2d435e;
+  font-size:.86rem;
+  font-weight:760;
+}
+body.occupational-page[data-human-trust-professional] .professional-benefits li{
+  position:relative;
+  padding-left:23px;
+}
+body.occupational-page[data-human-trust-professional] .professional-benefits li::before{
+  content:"✓";
+  position:absolute;
+  left:0;
+  top:-1px;
+  color:var(--pro-gold);
+  font-weight:950;
+}
+body.occupational-page[data-human-trust-professional] .professional-hero-cta{
+  display:inline-flex;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
+  padding:0 18px;
+  border:1px solid var(--ui3-red);
+  border-radius:var(--ui3-radius-sm);
+  background:var(--ui3-red);
+  color:#fff;
+  font-size:.87rem;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:none;
+}
+body.occupational-page[data-human-trust-professional] .professional-hero-cta:hover{
+  background:var(--ui3-red-700);
+  border-color:var(--ui3-red-700);
+}
+body.occupational-page[data-human-trust-professional] .professional-eligibility-note{
+  max-width:490px;
+  margin:14px 0 0;
+  color:#6b7788;
+  font-size:.76rem;
+  line-height:1.5;
+}
+body.occupational-page[data-human-trust-professional] .professional-signature{
+  margin-top:25px;
+  padding-top:21px;
+  border-top:1px solid #e8e0d2;
+}
+body.occupational-page[data-human-trust-professional] .professional-signature .ht-signature__title{
+  font-size:.9rem;
+}
+body.occupational-page[data-human-trust-professional] .professional-signature .ht-signature__meta{
+  font-size:.76rem;
+}
+
+/* Campaign-derived professional portraits: identity without embedding ad copy. */
+body.occupational-page[data-human-trust-professional] .professional-hero-photo{
+  align-self:start;
+  width:100%;
+  aspect-ratio:4/5;
+  margin:0;
+  border-radius:22px;
+  border:1px solid #ded4c2;
+  background:#f8f2e7;
+  box-shadow:0 10px 28px rgba(3,26,61,.08);
+}
+body.occupational-page[data-human-trust-professional] .professional-hero-photo::after{
+  content:"";
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:0;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:var(--pro-gold-bright);
+}
+body.occupational-page[data-human-trust-professional] .professional-hero-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+/* Form remains the functional anchor; warmth comes from copy and a softer shell. */
+body.occupational-page[data-human-trust-professional] .occupational-hero .quote-card{
+  border:1px solid #dfe5ec!important;
+  border-top:4px solid var(--pro-gold-bright)!important;
+  border-radius:18px!important;
+  box-shadow:0 9px 24px rgba(3,26,61,.07)!important;
+}
+body.occupational-page[data-human-trust-professional] .quote-card .card-kicker{
+  color:var(--pro-gold)!important;
+  letter-spacing:.105em!important;
+}
+body.occupational-page[data-human-trust-professional] .quote-card>p{
+  color:#52647a;
+}
+body.occupational-page[data-human-trust-professional] .quote-card .review-intro{
+  border-left-color:var(--pro-gold-bright);
+  background:#fffaf2;
+  color:#5f6875!important;
+}
+body.occupational-page[data-human-trust-professional] .quote-card .meet-dylan{
+  display:none!important;
+}
+body.occupational-page[data-human-trust-professional] .quote-card .or-divider{
+  margin-top:18px;
+}
+body.occupational-page[data-human-trust-professional] .quote-card .direct-contact-choice{
+  border-top:1px solid #edf0f4;
+  padding-top:13px;
+}
+
+/* Editorial payoff: fewer boxes, more breathing room. */
+body.occupational-page[data-human-trust-professional] .content-section{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto 26px;
+  padding:clamp(31px,4vw,45px) 0;
+  border:0;
+  border-top:1px solid #e7e0d5;
+  border-bottom:1px solid #e7e0d5;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+body.occupational-page[data-human-trust-professional] .content-section .section-kicker{
+  color:var(--pro-gold)!important;
+}
+body.occupational-page[data-human-trust-professional] .steps{
+  gap:clamp(18px,3vw,34px);
+}
+body.occupational-page[data-human-trust-professional] .steps article{
+  min-height:0;
+  padding:22px 0 18px;
+  border:0!important;
+  border-top:1px solid #dfe5ec!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+body.occupational-page[data-human-trust-professional] .steps article>span{
+  width:auto;
+  height:auto;
+  justify-content:flex-start;
+  border-radius:0;
+  background:transparent;
+  color:var(--pro-gold)!important;
+}
+body.occupational-page[data-human-trust-professional] .steps h3{
+  margin-top:13px;
+}
+body.occupational-page[data-human-trust-professional] .agent-section{
+  padding:clamp(28px,4vw,40px) 0;
+  border:0!important;
+  border-top:1px solid var(--ui3-line)!important;
+  border-radius:0;
+  box-shadow:none;
+}
+body.occupational-page[data-human-trust-professional] .agent-section .section-kicker{
+  color:var(--pro-gold)!important;
+}
+body.occupational-page[data-human-trust-professional] .agent-section .carrier-mark{
+  border-color:#e5e9ee!important;
+  background:#fff;
+}
+
+@media(max-width:1120px){
+  body.occupational-page[data-human-trust-professional] .occupational-hero{
+    width:min(100% - 36px,900px);
+    grid-template-columns:minmax(0,1fr) minmax(230px,.66fr)!important;
+    gap:28px;
+  }
+  body.occupational-page[data-human-trust-professional] .occupational-hero .quote-card{
+    grid-column:1/-1;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo{
+    max-width:330px;
+    justify-self:end;
+  }
+}
+
+@media(max-width:760px){
+  body.occupational-page[data-human-trust-professional] .occupational-hero{
+    width:min(100% - 32px,680px);
+    grid-template-columns:1fr!important;
+    gap:25px;
+    padding-top:35px;
+  }
+  body.occupational-page[data-human-trust-professional] .occupational-hero h1{
+    font-size:clamp(2.65rem,13vw,4rem)!important;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo{
+    grid-column:1;
+    width:min(100%,390px);
+    max-width:none;
+    justify-self:start;
+    aspect-ratio:4/5;
+  }
+  body.occupational-page[data-human-trust-professional] .occupational-hero .quote-card{
+    grid-column:1;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-hero-cta{
+    width:100%;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-signature{
+    margin-top:22px;
+  }
+  body.occupational-page[data-human-trust-professional] .content-section,
+  body.occupational-page[data-human-trust-professional] .steps,
+  body.occupational-page[data-human-trust-professional] .agent-section{
+    width:min(100% - 32px,680px);
+  }
+}
+
+@media(max-width:480px){
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo{
+    width:100%;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-benefits{
+    gap:8px;
+  }
+}
+
+@media(max-height:520px) and (orientation:landscape){
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo{
+    display:none;
+  }
+  body.occupational-page[data-human-trust-professional] .occupational-hero{
+    grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr)!important;
+    padding-top:28px;
+  }
+  body.occupational-page[data-human-trust-professional] .occupational-hero .quote-card{
+    grid-column:auto;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.occupational-page[data-human-trust-professional] .professional-hero-cta{
+    transition:none!important;
+  }
+}
+
+@media(forced-colors:active){
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo,
+  body.occupational-page[data-human-trust-professional] .occupational-hero .quote-card{
+    border:1px solid CanvasText!important;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-hero-photo::after,
+  body.occupational-page[data-human-trust-professional] .ht-professional-rule{
+    background:CanvasText!important;
+  }
+  body.occupational-page[data-human-trust-professional] .professional-hero-cta{
+    border:1px solid ButtonText;
+    background:ButtonFace;
+    color:ButtonText;
+  }
+}

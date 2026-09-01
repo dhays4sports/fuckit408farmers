@@ -1,0 +1,145 @@
+/* 408-HOME-2.9 — route-specific mobile, accessibility, and performance safeguards. */
+.home-page {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.home-page .site-header {
+  min-height: 84px;
+  height: auto;
+  padding-top: max(13px, env(safe-area-inset-top));
+  padding-right: max(clamp(18px, 5vw, 72px), env(safe-area-inset-right));
+  padding-left: max(clamp(18px, 5vw, 72px), env(safe-area-inset-left));
+}
+
+.home-page .brand,
+.home-page .brand picture {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.home-page .home-hero-image > picture,
+.home-page .home-hero-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.home-page .home-hero-image img {
+  object-fit: cover;
+  object-position: center 56%;
+}
+
+.home-page :where(.home-review-section, .home-quote-card, .home-engagement-step, .home-payoff, .home-lead-step) {
+  min-width: 0;
+}
+
+.home-page :where(.home-engagement-option, .home-primary-cta, .home-text-cta, .home-payoff-edit, .home-lead-back, .home-recovery__restart) {
+  min-height: 44px;
+}
+
+.home-page .home-engagement-option {
+  align-content: center;
+}
+
+.home-page .consent input,
+.home-page .home-engagement-option input {
+  flex: 0 0 auto;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+}
+
+.home-page .consent {
+  min-height: 44px;
+}
+
+.home-page :where(.home-engagement-progress-track, .home-lead-progress-track)[role="progressbar"] {
+  forced-color-adjust: auto;
+}
+
+.home-page :where(.home-engagement-step, .home-lead-step)[aria-invalid="true"] {
+  border-radius: 14px;
+  box-shadow: 0 0 0 3px rgba(180, 35, 24, .2);
+}
+
+.home-page :where(input, select)[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+@media (max-width: 700px) {
+  .home-page .site-header {
+    min-height: 70px;
+    padding-right: max(15px, env(safe-area-inset-right));
+    padding-left: max(15px, env(safe-area-inset-left));
+  }
+
+  .home-page .home-hero-image img {
+    object-position: 62% center;
+  }
+
+  .home-page .home-review-section {
+    width: min(calc(100% - 28px), 1180px);
+  }
+
+  .home-page .home-quote-card {
+    padding-inline: clamp(14px, 4vw, 22px);
+  }
+
+  .home-page :where(input, select, textarea) {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-page .brand img {
+    max-width: 51vw;
+    height: auto;
+  }
+
+  .home-page .header-contact strong {
+    font-size: .74rem;
+  }
+
+  .home-page .home-hero-content {
+    width: min(calc(100% - 26px), 1240px);
+  }
+
+  .home-page .home-hero-content h1 {
+    font-size: clamp(2.55rem, 14vw, 3.45rem);
+    letter-spacing: -.05em;
+  }
+
+  .home-page :where(.home-engagement-option, .home-payoff-points article, .home-recovery) {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .home-page .home-hero-image {
+    height: 220px;
+  }
+
+  .home-page .home-hero-content {
+    padding-block: 36px 46px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page :where(.home-primary-cta, .primary-button):hover {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .home-page :where(.home-engagement-step, .home-lead-step)[aria-invalid="true"] {
+    outline: 3px solid Mark;
+    box-shadow: none;
+  }
+
+  .home-page .home-engagement-option:has(input:checked) {
+    outline: 3px solid Highlight;
+  }
+}
