@@ -1,0 +1,21 @@
+const fs=require('fs');
+const path=require('path');
+const root=path.resolve(__dirname,'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+let pass=0, fail=0;
+function check(name, cond){ if(cond){console.log('PASS',name);pass++;}else{console.error('FAIL',name);fail++;}}
+const html=read('auto-bundle/index.html');
+const version=read('VERSION').trim();
+const manifest=JSON.parse(read('handoff-manifest.json'));
+check('runtime includes FLOW-1.1 or later', ['408-BUY-1.3','408-BUY-1.4','408-BUY-1.5','408-BUY-1.5','408-CRO-1.1','408-CRO-1.2','408-CRO-1.3','408-CRO-1.4', '408-CRO-1.5', '408-CRO-1.6', '408-CRO-1.6.1', '408-CRO-1.6.2', '408-CRO-1.6.2.1','408-LIFE-1.1','408-LIFE-1.2','408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.4.1','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(version));
+check('auto bundle uses CoverageFit after submit', /data-coveragefit-after-submit="true"/.test(html));
+check('auto bundle targets existing home assessment', /data-cf-assessment="home"/.test(html) && /data-cf-next="\/assessment\/"/.test(html));
+check('auto bundle has bounded entry identity', /data-cf-entry="auto_bundle_form"/.test(html) && /data-cf-extra-launch-surface="auto_bundle"/.test(html));
+check('prospect profile loads before shared submit handler', html.indexOf('prospect-profile.js')>0 && html.indexOf('prospect-profile.js')<html.indexOf('shared/script.js'));
+check('thank-you remains safe fallback', /data-success="thank-you\.html"/.test(html));
+check('CTA no longer promises bundle price', /Continue My Coverage Review/.test(html) && !/See My Bundle Price/.test(html));
+check('manifest declares auto bundle route', manifest.routes.some(r=>r.path==='/auto-bundle/'&&r.entry==='auto_bundle_form'&&r.launchSurface==='auto_bundle'));
+check('manifest declares zero-repeat normalization', manifest.flowNormalization?.autoBundle?.zeroRepeat===true && manifest.flowNormalization?.autoBundle?.next==='/assessment/');
+check('no second assessment implementation introduced', !fs.existsSync(path.join(root,'auto-bundle','assessment')));
+console.log(`FLOW-1.1: ${pass} passed, ${fail} failed`);
+process.exit(fail?1:0);

@@ -1,0 +1,17 @@
+const fs=require('fs'); const path=require('path'); const assert=require('assert');
+const root=path.resolve(__dirname,'..'); const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const referral=require(path.join(root,'shared/buyer-referral.js')); const manifest=JSON.parse(read('handoff-manifest.json')); const checks=[];
+const check=(name,v)=>{assert.ok(v,name);checks.push(name)};
+check('public runtime advances because buyer SMS behavior changed',['408-BUY-1.2','408-BUY-1.3','408-BUY-1.4','408-BUY-1.5','408-BUY-1.4','408-BUY-1.5','408-BUY-1.4','408-BUY-1.5','408-CRO-1.1','408-CRO-1.2','408-CRO-1.3','408-CRO-1.4', '408-CRO-1.5', '408-CRO-1.6', '408-CRO-1.6.1', '408-CRO-1.6.2', '408-CRO-1.6.2.1','408-LIFE-1.1','408-LIFE-1.2','408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.4.1','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(read('VERSION').trim()));
+check('buyer referral helper advances to RC-SMS-1.6',referral.build==='408-RC-SMS-1.6');
+const context=referral.resolve('?partner_id=jessica-martinez&partner_name=Jessica%20Martinez&partner_code=jm42&utm_source=realtor_partner&utm_medium=partner_card');
+check('website-first context keeps canonical partner identity',context.partnerId==='jessica-martinez'&&context.partnerName==='Jessica Martinez'&&context.referralSource==='realtor_partner');
+check('partner code is normalized case-insensitively',context.partnerCode==='JM42');
+const body=referral.buildSmsBody(context);
+check('text-first message includes buyer context and lightweight code',body.includes('Jessica Martinez referred me.')&&body.includes('Ref: JM42')&&body.includes('buying a home'));
+check('direct buyer text remains code-free',!referral.buildSmsBody(referral.resolve('')).includes('Ref:'));
+check('buyer page persists partner_code for form/event context',read('buyer/index.html').includes('name="partner_code"')&&read('shared/buyer-flow.js').includes("setField('partner_code', context.partnerCode)"));
+check('manifest synchronizes CoverageFit RC-SMS-1.6',['RC-SMS-1.6','RC-SMS-1.7','RC-SMS-1.8','RC-SMS-1.9','RC-SMS-1.9.1'].includes(manifest.smsSimulator?.build)&&['CoverageFit v3.20.24','CoverageFit v3.20.25','CoverageFit v3.20.26','CoverageFit v3.20.27','CoverageFit v3.20.54','CoverageFit v3.20.55','CoverageFit v3.20.56','CoverageFit v3.20.57','CoverageFit v3.20.58','CoverageFit v3.20.59','CoverageFit v3.20.60','CoverageFit v3.20.61','CoverageFit v3.20.62'].includes(manifest.smsSimulator?.receiver));
+check('manifest records same-partner normalization contract',manifest.smsSimulator?.partnerAttribution?.normalization==='Text-first and website-first use the same canonical partner_id.');
+check('static site contains no RingCentral or registry secrets',!read('handoff-manifest.json').includes('RINGCENTRAL_CLIENT_SECRET')&&!read('shared/buyer-referral.js').includes('RCSMS_PARTNER_REGISTRY_JSON'));
+console.log(JSON.stringify({sprint:'408-RC-SMS-1.6',passed:checks.length,failed:0,checks},null,2));

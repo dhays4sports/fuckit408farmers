@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+'use strict';
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const root = path.resolve(__dirname, '..');
+const fixture = path.join(__dirname, 'fixtures', 'coveragefit-v3.20.13-conv1.1');
+const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
+const receiver = name => fs.readFileSync(path.join(fixture, name), 'utf8');
+function storage(){ const map=new Map(); return {getItem:k=>map.has(k)?map.get(k):null,setItem:(k,v)=>map.set(k,String(v)),removeItem:k=>map.delete(k),dump:()=>Object.fromEntries(map)}; }
+function senderUrl(){
+  const sessionStorage=storage(), localStorage=storage();
+  const window={location:{origin:'https://408farmers.com',pathname:'/home/',search:'?utm_source=door_flyer&utm_medium=offline&utm_campaign=fremont_01',assign(){}},sessionStorage,localStorage,crypto:{randomUUID:()=> 'cross-repo-session'},dataLayer:[],CustomEvent:function(type,init){this.type=type;this.detail=init?.detail;},LANDING_PAGE_CONFIG:{coverageFitTransitionUrl:'https://coveragefit.com/transition/',coverageFitHomeUrl:'https://coveragefit.com/home/'}};
+  const document={querySelectorAll:()=>[],addEventListener(){},dispatchEvent(){}};
+  const context=vm.createContext({window,document,URL,URLSearchParams,Object,Date,Math,String,JSON,console});
+  vm.runInContext(read('shared/coveragefit-launch.js'),context);
+  const profile={firstName:'Jamie',lastName:'Homeowner',phone:'4085550188',email:'jamie@example.com',propertyAddress:'456 Schoolhouse Ave, San Jose, CA 95124',reviewContext:'Premium increased',address:{formattedAddress:'456 Schoolhouse Ave, San Jose, CA 95124',street:'456 Schoolhouse Ave',city:'San Jose',county:'Santa Clara',state:'CA',postalCode:'95124',country:'US',placeId:'place-456',selectionMethod:'autocomplete'}};
+  return window.CoverageFitLauncher.buildUrl({profile,campaign:'Does Your Insurance Still Fit Your Home',entry:'home_lander_form',assessment:'home',next:'/assessment/',extra:{launch_surface:'home_lander',lead_captured:'true',lead_capture_status:'confirmed',sender_build:'408-CONV-1.1',handoff_contract:'coveragefit-handoff-v1',handoff_version:'1.1',contact_consent:'true',consent_at:'2026-08-05T14:00:00.000Z',consent_version:'408farmers-contact-v1',submitted_at:'2026-08-05T14:00:00.000Z'}});
+}
+const destination = new URL(senderUrl());
+const sessionStorage=storage(), localStorage=storage();
+let cleanedUrl='';
+const location={origin:'https://coveragefit.com',pathname:'/transition/',search:destination.search,hash:'',href:destination.toString(),replace(value){this.replaced=value;}};
+const window={location,sessionStorage,localStorage,CustomEvent:function(type,init){this.type=type;this.detail=init?.detail;},dispatchEvent(){}};
+const document={title:'CoverageFit',referrer:'https://408farmers.com/home/'};
+const history={state:null,replaceState(_state,_title,url){cleanedUrl=url;}};
+const context=vm.createContext({window,document,history,location,sessionStorage,localStorage,URL,URLSearchParams,Object,Date,Math,String,JSON,console,CustomEvent:window.CustomEvent});
+vm.runInContext(receiver('prefill-intake.js'),context);
+vm.runInContext(receiver('personalization-context.js'),context);
+vm.runInContext(receiver('conversion-handoff.js'),context);
+const profile=window.CoverageFitPrefill.get();
+const personalization=window.CoverageFitPersonalization.get();
+const conversion=window.CoverageFitConversionHandoff.get();
+assert.equal(profile.integration.senderBuild,'408-CONV-1.1');
+assert.equal(profile.integration.handoffVersion,'1.1');
+assert.equal(profile.integration.handoffContract,'coveragefit-handoff-v1');
+assert.equal(profile.contactPermission.confirmed,true);
+assert.equal(profile.contactPermission.status,'confirmed');
+assert.equal(profile.contactPermission.capturedAt,'2026-08-05T14:00:00.000Z');
+assert.equal(profile.contactPermission.version,'408farmers-contact-v1');
+assert.equal(profile.address.postalCode,'95124');
+assert.equal(personalization.flags.trusted408Handoff,true);
+assert.equal(personalization.flags.contactPermissionConfirmed,true);
+assert.equal(conversion.flags.directAssessmentEligible,true);
+assert.equal(conversion.flags.quickPropertyConfirmationEligible,true);
+assert.equal(conversion.flags.zeroRepeatEligible,true);
+assert.equal(conversion.destinationForTransition('/home/'),'/assessment/');
+for(const sensitive of ['first_name','last_name','phone','email','property_address','contact_consent','consent_at','sender_build','handoff_contract','next']) assert(!cleanedUrl.includes(sensitive), sensitive+' remained in cleaned URL');
+console.log('PASS CoverageFit v3.20.13 recognizes the sender contract');
+console.log('PASS explicit consent provenance is preserved');
+console.log('PASS structured property data enables one-click confirmation');
+console.log('PASS direct assessment and zero-repeat flags are true');
+console.log('PASS personal and control parameters are removed from the visible URL');
+console.log('\nCONV-1.1 cross-repository QA: 5/5 passed');
