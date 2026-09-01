@@ -1,0 +1,25 @@
+/* TECH-PUESTO-LAUNCH-1.0 — progressive tap-first intake without changing the editorial visual system. */
+[data-tech-progressive="true"] .tech-progress{display:flex;align-items:center;gap:.55rem;margin:0 0 1.4rem}
+[data-tech-progressive="true"] .tech-progress::before,[data-tech-progressive="true"] .tech-progress::after{content:"";height:2px;flex:1;background:#d9e0ea;order:2}
+[data-tech-progressive="true"] .tech-progress span{display:grid;place-items:center;width:2rem;height:2rem;border-radius:999px;background:#edf1f6;color:#5d6c80;font-weight:800;position:relative;z-index:1;order:1}
+[data-tech-progressive="true"] .tech-progress span:nth-child(2){order:3}
+[data-tech-progressive="true"] .tech-progress span:nth-child(3){order:5}
+[data-tech-progressive="true"] .tech-progress::after{order:4}
+[data-tech-progressive="true"] .tech-progress span.is-current{background:#e51b24;color:#fff}
+[data-tech-progressive="true"] .tech-progress span.is-complete{background:#082c61;color:#fff}
+.tech-choice-step{border:0;padding:0;margin:0;min-width:0}
+.tech-choice-step[hidden]{display:none!important}
+.tech-choice-step legend{font-size:clamp(1.55rem,5vw,2.25rem);line-height:1.04;font-weight:850;color:#061f48;padding:0;margin:0 0 .55rem}
+.tech-choice-step>p{color:#5e6c80;margin:0 0 1.15rem}
+.tech-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.tech-choice-grid button{min-height:3.45rem;padding:.8rem .9rem;border:2px solid #d4dce8;border-radius:.85rem;background:#fff;color:#082c61;font:inherit;font-weight:750;text-align:left;cursor:pointer;transition:border-color .15s ease,background-color .15s ease,transform .15s ease}
+.tech-choice-grid button:hover,.tech-choice-grid button:focus-visible{border-color:#e51b24;background:#fff7f7}
+.tech-choice-grid button:active{transform:scale(.99)}
+.tech-choice-grid button[aria-pressed="true"]{border-color:#e51b24;background:#fff1f2;box-shadow:0 0 0 3px rgba(229,27,36,.1)}
+.tech-choice-grid--two button{text-align:center}
+.tech-back,.tech-skip{display:block;border:0;background:transparent;color:#163c70;font:inherit;font-weight:750;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;margin:1rem auto 0;padding:.65rem}
+.tech-skip{font-weight:700;color:#4f6075;margin-top:.55rem}
+[data-tech-step="capture"] .field-grid{grid-template-columns:1fr}
+@media(max-width:520px){.tech-choice-grid{grid-template-columns:1fr}.tech-choice-grid button{min-height:3.25rem}.tech-choice-step legend{font-size:1.65rem}}
+@media(prefers-reduced-motion:reduce){.tech-choice-grid button{transition:none}}
+@media(forced-colors:active){.tech-choice-grid button[aria-pressed="true"]{outline:3px solid Highlight}.tech-progress span.is-current,.tech-progress span.is-complete{forced-color-adjust:none}}
