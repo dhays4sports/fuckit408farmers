@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+'use strict';
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const root = path.resolve(__dirname, '..');
+const read = rel => fs.readFileSync(path.join(root, rel), 'utf8');
+const exists = rel => fs.existsSync(path.join(root, rel));
+const checks = [];
+const check = (name, value) => { assert.ok(value, name); checks.push(name); };
+
+const life = read('life/index.html');
+const thanks = read('life/thank-you.html');
+const css = read('shared/life.css');
+const js = read('shared/life-intake.js');
+const manifest = JSON.parse(read('handoff-manifest.json'));
+
+check('runtime preserves LIFE-1.2 engagement contract after LIFE-1.3', ['408-LIFE-1.2','408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.4.1','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(read('VERSION').trim()) && ['408-LIFE-1.2','408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.4.1','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(manifest.runtime));
+for (const rel of ['life/index.html','life/thank-you.html','shared/life.css','shared/life-intake.js','SPRINT-408-LIFE-1.2.md']) check(`exists:${rel}`, exists(rel));
+check('life body carries a LIFE-1.2+ build', /data-life-build="408-LIFE-1\.[234567](?:\.\d+)?"/.test(life) && /data-life-build="408-LIFE-1\.[234567](?:\.\d+)?"/.test(thanks));
+check('hero CTA begins the engagement intake', /data-life-start[^>]*href="#life-start"/.test(life) && life.includes('Get started'));
+check('interactive intake shell exists', life.includes('data-life-intake') && life.includes('data-life-intake-form'));
+check('progress UI exists', life.includes('data-life-progress-label') && life.includes('data-life-progress-title') && life.includes('data-life-progress-bar'));
+check('polite live region exists', life.includes('data-life-live') && life.includes('aria-live="polite"'));
+check('original three engagement fieldsets remain', (life.match(/data-life-step="[123]"/g) || []).length === 3);
+check('question 1 supports multi-select protection priorities', life.includes('name="protection_priority"') && (life.match(/name="protection_priority"/g) || []).length === 7 && life.includes('data-life-exclusive'));
+check('question 2 is single-select income runway', (life.match(/name="income_runway"/g) || []).length === 5 && life.includes('type="radio" name="income_runway"'));
+check('question 3 is single-select existing coverage', (life.match(/name="existing_life_coverage"/g) || []).length === 5 && life.includes('type="radio" name="existing_life_coverage"'));
+check('approved provoking questions are exact', ['What would you most want life insurance to protect?','If something happened to you, how long could your household comfortably continue without your income?','What life insurance do you already have today?'].every(text => life.includes(text)));
+check('continue controls remain bounded and secure submit is isolated to final step', life.includes('data-life-next') && (!/type="submit"/i.test(life) || life.includes('data-life-secure-submit')));
+check('back navigation is present', (life.match(/data-life-back/g) || []).length >= 2 && life.includes('data-life-review'));
+check('quick-question transition remains a distinct application boundary', life.includes('Quick questions complete') && (life.includes('Application details') || life.includes('application details')));
+check('direct contact fallback remains available', life.includes('../contact/?intent=life') && (life.includes('Continue with Dylan now') || life.includes('Questions? Contact Dylan')));
+check('no-js fallback remains actionable', life.includes('<noscript>') && life.includes('start directly with Dylan'));
+check('no health/medical intake fields are collected', !/name=["'][^"']*(?:health|medical|diagnos|prescription|tobacco)[^"']*["']/i.test(life));
+check('script has no network submission', !/fetch\s*\(|XMLHttpRequest|sendBeacon|formspree|WebSocket/i.test(js));
+check('script has no persistent browser storage', !/localStorage|sessionStorage|indexedDB|document\.cookie/i.test(js));
+check('script does not write answers to URL', !/protection_priority.*replaceState|income_runway.*replaceState|existing_life_coverage.*replaceState/i.test(js));
+check('script keeps progress event answer-free', js.includes("'life:intake-progress'") && (js.includes('detail: { step: step, completed: !!completed, build: BUILD }') || js.includes('detail: { step: step, phase: phase, completed: !!completed, build: BUILD }')));
+check('exclusive unsure behavior is implemented', js.includes("changed.hasAttribute('data-life-exclusive')") && js.includes("input.hasAttribute('data-life-exclusive')"));
+check('validation gates each continue button', js.includes('button.disabled = !valid') && js.includes('showError(step)'));
+check('back navigation preserves controls instead of resetting', js.includes('showStep(currentIndex - 1)') && !/\.reset\s*\(/.test(js));
+check('completion and application transition remain local', js.includes('form.hidden = true') && (js.includes('applicationIntro.hidden = false') || js.includes('complete.hidden = false')));
+check('CoverageFit runtime remains outside life intake', !/coveragefit-launch\.js|CoverageFitLauncher|coveragefit-launch/i.test(life) && !/CoverageFitLauncher|coveragefit-launch/i.test(js));
+check('life CSS includes selected, mobile, reduced-motion and forced-colors states', css.includes('.life-choice-card.is-selected') && css.includes('@media(max-width:760px)') && css.includes('@media(prefers-reduced-motion:reduce)') && css.includes('@media(forced-colors:active)'));
+check('manifest publishes engagement intake contract', ['408-LIFE-1.2','408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.4.1','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(manifest.lifeCampaignFoundation?.build) && manifest.lifeCampaignFoundation?.engagementIntakeEnabled === true && ['memory_only_non_persistent','dom_memory_only_non_persistent'].includes(manifest.lifeCampaignFoundation?.engagementState));
+check('manifest preserves bounded submission evolution', manifest.lifeCampaignFoundation?.formSubmissionEnabled === false || manifest.lifeCampaignFoundation?.secureSubmissionBoundaryEnabled === true);
+check('manifest preserves paid-traffic lifecycle', manifest.lifeCampaignFoundation?.build==='408-LIFE-1.7' ? manifest.lifeCampaignFoundation?.paidTrafficReady===true : (manifest.lifeCampaignFoundation?.paidTrafficReady===false && /408-LIFE-1\.[4567]/.test(manifest.lifeCampaignFoundation?.paidTrafficGate || '')));
+check('manifest advances through or completes LIFE sequence', manifest.lifeCampaignFoundation?.build==='408-LIFE-1.7' ? manifest.lifeCampaignFoundation?.nextSprint===null : ['408-LIFE-1.3','408-LIFE-1.4','408-LIFE-1.5','408-LIFE-1.6','408-LIFE-1.7','408-FLOW-1.5','408-HOME-2.1','408-HOME-2.2','408-HOME-2.3','408-HOME-2.4','408-HOME-2.5','408-HOME-2.6','408-HOME-2.7','408-HOME-2.8','408-HOME-2.9','408-FLOW-2.1','408-FLOW-2.2','408-FLOW-2.3','408-FLOW-2.4','408-CF-RPT-1.1','408-FLOW-2.5'].includes(manifest.lifeCampaignFoundation?.nextSprint));
+check('CoverageFit seven-route contract remains unchanged', Array.isArray(manifest.routes) && manifest.routes.length === 7 && manifest.coverageFit?.zeroRepeat === true);
+check('existing Formspree path remains unchanged', manifest.formspree?.host === 'formspree.io' && manifest.formspree?.path === '/f/mojgnegn');
+
+console.log(JSON.stringify({ sprint: '408-LIFE-1.2', passed: checks.length, failed: 0, checks }, null, 2));
